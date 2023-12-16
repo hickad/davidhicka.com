@@ -30,8 +30,11 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'digitalresume' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
+
+		<nav id="site-navigation" class="main-navigation">
+    <div class="nav-wrapper">
+	  <button class="menu-toggle brand-logo" aria-controls="primary-menu" aria-expanded="false">
+	  <?php
 			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
@@ -47,11 +50,12 @@
 				?>
 				<p class="site-description"><?php echo $digitalresume_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'digitalresume' ); ?></button>
-			<?php
+
+	  </button>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	  <?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'menu-1',
@@ -59,5 +63,8 @@
 				)
 			);
 			?>
-		</nav><!-- #site-navigation -->
+      </ul>
+    </div>
+  </nav>
+
 	</header><!-- #masthead -->
