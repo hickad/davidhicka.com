@@ -33,26 +33,7 @@
 
 		<nav id="site-navigation" class="main-navigation">
     <div class="nav-wrapper">
-	  <button class="menu-toggle brand-logo" aria-controls="primary-menu" aria-expanded="false">
-	  <?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$digitalresume_description = get_bloginfo( 'description', 'display' );
-			if ( $digitalresume_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $digitalresume_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
 
-
-	  </button>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <?php
@@ -66,5 +47,28 @@
       </ul>
     </div>
   </nav>
+
+
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+	<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+				)
+			);
+			?>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+
 
 	</header><!-- #masthead -->

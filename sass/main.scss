@@ -1,7 +1,7 @@
 // Import Materialize color variables
 @import 'materialize-css/sass/components/color-variables';
 
-$primary-color: color("blue-grey", "darken-4") !default;
+$primary-color: color("grey", "darken-3") !default;
 $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 5%);
 $primary-color: color("blue-grey", "darken-4") !default;

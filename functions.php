@@ -99,6 +99,7 @@ function digitalresume_setup() {
 			'flex-height' => true,
 		)
 	);
+	
 }
 add_action( 'after_setup_theme', 'digitalresume_setup' );
 
@@ -149,6 +150,21 @@ function digitalresume_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'digitalresume_scripts' );
 
+// Function to load scripts
+function my_theme_enqueue_scripts() {
+    // Register the script like this for a theme:
+    wp_register_script( 'custom-script', get_template_directory_uri() . '/dist/bundle.js', array(), '1.0.0', true );
+
+    wp_enqueue_script('materialize-js', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), '1.0.0', true);
+
+    // Enqueue the script:
+    wp_enqueue_script( 'custom-script' );
+}
+
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
+
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -175,4 +191,9 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+
+
+
 
