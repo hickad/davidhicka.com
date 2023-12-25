@@ -33,6 +33,11 @@ $link-color: color("light-blue", "darken-1") !default; // Contrasting light blue
 // styles for extra large screens and up
 }
 
+nav .sidenav-trigger i {
+    line-height: 56px !important;
+}
+
+@import 'contact.scss';
 
 
 

@@ -8046,5 +8046,14 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem;
   }
 }
+nav .sidenav-trigger i {
+  line-height: 56px !important;
+}
+
+.send-icon:before {
+  font-family: "Material Icons";
+  content: "send";
+  margin-right: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */

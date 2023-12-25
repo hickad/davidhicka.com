@@ -31,12 +31,13 @@
 
 	<header id="masthead" class="site-header">
 
-		<nav id="site-navigation" class="main-navigation">
+
+	<nav id="site-navigation" class="main-navigation">
     <div class="nav-wrapper">
-
-
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	  <?php
+      <a href="#!" class="brand-logo">David Hicka</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+	  	<?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'menu-1',
@@ -48,26 +49,21 @@
     </div>
   </nav>
 
-
-  <ul id="slide-out" class="sidenav">
-    <li><div class="user-view">
-      <div class="background">
-        <img src="images/office.jpg">
-      </div>
-      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li>
-	<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
+  <ul class="sidenav" id="mobile-demo">
+  <?php
+		wp_nav_menu(
+			array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => 'primary-menu',
+			)
+		);
+		?>
   </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+
+
+
       
 
 
