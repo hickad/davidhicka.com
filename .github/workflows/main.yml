@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@master # Update to the latest version
+      uses: actions/checkout@v3
 
     - name: Copy files to Lightsail
-      uses: appleboy/scp-action@master # Use a specific version
+      uses: appleboy/scp-action@v0.1.6
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USERNAME }}
@@ -23,7 +23,7 @@ jobs:
         target: "/path/to/wordpress"
 
     - name: SSH commands
-      uses: appleboy/ssh-action@master # Use a specific version
+      uses: appleboy/ssh-action@v1.0.1
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USERNAME }}
