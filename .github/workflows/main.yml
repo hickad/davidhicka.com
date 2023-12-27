@@ -1,0 +1,33 @@
+name: Deploy to Amazon Lightsail
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Copy files to Lightsail
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.LIGHTSAIL_HOST }}
+        username: ${{ secrets.LIGHTSAIL_USERNAME }}
+        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        port: 22
+        source: "."
+        target: "/path/to/wordpress"
+
+    - name: SSH commands
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.LIGHTSAIL_HOST }}
+        username: ${{ secrets.LIGHTSAIL_USERNAME }}
+        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+        script: |
+          cd /path/to/wordpress
+          # any additional commands like changing permissions
