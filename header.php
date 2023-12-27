@@ -30,7 +30,6 @@
 
 	<header id="masthead" class="site-header">
 
-
 	<nav id="site-navigation" class="main-navigation">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">David Hicka</a>
