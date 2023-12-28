@@ -18,7 +18,6 @@
 
 	<!-- Compiled and minified CSS -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
