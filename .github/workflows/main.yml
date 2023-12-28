@@ -20,7 +20,7 @@ jobs:
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
         port: 22
         source: "."
-        target: "/bitnami/wordpress/wp-content/themes"
+        target: "/bitnami/wordpress/wp-content/themes/digitalresume"
 
     - name: SSH commands
       uses: appleboy/ssh-action@v1.0.1

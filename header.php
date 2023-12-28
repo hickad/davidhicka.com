@@ -55,12 +55,4 @@
 		);
 		?>
   </ul>
-
-
-
-
-
-      
-
-
-	</header><!-- #masthead -->
+</header><!-- #masthead -->
