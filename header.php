@@ -45,7 +45,6 @@
       </ul>
     </div>
   </nav>
-
   <ul class="sidenav" id="mobile-demo">
   <?php
 		wp_nav_menu(
