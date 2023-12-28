@@ -8,7 +8,6 @@
  *
  * @package DigitalResume
  */
-
 ?>
 
 <footer class="page-footer">
