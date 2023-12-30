@@ -8,7 +8,6 @@
  *
  * @package DigitalResume
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -18,9 +17,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<!-- Compiled and minified CSS -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -29,7 +26,6 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'digitalresume' ); ?></a>
 
 	<header id="masthead" class="site-header">
-
 
 	<nav id="site-navigation" class="main-navigation">
     <div class="nav-wrapper">
@@ -47,7 +43,6 @@
       </ul>
     </div>
   </nav>
-
   <ul class="sidenav" id="mobile-demo">
   <?php
 		wp_nav_menu(
@@ -58,12 +53,4 @@
 		);
 		?>
   </ul>
-
-
-
-
-
-      
-
-
-	</header><!-- #masthead -->
+</header><!-- #masthead -->

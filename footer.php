@@ -8,7 +8,6 @@
  *
  * @package DigitalResume
  */
-
 ?>
 
 <footer class="page-footer">
@@ -40,5 +39,5 @@
 
 <?php wp_footer(); ?>
 
-</body>
+  </body>
 </html>
