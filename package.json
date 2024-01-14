@@ -4,9 +4,9 @@
   "description": "A custom WordPress theme for digital resumes.",
   "main": "index.php",
   "scripts": {
-    "build-css": "node-sass --include-path node_modules sass/main.scss style.css",
-    "build-css-dev": "sass --load-path=node_modules sass/main.scss:style.css --style expanded --source-map",
-    "watch-css": "sass --load-path=node_modules sass/main.scss:style.css --watch --style expanded",
+    "build-css": "node-sass --include-path node_modules scss/main.scss style.css",
+    "build-css-dev": "sass --load-path=node_modules scss/main.scss:style.css --style expanded --source-map",
+    "watch-css": "sass --load-path=node_modules scss/main.scss:style.css --watch --style expanded",
     "watch-js": "webpack --watch --mode production",
     "zip": "zip -r digitalresume.zip . -x '*.git*' 'node_modules/*' 'vendor/*'",
     "start": "npm-run-all --parallel watch-css watch-js",
