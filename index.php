@@ -26,7 +26,7 @@ get_header();
 					</div><!--//col-->
 					
 					<div class="col-md-5 col-lg-5">
-					    <img class="profile-image img-fluid mb-3 mb-lg-0 me-md-0" src="assets/images/profile-lg.jpg" alt="">
+					    <!-- <img class="profile-image img-fluid mb-3 mb-lg-0 me-md-0" src="assets/images/profile-lg.jpg" alt=""> -->
 					</div>
 				</div>
 			</div>
@@ -121,7 +121,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-1.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-1.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">Brandon James</div>
@@ -141,7 +141,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-2.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-2.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">Kate Sanders</div>
@@ -161,7 +161,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-3.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-3.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">James Lee</div>
@@ -181,7 +181,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-4.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-4.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">James Lee</div>
@@ -201,7 +201,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-5.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-5.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">Olivia White</div>
@@ -221,7 +221,7 @@ get_header();
 								</div><!--//quote-holder-->
 								<div class="source-holder">
 									<div class="source-profile">
-										<img src="assets/images/clients/profile-6.png" alt="image"/>
+										<!-- <img src="assets/images/clients/profile-6.png" alt="image"/> -->
 									</div>
 									<div class="meta">
 										<div class="name">Samuel Reyes</div>
@@ -245,7 +245,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row no-gutters">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-1.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-1.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -269,7 +269,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row no-gutters">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-2.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-2.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -293,7 +293,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row no-gutters">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-3.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-3.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -317,7 +317,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row no-gutters">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-4.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-4.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -351,7 +351,7 @@ get_header();
 				<div class="row">
 					<div class="col-md-4 mb-5">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image">
+							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image"> -->
 							<div class="card-body">
 								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Top 3 JavaScript Frameworks</a></h5>
 								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
@@ -365,7 +365,7 @@ get_header();
 					</div><!--//col-->
 					<div class="col-md-4 mb-5">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image">
+							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image"> -->
 							<div class="card-body">
 								<h5 class="card-title"><a class="theme-link" href="blog-post.html">About Remote Working</a></h5>
 								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
@@ -379,7 +379,7 @@ get_header();
 					</div><!--//col-->
 					<div class="col-md-4 mb-5">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image">
+							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image"> -->
 							<div class="card-body">
 								<h5 class="card-title"><a class="theme-link" href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h5>
 								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
@@ -406,5 +406,5 @@ get_header();
 
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

@@ -141,34 +141,23 @@ add_action('widgets_init', 'digitalresume_widgets_init');
 /**
  * Enqueue scripts and styles.
  */
-function digitalresume_scripts()
-{
-	wp_enqueue_style('digitalresume-style', get_stylesheet_uri(), array(), _S_VERSION);
-	wp_style_add_data('digitalresume-style', 'rtl', 'replace');
+function digitalresume_scripts_and_styles() {
+    // Enqueue main stylesheet
+    wp_enqueue_style('digitalresume-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_style_add_data('digitalresume-style', 'rtl', 'replace');
 
-	wp_enqueue_script('digitalresume-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    // Enqueue FontAwesome
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/assets/plugins/fontawesome/css/all.css', array(), '5.15.1');
 
-	if (is_singular() && comments_open() && get_option('thread_comments')) {
-		wp_enqueue_script('comment-reply');
-	}
+    // Enqueue navigation script
+    wp_enqueue_script('digitalresume-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+
+    // Enqueue comment-reply script on single posts/pages when comments are open
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action('wp_enqueue_scripts', 'digitalresume_scripts');
-
-// Function to load scripts
-function my_theme_enqueue_scripts()
-{
-	// Register the script like this for a theme:
-	wp_register_script('custom-script', get_template_directory_uri() . '/dist/bundle.js', array(), '1.0.0', true);
-
-	wp_enqueue_script('materialize-js', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), '1.0.0', true);
-
-	// Enqueue the script:
-	wp_enqueue_script('custom-script');
-}
-
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
-
-
+add_action('wp_enqueue_scripts', 'digitalresume_scripts_and_styles');
 
 /**
  * Implement the Custom Header feature.
@@ -190,12 +179,40 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-if (defined('JETPACK__VERSION')) {
-	require get_template_directory() . '/inc/jetpack.php';
+
+
+
+class Custom_Nav_Walker extends Walker_Nav_Menu {
+    // ... existing code ...
+
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+        $icon_class = implode(' ', $item->classes); // Get the CSS classes
+
+        // Add main <li> tag with class 'nav-item'
+        $output .= "<li class='nav-item'>";
+
+        // Add <a> tag
+        $output .= '<a class="nav-link' . ($item->current ? ' active' : '') . '" href="' . esc_url($item->url) . '">';
+        
+        // Add the icon
+        if (!empty($icon_class)) {
+            $output .= "<i class='fas " . esc_attr($icon_class) . " fa-fw me-2'></i>";
+        }
+
+        $output .= esc_html($item->title);
+
+        if ($item->current) {
+            $output .= '<span class="sr-only">(current)</span>';
+        }
+
+        $output .= '</a>';
+    }
+
+    // ... existing code ...
 }
+
+
+
 
 
 

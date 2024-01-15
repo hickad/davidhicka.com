@@ -5,7 +5,7 @@ module.exports = {
     mode: 'production',
 
     // Entry point of the application
-    entry: './js/index.js', // Adjust this if your entry file has a different name
+    entry: './assets/js/index.js', // Adjust this if your entry file has a different name
 
     // Output configuration
     output: {
