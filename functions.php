@@ -150,7 +150,7 @@ function digitalresume_scripts_and_styles() {
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/assets/plugins/fontawesome/css/all.css', array(), '5.15.1');
 
     // Enqueue navigation script
-    wp_enqueue_script('digitalresume-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    wp_enqueue_script('digitalresume-js', get_template_directory_uri() . '/dist/bundle.js', array(), _S_VERSION, true);
 
     // Enqueue comment-reply script on single posts/pages when comments are open
     if (is_singular() && comments_open() && get_option('thread_comments')) {

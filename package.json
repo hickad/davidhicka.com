@@ -11,7 +11,7 @@
     "zip": "zip -r digitalresume.zip . -x '*.git*' 'node_modules/*' 'vendor/*'",
     "start": "npm-run-all --parallel watch-css watch-js",
     "build-js": "webpack --mode production"
-  },  
+  },
   "author": "David Hicka",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
@@ -33,6 +33,7 @@
     "url": "https://github.com/hickad/digitalresume/issues"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "materialize-css": "^1.0.0"
   }
 }

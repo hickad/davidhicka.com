@@ -34,7 +34,7 @@ $secondary: $theme-text-color-secondary;
 
 
 /*************************** Import Bootstrap  *****************************/
-@import "bootstrap/scss/bootstrap.scss";
+@import "../plugins/bootstrap/scss/bootstrap.scss";
 
 /*************************** Import Fontawesome  *****************************/
 @import "./../plugins/fontawesome/scss/fontawesome.scss";
