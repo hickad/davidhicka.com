@@ -1,5 +1,8 @@
 "use strict";
 
+import Cookies from 'js-cookie';
+
+
 /* Dependency: js-cookie plugin - Ref: https://github.com/js-cookie/js-cookie */
 
 const modeToggler = document.getElementById('darkmode');

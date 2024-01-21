@@ -33,33 +33,7 @@
 		<a class="skip-link screen-reader-text" href="#primary">
 			<?php esc_html_e('Skip to content', 'digitalresume'); ?>
 		</a>
-			<!-- <nav id="site-navigation" class="main-navigation" role="navigation">
-				<div class="nav-wrapper container">
-					<a href="#!" class="brand-logo">David Hicka</a>
-					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-					<ul class="right hide-on-med-and-down">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'menu-1',
-								'menu_id' => 'primary-menu',
-							)
-						);
-						?>
-					</ul>
-				</div>
-			</nav>
-			<ul class="sidenav" id="mobile-demo">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id' => 'primary-menu',
-					)
-				);
-				?>
-			</ul> -->
-
+	
 		<header class="header text-center">	    
 		<div class="force-overflow">
 			<h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="index.html">David Hicka</a></h1>
@@ -76,15 +50,11 @@
 						
 						<div class="bio mb-3">Hi, my name is David Hicka and I'm a senior software engineer. Welcome to my personal website!</div><!--//bio-->
 						<ul class="social-list list-inline py-2 mx-auto">
-							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
 							<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
 						</ul><!--//social-list-->
 						<hr> 
 					</div><!--//profile-section-->
-					
+															
 					<ul class="navbar-nav flex-column text-start">
 					<?php
 						wp_nav_menu(
@@ -94,50 +64,12 @@
 								'walker'         => new Custom_Nav_Walker()
 							)
 						);
-
 						?>
 					</ul>
-
-					<!-- <ul class="navbar-nav flex-column text-start">
-						<li class="nav-item">
-							<a class="nav-link active" href="index.html"><i class="fas fa-user fa-fw me-2"></i>About Me<span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="portfolio.html"><i class="fas fa-laptop-code fa-fw me-2"></i>Portfolio</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="services.html"><i class="fas fa-briefcase fa-fw me-2"></i>Services &amp; Pricing</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="resume.html"><i class="fas fa-file-alt fa-fw me-2"></i>Resume</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="blog-home.html"><i class="fas fa-blog fa-fw me-2"></i>Blog</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html"><i class="fas fa-envelope-open-text fa-fw me-2"></i>Contact</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="fas fa-cogs fa-fw me-2"></i>More Pages
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="project.html">Project Page</a></li>
-								<li><a class="dropdown-item" href="blog-home.html">Blog Home 1</a></li>
-								<li><a class="dropdown-item" href="blog-home-alt.html">Blog Home 2</a></li>
-								<li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-							</ul>
-						</li>
-					</ul> -->
 					
-					<div class="my-2">
-						<a class="btn btn-primary" href="contact.html" target="_blank"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
-					</div>
-					
-	
 					<div class="dark-mode-toggle text-center w-100">
 						<hr class="mb-4">
-					    <h4 class="toggle-name mb-3 "><i class="fas fa-adjust me-1"></i>Dark Mode</h4>
+					    <h4 class="toggle-name mb-3 "><i class="fas fa-adjust me-1"></i>Light Mode</h4>
 					    
 					    <input class="toggle" id="darkmode" type="checkbox">
 					    <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
@@ -148,4 +80,7 @@
 				
 			</nav>
 		</div><!--//force-overflow-->
-	</header>
+		</header>
+
+
+		

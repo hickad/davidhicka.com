@@ -30,7 +30,7 @@ get_header();
 		                <li class="type  mb-3 mb-lg-0" data-filter=".backend">Backend</li>
 		            </ul><!--//filters-->
 			    </div>
-	            
+
 			    <div class="project-cards row isotope">
 					<div class="isotope-item col-md-6 mb-5 mobileapp frontend">
 						<div class="card project-card">

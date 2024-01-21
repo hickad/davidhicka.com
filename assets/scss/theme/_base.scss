@@ -239,8 +239,12 @@ textarea.form-control {
 	.navbar {
 	    padding: 1.5rem 1rem;
     }
-    
-    
+
+	#primary-menu {
+		list-style: none;
+		padding-left: 0em;
+	}
+	
     .navbar-toggler {
 	    &:focus {
 		    box-shadow: none;
