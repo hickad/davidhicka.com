@@ -37,12 +37,32 @@ get_header();
 				<hr>
 				<div class="resume-intro py-3">
 					<div class="row align-items-center">
-						<div class="col-12 col-md-3 col-xl-2 text-center">
-						    <img class="resume-profile-image mb-3 mb-md-0 me-md-5  ms-md-0 rounded mx-auto" src="./assets/images/resume-profile.png" alt="image">
-						</div>
-						
 						<div class="col text-start">
-							<p class="mb-0">Summarise your career here. <a class="theme-link" href="https://themes.3rdwavemedia.com/resources/sketch-template/resume-sketch-sketch-resume-template-for-software-developers/" target="_blank">You can make a PDF version of your resume using our free Sketch template here</a>. Donec quam felis, ultricies nec, pellentesque eu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.  Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. </p>
+							<p class="mb-4">Seasoned Software Engineer and accomplished UI/UX Designer with a rich background in advancing and innovating technology across various sectors. With extensive experience in software development and design, I am committed to driving significant enhancements in tech systems. Skilled in optimizing processes and leveraging my expertise to deliver highly efficient and impactful services, I aim to contribute meaningful advancements in any technological environment.</p>
+
+							<h4 class="text-uppercase resume-section-heading mb-4">Core Competencies</h4>
+
+							<div class="row">
+								<div class="col">
+									<ul>
+										<li>Software Engineering</li>
+										<li>Frontend Development</li>
+										<li>SQL and Stored Procedures</li>
+										<li>Web Development</li>
+										<li>Version Control System</li>
+									</ul>
+								</div>
+								<div class="col">
+									<ul>
+										<li>Testing & Quality Assurance</li>
+										<li>Multimedia Design & Development</li>
+										<li>Agile Software Development</li>
+										<li>Project Management</li>
+										<li>Web Development & CMS</li>
+									</ul>
+								</div>
+							</div>
+						
 						</div><!--//col-->
 					</div>
 				</div><!--//resume-intro-->

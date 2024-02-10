@@ -15,7 +15,7 @@ get_header();
 					
 					<div class="col">
 						<h2 class="name font-weight-bold mb-1">David Hicka</h2>
-						<div class="tagline mb-3">Senior Software Engineer</div>
+						<div class="tagline mb-3">Software Engineer</div>
 						<div class="bio mb-4">I'm a software engineer specialised in frontend and backend development for complex scalable web apps. I write about software development on <a class="text-link" href="blog-home.html">my blog</a>. Want to know how I may help your project? Check out my project <a class="text-link" href="projects.html">portfolio</a> and <a class="text-link" href="resume.html">online resume</a>.
 						</div><!--//bio-->
 						<div class="mb-4">

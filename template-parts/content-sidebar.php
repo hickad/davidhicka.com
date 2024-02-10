@@ -34,9 +34,6 @@
 						<hr> 
 					</div><!--//profile-section-->
 					
-					<div class="my-2">
-						<a class="btn btn-primary" href="contact.html" target="_blank"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
-					</div>
 					
 					<div class="dark-mode-toggle text-center w-100">
 						<hr class="mb-4">
