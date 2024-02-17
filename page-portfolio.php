@@ -14,7 +14,7 @@ get_header();
 			    <p>Welcome to my online portfolio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. I'm taking on freelance work at the moment. Want some help building your software?</p>
 			    
 			    </div>
-			    <a class="btn btn-primary" href="contact.html" target="_blank"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
+			    <a class="btn btn-primary" href="contact.html" target="_blank"><i class="fas fa-paper-plane me-2"></i>Contact Me</a>
 			    
 			    
 		    </div><!--//container-->
@@ -36,7 +36,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-1.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-1.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -60,7 +60,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-2.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-2.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -84,7 +84,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-3.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-3.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -108,7 +108,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-4.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-4.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -132,7 +132,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-5.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-5.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -156,7 +156,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-6.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-6.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -180,7 +180,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-7.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-7.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -204,7 +204,7 @@ get_header();
 						<div class="card project-card">
 							<div class="row">
 								<div class="col-12 col-xl-5 card-img-holder">
-									<img src="assets/images/project/project-8.jpg" class="card-img" alt="image">
+									<!-- <img src="assets/images/project/project-8.jpg" class="card-img" alt="image"> -->
 								</div>
 								<div class="col-12 col-xl-7">
 									<div class="card-body">
@@ -234,6 +234,11 @@ get_header();
 		</footer>
     
     </div><!--//main-wrapper-->
+
+    <script type="text/javascript" src="assets/plugins/imagesloaded.pkgd.min.js"></script> 
+    <script type="text/javascript" src="assets/plugins/isotope.pkgd.min.js"></script> 
+    
+    <script type="text/javascript" src="assets/js/isotope-custom.js"></script>
 
 <?php
 get_sidebar();

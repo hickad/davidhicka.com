@@ -7,13 +7,6 @@ get_header();
 ?>
 	
 	<div class="main-wrapper">
-		<section class="cta-section theme-bg-light py-5">
-			<div class="container text-center single-col-max-width">
-				<h2 class="heading mb-3">Online Resume</h2>
-				
-				
-			</div><!--//container-->
-		</section>
 		<div class="container resume-container px-3 px-lg-5">
 			<article class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
 				
@@ -21,14 +14,14 @@ get_header();
 					<div class="row align-items-center">
 						<div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
 							<h2 class="resume-name mb-0 text-uppercase">David Hicka</h2>
-							<div class="resume-tagline mb-3 mb-md-0">Senior Software Engineer</div>
+							<div class="resume-tagline mb-3 mb-md-0">Software Engineer</div>
 						</div><!--//resume-title-->
 						<div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
 							<ul class="list-unstyled mb-0">
-								<li class="mb-2"><i class="fas fa-phone-square fa-fw fa-lg me-2 "></i><a class="resume-link" href="tel:#">0123 4567 890</a></li>
-								<li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg me-2"></i><a class="resume-link" href="mailto:#">simon@yourwebsite.com</a></li>
-								<li class="mb-2"><i class="fas fa-globe fa-fw fa-lg me-2"></i><a class="resume-link" href="#">www.yourwebsite.com</a></li>
-								<li class="mb-0"><i class="fas fa-map-marker-alt fa-fw fa-lg me-2"></i>New York</li>
+								<li class="mb-2"><i class="fas fa-phone-square fa-fw fa-lg me-2 "></i><a class="resume-link" href="tel:#">(904) 703-4413</a></li>
+								<li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg me-2"></i><a class="resume-link" href="mailto:#">contact@davidhicka.com</a></li>
+								<li class="mb-2"><i class="fas fa-globe fa-fw fa-lg me-2"></i><a class="resume-link" href="#">www.davidhicka.com</a></li>
+								<li class="mb-0"><i class="fas fa-map-marker-alt fa-fw fa-lg me-2"></i>Ponte Vedra, Florida</li>
 							</ul>
 						</div><!--//resume-contact-->
 					</div><!--//row-->
@@ -74,74 +67,45 @@ get_header();
 								<h3 class="text-uppercase resume-section-heading mb-4">Work Experiences</h3>
 								<div class="item mb-3">
 									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Senior Software Engineer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Google | 2019 - Present</div>
+										<h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Software Engineer</h4>
+										<div class="item-meta col-12 col-md-6 col-lg-6 text-muted text-start text-md-end">ABCoA – Jacksonville, FL  | October 2019 – Present</div>
 										
 									</div>
 									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.</p>
 										<ul class="resume-list">
-											<li>Lorem ipsum dolor sit amet, consectetuer.</li>
-											<li>Aenean commodo ligula eget dolor.</li>
-											<li>Etiam ultricies nisi vel augue.</li>
+											<li>Played a key role in the team that developed "Deal Pack Web," a comprehensive application tailored for car dealerships and finance companies</li>
+											<li>Engineered advanced dashboard functionalities to present sales volumes and performance analytics, utilizing JavaScript and Highcharts for dynamic front-end interaction, supported by a robust C# Web API backend.</li>
+											<li>Spearheaded the creation of hundreds of insightful reports using T-SQL and SSRS, significantly improving data accessibility and decision-making processes.</li>
 										</ul>
 									</div>
 								</div><!--//item-->
 								<div class="item mb-3">
 									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Lead Software Developer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Apple | 2016 - 2019</div>
-										
+										<h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Frontend Developer and Designer</h4>
+										<div class="item-meta col-12 col-md-6 col-lg-6 text-muted text-start text-md-end">ABCoA – Jacksonville, FL  | December 2017 – November 2019</div>
 									</div>
 									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel.</p>
 										<ul class="resume-list">
-											<li>Lorem ipsum dolor sit amet, consectetuer.</li>
-											<li>Aenean commodo ligula eget dolor.</li>
+											<li>Led the design and development of intuitive user interfaces for "Deal Pack Web," "Dealer Sales Tools (DST)," and "cyclCRM" applications, focusing on creating a seamless, visually attractive user experience.</li>
+											<li>Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.</li>
+											<li>Actively engaged in Agile development methodologies, promoting a team-oriented, iterative approach to deliver projects efficiently and effectively.</li>
+											<li>Conducted rigorous testing and optimization of front-end code across various web browsers to guarantee a uniform and flawless user experience.</li>
+											<li>Advanced front-end performance by minimizing page load times, compressing file sizes, and applying cutting-edge practices for accelerated rendering, significantly improving site speed and user engagement.</li>
 										</ul>
 									</div>
 								</div><!--//item-->
 								<div class="item mb-3">
 									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Senior Software Developer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Dropbox | 2014 - 2016</div>
-										
+										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">UI Developer (Contract)</h4>
+										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Florida Blue | April 2017 – September 2017</div>
 									</div>
 									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-									</div>
+									<ul class="resume-list">
+										<li>Supported UI development for health insurance products, upgrading legacy applications to ensure compliance with web accessibility standards.</li>
+										<li>Actively participated in Agile software development processes to enhance and optimize the user interface.</li>
+									</ul>
+								</div>
 								</div><!--//item-->
-								<div class="item">
-									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Senior Developer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Uber | 2013 - 2014</div>
-										
-									</div>
-									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus. </p>
-									</div>
-								</div><!--//item-->
-								<div class="item">
-									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Backend Developer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Amazon | 2014 - 2016</div>
-										
-									</div>
-									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-									</div>
-								</div><!--//item-->
-								<div class="item">
-									<div class="item-heading row align-items-center mb-2">
-										<h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Frontend Developer</h4>
-										<div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Startup | 2013 - 2014</div>
-										
-									</div>
-									<div class="item-content">
-										<p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus. </p>
-									</div>
-								</div><!--//item-->
-								
 							</section><!--//work-section-->
 
 							
@@ -198,15 +162,6 @@ get_header();
 											<li>Lead and deliver complex software systems</li>
 										</ul>
 									</div><!--//item-->
-									<div class="item">
-										<h4 class="item-title">Professional</h4>
-										<ul class="list-unstyled resume-skills-list">
-											<li class="mb-2">Effective communication</li>
-											<li class="mb-2">Team player<li>
-												<li class="mb-2">Strong problem solver</li>
-												<li>Good time management</li>
-											</ul>
-										</div><!--//item-->
 									</section><!--//skills-section-->
 									<section class="education-section py-3">
 										<h3 class="text-uppercase resume-section-heading mb-4">Education</h3>
@@ -223,36 +178,6 @@ get_header();
 											</li>
 										</ul>
 									</section><!--//education-section-->
-									<section class="education-section py-3">
-										<h3 class="text-uppercase resume-section-heading mb-4">Awards</h3>
-										<ul class="list-unstyled resume-awards-list">
-											<li class="mb-3">
-												<div class="font-weight-bold">Award Lorem Ipsum</div>
-												<div class="text-muted">Microsoft lorem ipsum (2019)</div>
-											</li>
-											<li>
-												<div class="font-weight-bold">Award Donec Sodales</div>
-												<div class="text-muted">Oracle Aenean (2017)</div>
-											</li>
-										</ul>
-									</section><!--//education-section-->
-									<section class="skills-section py-3">
-										<h3 class="text-uppercase resume-section-heading mb-4">Languages</h3>
-										<ul class="list-unstyled resume-lang-list">
-											<li class="mb-2">English <span class="text-muted">(Native)</span></li>
-											<li>Spanish <span class="text-muted">(Professional)</span></li>
-										</ul>
-									</section><!--//certificates-section-->
-									<section class="skills-section py-3">
-										<h3 class="text-uppercase resume-section-heading mb-4">Interests</h3>
-										<ul class="list-unstyled resume-interests-list mb-0">
-											<li class="mb-2">Climbing</li>
-											<li class="mb-2">Snowboarding</li>
-											<li class="mb-2">Photography</li>
-											<li>Travelling</li>
-										</ul>
-									</section><!--//certificates-section-->
-									
 								</aside><!--//resume-aside-->
 							</div><!--//row-->
 						</div><!--//resume-body-->
