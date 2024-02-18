@@ -14,9 +14,9 @@ get_header();
 			    <p>Welcome to my online portfolio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. I'm taking on freelance work at the moment. Want some help building your software?</p>
 			    
 			    </div>
-			    <a class="btn btn-primary" href="contact.html" target="_blank"><i class="fas fa-paper-plane me-2"></i>Contact Me</a>
-			    
-			    
+				<a class="btn btn-primary" href="<?php echo home_url('/contact/'); ?>">
+					<i class="fas fa-paper-plane me-2"></i>Contact Me
+				</a>
 		    </div><!--//container-->
 	    </section>
 	    <section class="projects-list px-3 py-5 p-md-5">
@@ -228,17 +228,8 @@ get_header();
 			
 		    </div>
 	    </section>
-	    
-	    <footer class="footer text-center py-4">
-			<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
-		</footer>
-    
+	        
     </div><!--//main-wrapper-->
-
-    <script type="text/javascript" src="assets/plugins/imagesloaded.pkgd.min.js"></script> 
-    <script type="text/javascript" src="assets/plugins/isotope.pkgd.min.js"></script> 
-    
-    <script type="text/javascript" src="assets/js/isotope-custom.js"></script>
 
 <?php
 get_sidebar();

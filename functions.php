@@ -104,6 +104,27 @@ function digitalresume_setup()
 }
 add_action('after_setup_theme', 'digitalresume_setup');
 
+
+function create_portfolio_post_type() {
+    $args = array(
+        'labels' => array(
+            'name' => __('Portfolio'),
+            'singular_name' => __('Portfolio')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+        'menu_icon' => 'dashicons-art', // Use a dashicon for the menu icon.
+        'rewrite' => array('slug' => 'portfolio'),
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+    	'taxonomies' => array('category'),
+    );
+    register_post_type('portfolio', $args);
+}
+add_action('init', 'create_portfolio_post_type');
+
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -156,6 +177,16 @@ function digitalresume_scripts_and_styles() {
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
+
+	// Register the scripts
+	wp_register_script('imagesloaded', get_template_directory_uri() . '/assets/plugins/imagesloaded.pkgd.min.js', array('jquery'), '1.0.0', true);
+	wp_register_script('isotope', get_template_directory_uri() . '/assets/plugins/isotope.pkgd.min.js', array('jquery'), '1.0.0', true);
+	wp_register_script('isotope-custom', get_template_directory_uri() . '/assets/js/isotope-custom.js', array('jquery', 'isotope'), '1.0.0', true);
+
+	// Enqueue the scripts
+	wp_enqueue_script('imagesloaded');
+	wp_enqueue_script('isotope');
+	wp_enqueue_script('isotope-custom');
 }
 add_action('wp_enqueue_scripts', 'digitalresume_scripts_and_styles');
 

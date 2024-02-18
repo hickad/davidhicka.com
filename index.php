@@ -19,8 +19,14 @@ get_header();
 						<div class="bio mb-4">I'm a software engineer specialised in frontend and backend development for complex scalable web apps. I write about software development on <a class="text-link" href="blog-home.html">my blog</a>. Want to know how I may help your project? Check out my project <a class="text-link" href="projects.html">portfolio</a> and <a class="text-link" href="resume.html">online resume</a>.
 						</div><!--//bio-->
 						<div class="mb-4">
-							<a class="btn btn-primary me-2 mb-3" href="portfolio.html"><i class="fas fa-arrow-alt-circle-right me-2"></i><span class="d-none d-md-inline">View</span> Portfolio</a>
-							<a class="btn btn-secondary mb-3" href="resume.html"><i class="fas fa-file-alt me-2"></i><span class="d-none d-md-inline">View</span> Resume</a>
+							<a class="btn btn-primary me-2 mb-3" href="<?php echo home_url('/portfolio/'); ?>">
+								<i class="fas fa-arrow-alt-circle-right me-2"></i>
+								<span class="d-none d-md-inline">View</span> Portfolio
+							</a>
+							<a class="btn btn-secondary mb-3" href="<?php echo home_url('/resume/'); ?>">
+								<i class="fas fa-file-alt me-2"></i>
+								<span class="d-none d-md-inline">View</span> Resume
+							</a>
 						</div>
 					</div><!--//col-->
 					
@@ -94,11 +100,7 @@ get_header();
 							<div class="item-desc">List skills/technologies here. You can change the icon above to any of the 1500+ <a class="theme-link" href="https://fontawesome.com/" target="_blank">FontAwesome 5 free icons</a> available. Aenean commodo ligula eget dolor.  </div>
 						</div><!--//item-inner-->
 					</div><!--//item-->
-				</div><!--//row-->
-				<div class="text-center py-3"><a href="services.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right me-2"></i>Services &amp; Pricing
-					
-				</a></div>
-				
+				</div><!--//row-->				
 			</div><!--//container-->
 		</section>
 		
@@ -207,8 +209,12 @@ get_header();
 						</div><!--//card-->
 					</div><!--//col-->
 				</div><!--//row-->
-				<div class="text-center py-3"><a href="portfolio.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right me-2"></i>View Portfolio</a></div>
-				
+				<div class="text-center py-3">
+					<a href="<?php echo home_url('/portfolio/'); ?>" class="btn btn-primary">
+						<i class="fas fa-arrow-alt-circle-right me-2"></i>View Portfolio
+					</a>
+				</div>
+								
 			</div><!--//container-->
 		</section><!--//featured-section-->
 		
@@ -260,14 +266,14 @@ get_header();
 						</div><!--//card-->
 					</div><!--//col-->
 				</div><!--//row-->
-				<div class="text-center py-3"><a href="blog-home.html" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right me-2"></i>View Blog</a></div>
+				<div class="text-center py-3">
+					<a href="<?php echo home_url('/blog/'); ?>" class="btn btn-primary">
+						<i class="fas fa-arrow-alt-circle-right me-2"></i>View Blog
+					</a>
+				</div>
 			</div><!--//container-->
 			
 		</section><!--//latest-blog-section-->
-
-		<footer class="footer text-center py-4">
-			<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
-		</footer>
 		
 	</div><!--//main-wrapper-->
 
