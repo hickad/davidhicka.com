@@ -108,20 +108,20 @@ add_action('after_setup_theme', 'digitalresume_setup');
 function create_portfolio_post_type() {
     $args = array(
         'labels' => array(
-            'name' => __('Portfolio'),
-            'singular_name' => __('Portfolio')
+            'name' => __('Portfolio', 'text-domain'), // 'text-domain' should be replaced with your theme's or plugin's text domain
+            'singular_name' => __('Portfolio', 'text-domain'),
         ),
         'public' => true,
         'has_archive' => true,
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-        'menu_icon' => 'dashicons-art', // Use a dashicon for the menu icon.
+        'menu_icon' => 'dashicons-art', // Use a Dashicon for the menu icon.
         'rewrite' => array('slug' => 'portfolio'),
-		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-    	'taxonomies' => array('category'),
+        'taxonomies' => array('category'), // Associate the standard 'category' taxonomy with this CPT
     );
     register_post_type('portfolio', $args);
 }
 add_action('init', 'create_portfolio_post_type');
+
 
 
 
