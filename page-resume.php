@@ -193,13 +193,7 @@ get_header();
 					
 				</div><!--//container-->
 				
-				<footer class="footer text-center py-4">
-					<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
-				</footer>
-				
 			</div><!--//main-wrapper-->
 
-
             <?php
-get_sidebar();
 get_footer();

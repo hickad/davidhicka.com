@@ -1,6 +1,11 @@
 <?php
 get_header();
 ?>
+
+<div class="main-wrapper">
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container single-col-max-width">
+
 <!-- Start the Loop -->
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -17,5 +22,9 @@ get_header();
     <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 <?php endif; ?>
 <!-- End the Loop -->
+
+</div>
+		</article>
+</div>
 
 <?php get_footer(); ?>

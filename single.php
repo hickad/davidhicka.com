@@ -10,7 +10,10 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+
+<div class="main-wrapper">
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container single-col-max-width">
 
 	<?php
 	while (have_posts()):
@@ -32,9 +35,9 @@ get_header();
 
 	endwhile; // End of the loop.
 	?>
-
-</main><!-- #main -->
+			</div>
+		</article>
+</div>
 
 <?php
-get_sidebar();
 get_footer();

@@ -21188,6 +21188,11 @@ a.resume-link:hover {
     display: none;
   }
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 body.dark-mode {
   background: #151e29;
 }
