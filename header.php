@@ -48,7 +48,7 @@
 					<div class="profile-section pt-3 pt-lg-0">						
 						<div class="bio mb-3">Hi, my name is David Hicka and I'm a senior software engineer. Welcome to my personal website!</div><!--//bio-->
 						<ul class="social-list list-inline py-2 mx-auto">
-							<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+						<li class="list-inline-item mb-3"><a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank"><i class="fab fa-linkedin-in fa-fw fa-lg"></i></a></li>
 						</ul><!--//social-list-->
 						<hr> 
 					</div><!--//profile-section-->

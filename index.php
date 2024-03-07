@@ -221,59 +221,62 @@ get_header();
 		<div class="container"><hr></div>
 		
 		<section class="latest-blog-section p-3 p-lg-5">
-			<div class="container">
-				<h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
-				<div class="row">
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image"> -->
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Top 3 JavaScript Frameworks</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="text-link" href="blog-post.html">Read more &rarr;</a></p>
-								
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 2 days ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image"> -->
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">About Remote Working</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="text-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published a week ago</small>
-								
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-5">
-						<div class="card blog-post-card">
-							<!-- <img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image"> -->
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="text-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 3 weeks ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-				</div><!--//row-->
-				<div class="text-center py-3">
-					<a href="<?php echo home_url('/blog/'); ?>" class="btn btn-primary">
-						<i class="fas fa-arrow-alt-circle-right me-2"></i>View Blog
-					</a>
-				</div>
-			</div><!--//container-->
-			
-		</section><!--//latest-blog-section-->
+    <div class="container">
+        <h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
+        <div class="row">
+            <?php
+            // WP_Query arguments
+            $args = array(
+                'post_type'              => 'post',
+                'post_status'            => 'publish',
+                'posts_per_page'         => '3', // Adjust as needed
+                'order'                  => 'DESC',
+                'orderby'                => 'date',
+            );
+
+            // The Query
+            $query = new WP_Query( $args );
+
+            // The Loop
+            if ( $query->have_posts() ) {
+                while ( $query->have_posts() ) {
+                    $query->the_post();
+                    ?>
+                    <div class="col-md-4 mb-5">
+                        <div class="card blog-post-card">
+                            <!-- Dynamically get the post thumbnail if you have one -->
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>">
+                            <?php endif; ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="theme-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                                <p class="card-text"><?php the_excerpt(); ?></p>
+                                <p class="mb-0"><a class="text-link" href="<?php the_permalink(); ?>">Read more &rarr;</a></p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Published <?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></small>
+                            </div>
+                        </div><!--//card-->
+                    </div><!--//col-->
+                    <?php
+                }
+            } else {
+                // No posts found
+                echo '<p>No posts found.</p>';
+            }
+
+            // Restore original Post Data
+            wp_reset_postdata();
+            ?>
+        </div><!--//row-->
+        <div class="text-center py-3">
+            <a href="<?php echo home_url('/blog/'); ?>" class="btn btn-primary">
+                <i class="fas fa-arrow-alt-circle-right me-2"></i>View Blog
+            </a>
+        </div>
+    </div><!--//container-->
+</section>
+
 		
 	</div><!--//main-wrapper-->
 
