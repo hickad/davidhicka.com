@@ -127,16 +127,16 @@ if ( ! function_exists( 'digitalresume_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<figure class="blog-banner">
 				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
+			</figure><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="blog-banner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
-						'post-thumbnail',
+						'blog-banner',
 						array(
 							'alt' => the_title_attribute(
 								array(

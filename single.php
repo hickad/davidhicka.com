@@ -13,7 +13,7 @@ get_header();
 
 <div class="main-wrapper">
 	    <article class="blog-post px-3 py-5 p-md-5">
-		    <div class="container single-col-max-width">
+		<nav class="blog-nav nav nav-justified my-5">
 
 	<?php
 	while (have_posts()):
@@ -23,19 +23,14 @@ get_header();
 
 		the_post_navigation(
 			array(
-				'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'digitalresume') . '</span> <span class="nav-title">%title</span>',
-				'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'digitalresume') . '</span> <span class="nav-title">%title</span>',
+				'prev_text' => '<span class="nav-link-prev nav-item nav-link rounded-left">' . esc_html__('Previous', 'digitalresume') . '</span> <span class="nav-title">%title</span>',
+				'next_text' => '<span class="nav-link-next nav-item nav-link rounded-right">' . esc_html__('Next', 'digitalresume') . '</span> <span class="nav-title">%title</span>',
 			)
 		);
 
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()):
-			comments_template();
-		endif;
-
 	endwhile; // End of the loop.
 	?>
-			</div>
+			</nav>
 		</article>
 </div>
 
