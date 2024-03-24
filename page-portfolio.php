@@ -5,9 +5,9 @@ Template Name: portfolio
 
 get_header();
 ?>
+    <div class="main-wrapper">
 
-<div class="main-wrapper">
-	    <section class="cta-section theme-bg-light py-5">
+        <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center single-col-max-width">
 			    <h2 class="heading">Portfolio</h2>
 			    <div class="intro">
@@ -19,6 +19,9 @@ get_header();
 				</a>
 		    </div><!--//container-->
 	    </section>
+
+        <?php if (!post_password_required()): ?>
+
 	    <section class="projects-list px-3 py-5 p-md-5">
 		    <div class="container">
 			<div class="text-center">
@@ -101,7 +104,16 @@ get_header();
 
 		    </div>
 	    </section>
-	        
+
+        <?php else: ?>
+            <!-- Show password form -->
+            <div class="container text-center mt-5">
+                <?php echo get_the_password_form(); ?>
+            </div>
+        <?php endif; ?>
+    
+        
+        </div><!--//main-wrapper-->	        
     </div><!--//main-wrapper-->
 
 <?php

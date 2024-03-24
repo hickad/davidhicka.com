@@ -243,6 +243,24 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
 }
 
 
+add_filter('the_password_form', 'custom_password_form');
+
+function custom_password_form() {
+    global $post;
+    $label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
+    $form = '<form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" class="container post-password-form form-inline" method="post">
+		<div class="form-group">
+			<label for="' . $label . '" class="label-control">This content is password protected. To view it please enter your password below:</label>
+			<div class="form-row mt-3 gap-2">
+				<input name="post_password" id="' . $label . '" type="password" class="form-control mx-auto mr-2" placeholder="Password" style="max-width: 250px;">
+				<button type="submit" class="btn btn-primary" name="Submit">Submit</button>
+			</div>
+		</div>
+    </form>';
+    return $form;
+}
+
+
 
 
 

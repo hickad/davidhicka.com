@@ -208,7 +208,13 @@
 		overflow: hidden;
 		vertical-align: middle;
 	}
-	
+	.card-img-holder .card-img {
+		max-width: 50px;
+		width: 100%; /* Makes the image fill the width */
+		height: 100%; /* Makes the image fill the height */
+		object-fit: cover; /* Ensures the image covers the space without distorting aspect ratio */
+		display: block; /* Removes the default inline behavior, fixing issues with spacing */
+	}
 	.link-mask {
 		position: absolute;
 		left: 0;
