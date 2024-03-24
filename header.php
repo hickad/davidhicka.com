@@ -48,9 +48,20 @@
 			
 			<nav class="navbar navbar-expand-lg navbar-dark" >
 				
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button> -->
+
+			<button class="hamburger hamburger--elastic" type="button" 
+					aria-label="Menu" 
+					aria-controls="navigation"
+					data-bs-toggle="collapse" 
+					data-bs-target="#navigation">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
+
 				
 				<div id="navigation" class="collapse navbar-collapse flex-column" >
 					<div class="profile-section pt-3 pt-lg-0">	

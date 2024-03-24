@@ -251,8 +251,8 @@ function custom_password_form() {
     $form = '<form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" class="container post-password-form form-inline" method="post">
 		<div class="form-group">
 			<label for="' . $label . '" class="label-control">This content is password protected. To view it please enter your password below:</label>
-			<div class="form-row mt-3 gap-2">
-				<input name="post_password" id="' . $label . '" type="password" class="form-control mx-auto mr-2" placeholder="Password" style="max-width: 250px;">
+			<div class="d-grid mt-3 gap-2 mx-auto" style="max-width: 250px;">
+				<input name="post_password" id="' . $label . '" type="password" class="form-control mr-2" placeholder="Password">
 				<button type="submit" class="btn btn-primary" name="Submit">Submit</button>
 			</div>
 		</div>
