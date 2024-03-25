@@ -1,24 +1,34 @@
-@media (max-width: 768px) { /* Adjust this value based on your needs */
-    #primary-menu {
-        text-align: center;
+header {
+
+    @media (max-width: 768px) { /* Adjust this value based on your needs */
+        #primary-menu {
+            text-align: center;
+        }
+        #primary-menu .nav-item {
+            display: block;
+        }
+        #primary-menu .nav-link {
+            display: inline-block; /* Keeps the link block-level for alignment but inline for layout */
+            width: 100%; /* Ensures full width for proper centering */
+        }
     }
-    #primary-menu .nav-item {
-        display: block;
-    }
-    #primary-menu .nav-link {
-        display: inline-block; /* Keeps the link block-level for alignment but inline for layout */
-        width: 100%; /* Ensures full width for proper centering */
-    }
-}
 
 
-.navbar-toggler i {
-    transition: transform 0.3s ease, opacity 0.2s ease;
+    .navbar-toggler i {
+        transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+
+    .navbar-toggler[aria-expanded="true"] i {
+        transform: rotate(180deg);
+        opacity: 0.5; /* Example effect to demonstrate transition */
+        border-style: none;
+    }
+
+    .navbar-toggler {
+        border-style: none !important;
+    }
+
 }
 
-.navbar-toggler[aria-expanded="true"] i {
-    transform: rotate(180deg);
-    opacity: 0.5; /* Example effect to demonstrate transition */
-}
 
 
