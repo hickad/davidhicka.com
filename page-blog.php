@@ -9,7 +9,7 @@ get_header();
 <div class="main-wrapper">
     <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
-			    <h2 class="heading">A Blog About Software Development And Life</h2>
+			    <h2 class="heading">A Blog About Software Development</h2>
 			    <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
 			    <div class="single-form-max-width pt-3 mx-auto">
                 <?php echo do_shortcode('[contact-form-7 id="3a21089" title="Subscribe to Blog"]'); ?>

@@ -62,7 +62,11 @@
 						<img class="profile-image mb-3 rounded-circle mx-auto" src="<?php echo esc_url( $image_url ); ?>" alt="Profile Image">					
 						<div class="bio mb-3">Hi, my name is David Hicka and I'm a senior software engineer. Welcome to my personal website!</div><!--//bio-->
 						<ul class="social-list list-inline py-2 mx-auto">
-						<li class="list-inline-item mb-3"><a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank"><i class="fab fa-linkedin-in fa-fw fa-lg"></i></a></li>
+						<li class="list-inline-item mb-3">
+							<a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank" style="color: white;">
+								<i class="fab fa-linkedin-in fa-fw fa-lg"></i>
+							</a>
+							</li>
 						</ul><!--//social-list-->
 						<hr> 
 					</div><!--//profile-section-->
