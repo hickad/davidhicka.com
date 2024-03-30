@@ -6,6 +6,12 @@
  */
 
 get_header();
+
+
+$correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SESSION['correct_password_entered'];
+
+echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false');
+
 ?>
 
 <div class="main-wrapper">		
@@ -21,9 +27,9 @@ get_header();
 							and impactful services, I aim to contribute meaningful advancements in any technological environment.
 						</div><!--//bio-->
 						<div class="mb-1">
-							<a class="btn btn-primary me-2 mb-3" href="<?php echo home_url('/portfolio/'); ?>">
+							<a class="btn btn-primary me-2 mb-3" href="<?php echo home_url('/projects/'); ?>">
 								<i class="fas fa-arrow-alt-circle-right me-2"></i>
-								<span class="d-none d-md-inline">View</span> Portfolio
+								<span class="d-none d-md-inline">View</span> projects
 							</a>
 							<a class="btn btn-secondary mb-3" href="<?php echo home_url('/resume/'); ?>">
 								<i class="fas fa-file-alt me-2"></i>
@@ -39,7 +45,7 @@ get_header();
     <div class="container">
         <h2 class="section-title font-weight-bold mb-3">What I Do</h2>
         <div class="section-intro mb-5">
-            I am David Hicka, a Software Engineer and UI/UX Designer with extensive experience in software development and design. My career is marked by my role in driving significant enhancements in tech systems across various sectors. My work focuses on optimizing processes and leveraging cutting-edge technologies to deliver highly efficient and impactful services. Explore my <a class="text-link" href="resume.html">online resume</a> and <a class="text-link" href="portfolio.html">project portfolio</a> to learn more about my contributions to technological advancements.
+            I am David Hicka, a Software Engineer and UI/UX Designer with extensive experience in software development and design. My career is marked by my role in driving significant enhancements in tech systems across various sectors. My work focuses on optimizing processes and leveraging cutting-edge technologies to deliver highly efficient and impactful services. Explore my <a class="text-link" href="resume.html">online resume</a> and <a class="text-link" href="projects.html">project projects</a> to learn more about my contributions to technological advancements.
         </div>
         <div class="row">
             <div class="item col-12 col-md-4">
@@ -53,7 +59,7 @@ get_header();
             </div>
             <div class="item col-12 col-md-4">
                 <div class="item-inner">
-                    <div class="item-icon"><i class="fab fa-react"></i><i class="fab fa-angular"></i></div>
+                    <div class="item-icon"><i class="fab fa-react pr-2"></i><i class="fab fa-angular"></i></div>
                     <h3 class="item-title">React.js & Angular</h3>
                     <div class="item-desc">
                         Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.
@@ -71,7 +77,10 @@ get_header();
             </div>
             <div class="item col-12 col-md-4">
                 <div class="item-inner">
-                    <div class="item-icon"><i class="fab fa-bootstrap"></i><i class="fab fa-uikit"></i></div>
+					<div class="item-icon">
+						<i class="fab fa-bootstrap mr-2"></i>
+						<i class="fab fa-uikit"></i>
+					</div>
                     <h3 class="item-title">Bootstrap & Material-UI</h3>
                     <div class="item-desc">
                         Proficient in using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.
@@ -126,121 +135,81 @@ get_header();
         </div>
     </div>
 </section>
-
-
-		<div class="container"><hr></div>
 				
 		<div class="container"><hr></div>
 		
+		<?php if ($correct_password_entered): ?>
 		<section class="featured-section p-3 p-lg-5">
 			<div class="container">
 				<h2 class="section-title font-weight-bold mb-5">Featured Projects</h2>
 				<div class="row">
-					<div class="col-md-6 mb-5">
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-12 col-xl-5 card-img-holder">
-									<!-- <img src="assets/images/project/project-1.jpg" class="card-img" alt="image"> -->
-								</div>
-								<div class="col-12 col-xl-7">
+					<?php
+					// WP_Query arguments to retrieve posts from the "portfolio" section
+					$args = array(
+						'post_type'      => 'portfolio',
+						'post_status'    => 'publish',
+						'posts_per_page' => 4, // Adjust as needed
+						'order'          => 'DESC',
+						'orderby'        => 'date',
+					);
+
+					// The Query
+					$portfolio_query = new WP_Query($args);
+
+					// The Loop
+					if ($portfolio_query->have_posts()) :
+						while ($portfolio_query->have_posts()) :
+							$portfolio_query->the_post();
+							?>
+							<div class="col-md-6 mb-5">
+								<div class="card project-card">
+									<!-- Dynamically get the post thumbnail if you have one -->
+									<?php if (has_post_thumbnail()) : ?>
+										<img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>">
+									<?php endif; ?>
 									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Project intro lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-										<p class="card-text"><small class="text-muted">Client: Google</small></p>
+										<h5 class="card-title"><a class="theme-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+										<p class="card-text"><?php the_excerpt(); ?></p>
+										<?php
+										$client = get_post_meta(get_the_ID(), 'client', true);
+										if (!empty($client)) {
+											echo '<p class="card-text"><small class="text-muted">Client: ' . esc_html($client) . '</small></p>';
+										}
+										?>
 									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye me-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">	
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-12 col-xl-5 card-img-holder">
-									<!-- <img src="assets/images/project/project-2.jpg" class="card-img" alt="image"> -->
-								</div>
-								<div class="col-12 col-xl-7">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Dropbox</small></p>
+									<div class="card-footer">
+										<a class="btn btn-secondary" href="<?php the_permalink(); ?>">
+											<i class="fas fa-eye me-2"></i>View Case Study
+										</a>
 									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye me-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-12 col-xl-5 card-img-holder">
-									<!-- <img src="assets/images/project/project-3.jpg" class="card-img" alt="image"> -->
-								</div>
-								<div class="col-12 col-xl-7">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Google</small></p>
-									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye me-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-6 mb-5">
-						<div class="card project-card">
-							<div class="row no-gutters">
-								<div class="col-12 col-xl-5 card-img-holder">
-									<!-- <img src="assets/images/project/project-4.jpg" class="card-img" alt="image"> -->
-								</div>
-								<div class="col-12 col-xl-7">
-									<div class="card-body">
-										<h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-										<p class="card-text"><small class="text-muted">Client: Uber</small></p>
-									</div>
-								</div>
-							</div>
-							<div class="link-mask">
-								<a class="link-mask-link" href="project.html"></a>
-								<div class="link-mask-text">
-									<a class="btn btn-secondary" href="project.html">
-										<i class="fas fa-eye me-2"></i>View Case Study
-									</a>
-								</div>
-							</div><!--//link-mask-->
-						</div><!--//card-->
-					</div><!--//col-->
+								</div><!--//card-->
+							</div><!--//col-->
+							<?php
+						endwhile;
+						// Restore original Post Data
+						wp_reset_postdata();
+					else :
+						// No posts found
+						echo '<p>No projects found.</p>';
+					endif;
+					?>
 				</div><!--//row-->
 				<div class="text-center py-3">
-					<a href="<?php echo home_url('/portfolio/'); ?>" class="btn btn-primary">
-						<i class="fas fa-arrow-alt-circle-right me-2"></i>View Portfolio
+					<a href="<?php echo home_url('/projects/'); ?>" class="btn btn-primary">
+						<i class="fas fa-arrow-alt-circle-right me-2"></i>View All Projects
 					</a>
 				</div>
-								
 			</div><!--//container-->
 		</section><!--//featured-section-->
+		
+		<?php else: ?>
+		<!-- Message prompting the user to visit the projects page and enter the password -->
+		<!-- <section class="password-required-message p-3 p-lg-5">
+			<div class="container text-center">
+				<p>Please visit the <a href="<?php echo home_url('/projects/'); ?>">projects page</a> and enter the password to view featured projects.</p>
+			</div>
+		</section> -->
+	<?php endif; ?>
 		
 		<div class="container"><hr></div>
 		

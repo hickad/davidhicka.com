@@ -20091,7 +20091,7 @@ readers do not read off random characters that represent icons */
 
 /*************************** Theme Styles Section ****************************/
 /*!  
- * DevCard - Bootstrap 5 vCard and Portfolio Theme For Developers
+ * DevCard - Bootstrap 5 vCard and projects Theme For Developers
  * Version: 2.2
  * Author: Xiaoying Riley
  * Copyright: 3rd Wave Media Ltd.
@@ -21322,7 +21322,7 @@ img {
 }
 
 body.dark-mode {
-  background: #1e2a3a;
+  background: #1a2432;
 }
 body.dark-mode .theme-bg-light {
   background: #1e2a3a !important;

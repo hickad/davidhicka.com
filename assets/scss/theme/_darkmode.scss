@@ -11,7 +11,7 @@ $dark-mode-border: rgba(256, 256, 256, 0.05);
 
 //Dark mode page styling
 body.dark-mode {
-	background: $dark-mode-bg-primary;
+	background: darken($dark-mode-bg-secondary, 7.5%);
 	
 	.theme-bg-light {
 		background: $dark-mode-bg-light !important;

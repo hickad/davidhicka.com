@@ -1,17 +1,36 @@
 <?php
 /*
-Template Name: portfolio
+Template Name: projects
 */
 
+// Start session if not already started
+if (!session_id()) {
+    session_start();
+}
+
 get_header();
+
+
+
+
+// Check if the user has entered the correct password
+$correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SESSION['correct_password_entered'];
+
+// Set a flag to indicate whether the password has been entered correctly
+if (post_password_required() && isset($_POST['post_password']) && wp_check_password($_POST['post_password'], $post->post_password, $post->ID)) {
+    $_SESSION['correct_password_entered'] = true;
+}
+
+echo "Password Required: " . (post_password_required() ? 'true' : 'false');
+
 ?>
     <div class="main-wrapper">
 
         <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center single-col-max-width">
-			    <h2 class="heading">Portfolio</h2>
+			    <h2 class="heading">Projects</h2>
 			    <div class="intro">
-			    <p>Welcome to my online portfolio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. I'm taking on freelance work at the moment. Want some help building your software?</p>
+			    <p>Welcome to my online projects. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. I'm taking on freelance work at the moment. Want some help building your software?</p>
 			    
 			    </div>
 				<a class="btn btn-primary" href="<?php echo home_url('/contact/'); ?>">
@@ -46,7 +65,7 @@ get_header();
 			<div class="project-cards row isotope">
     <?php
     $args = array(
-        'post_type' => 'portfolio', // Ensure 'portfolio' matches your CPT
+        'post_type' => 'portfolio', // Ensure 'projects' matches your CPT
         'posts_per_page' => -1, // Adjust as needed
     );
     $portfolio_query = new WP_Query($args);
