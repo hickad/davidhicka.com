@@ -20,7 +20,9 @@ get_header();
 	    </section>
 	    <section class="contact-section px-3 py-5 p-md-5">
 		    <div class="container">
-			<?php echo do_shortcode('[contact-form-7 id="01d4522" title="Contact"]'); ?>
+				<div class="col-md-9 mx-auto">
+					<?php echo do_shortcode('[contact-form-7 id="01d4522" title="Contact"]'); ?>
+				</div>
 		    </div><!--//container-->
 	    </section>
 	
