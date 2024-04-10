@@ -62,7 +62,7 @@ get_header();
             <hr>
             <div class="resume-body">
                 <div class="row">
-                    <div class="resume-main col-12 col-lg-8 col-xl-9 pe-0 pe-lg-5">
+                    <div class="resume-main col-12 pe-0">
                         <section class="work-section py-3">
                             <h3 class="text-uppercase resume-section-heading mb-4">Professional Experience</h3>
                             <!-- Example Work Experience -->
@@ -127,18 +127,6 @@ get_header();
                             </ul>
                         </section><!--//skills-section-->
                     </div><!--//resume-main-->
-                    <aside class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-                        <section class="skills-section py-3">
-                            <h3 class="text-uppercase resume-section-heading mb-4">Certifications</h3>
-                            <ul class="list-unstyled resume-skills-list">
-                                <li>Computer Programming Specialist</li>
-                                <li>Information Technology Support Specialist</li>
-                                <li>Graphic Design</li>
-                            </ul>
-                            <p class="text-muted">Florida State College – Jacksonville, FL</p>
-                            <p class="text-muted">Defense Information School</p>
-                        </section><!--//skills-section-->
-                    </aside>
-</div>
-					<?php
+                </div>
+		<?php
 get_footer();
