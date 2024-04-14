@@ -87,7 +87,18 @@ small {
 	}
 }
 
-
+code {
+    font-family: 'Courier New', Courier, monospace; /* Sets a monospace font for code */
+    background-color: darken($theme-bg-light, 40%);; /* Light gray background */
+    color: $theme-text-color-primary; /* Dark gray text color */
+    padding: 8px 12px; /* Top and bottom padding of 8px, left and right padding of 12px */
+    border-radius: 4px; /* Rounded corners */
+    border: 1px solid #ccc; /* Light gray border */
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: inline-block; /* Ensures the code element does not break the flow */
+    white-space: pre-wrap; /* Preserves whitespace and wrapping */
+    word-wrap: break-word; /* Ensures long lines do not overflow */
+}
 
 .form-control {
 	padding-top: 0.875rem;

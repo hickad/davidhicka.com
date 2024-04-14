@@ -63,7 +63,7 @@
 						<div class="bio mb-3">Hi, my name is David Hicka and I'm a software engineer. Welcome to my personal website!</div><!--//bio-->
 						<ul class="social-list list-inline py-2 mx-auto">
 						<li class="list-inline-item mb-3">
-							<a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank" style="color: white;">
+							<a href="https://www.linkedin.com/in/davidhicka/" target="_blank">
 								<i class="fab fa-linkedin-in fa-fw fa-lg"></i>
 							</a>
 							</li>
