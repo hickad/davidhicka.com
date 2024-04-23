@@ -21169,6 +21169,7 @@ a.resume-link:hover {
 }
 
 .blog-nav .nav-link {
+  display: inline-block; /* Set display to inline-block */
   background: #54B689;
   color: #fff;
   font-size: 1rem;
