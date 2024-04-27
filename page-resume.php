@@ -17,12 +17,6 @@ get_header();
                         <div class="resume-tagline mb-3 mb-md-0">Software Engineer | Front-end Developer | UI/UX Designer</div>
                     </div><!--//resume-title-->
                     <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><i class="fas fa-phone-square fa-fw fa-lg me-2 "></i><a class="resume-link" href="tel:+19047034413">(904) 703-4413</a></li>
-                            <li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg me-2"></i><a class="resume-link" href="mailto:contact@davidhicka.com">contact@davidhicka.com</a></li>
-                            <li class="mb-2"><i class="fas fa-linkedin fa-fw fa-lg me-2"></i><a class="resume-link" href="https://www.linkedin.com/in/davidhicka/">linkedin.com/in/davidhicka</a></li>
-                            <li class="mb-0"><i class="fas fa-map-marker-alt fa-fw fa-lg me-2"></i>Ponte Vedra, FL</li>
-                        </ul>
                     </div><!--//resume-contact-->
                 </div><!--//row-->
                 
@@ -40,18 +34,16 @@ get_header();
                                 <ul>
                                     <li>Software Engineering</li>
                                     <li>Frontend Development</li>
-                                    <li>SQL and Stored Procedures</li>
                                     <li>Web Development</li>
-                                    <li>Version Control System</li>
+                                    <li>SQL and Stored Procedures</li>
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
+                                    <li>Version Control Systems</li>
                                     <li>Testing & Quality Assurance</li>
-                                    <li>Multimedia Design & Development</li>
                                     <li>Agile Software Development</li>
-                                    <li>Project Management</li>
-                                    <li>Web Development & CMS</li>
+                                    <li>Multimedia Design & Development</li>
                                 </ul>
                             </div>
                         </div>
@@ -74,10 +66,10 @@ get_header();
                                 </div>
                                 <div class="item-content">
                                     <ul class="resume-list">
-                                        <li>Played a key role in the team that developed "Deal Pack Web," a comprehensive application tailored for car dealerships and finance companies.</li>
-                                        <li>Engineered advanced dashboard functionalities to present sales volumes and performance analytics, utilizing JavaScript and Highcharts for dynamic
-										front-end interaction, supported by a robust C# Web API backend.</li>
-                                        <li>Spearheaded the creation of hundreds of insightful reports using T-SQL and SSRS, significantly improving data accessibility and decision-making processes.</li>
+                                        <li>Played a pivotal role in the development of "Deal Pack Web," a comprehensive business management platform tailored for automotive dealerships and finance companies. This platform streamlines the management of leads, campaigns, workflows, payments, and customer complaints through a centralized system.</li>
+                                        <li>Engineered advanced dashboard functionalities that visually represent sales volumes and performance analytics, utilizing JavaScript and Highcharts for interactive data visualization. All front-end features are supported by a robust C# Web API backend, ensuring stable and efficient data handling.</li>
+                                        <li>Led the design and execution of over 100 custom reports specifically for Deal Pack Web, utilizing T-SQL to write efficient stored procedures and SSRS for report generation.</li>
+                                        <li>Designed and developed all the graphical interfaces, ensuring adherence to web accessibility standards. Additionally, created custom ASP.NET controls for Deal Pack Web, enhancing the development toolkit available to other developers and fostering a more efficient and cohesive development environment.</li>
                                     </ul>
                                 </div>
                             </div><!--//item-->
@@ -90,9 +82,6 @@ get_header();
                                     <ul class="resume-list">
                                         <li>Led the design and development of intuitive user interfaces for "Deal Pack Web," "Dealer Sales Tools (DST)," and "cyclCRM" applications, focusing on creating a seamless, visually attractive user experience.</li>
                                         <li>Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.</li>
-                                        <li>Actively engaged in Agile development methodologies, promoting a team-oriented, iterative approach to deliver projects efficiently and effectively.</li>
-                                        <li>Conducted rigorous testing and optimization of front-end code across various web browsers to guarantee a uniform and flawless user experience.</li>
-                                        <li>Advanced front-end performance by minimizing page load times, compressing file sizes, and applying cutting-edge practices for accelerated rendering, significantly improving site speed and user engagement.</li>
                                     </ul>
                                 </div>
                             </div><!--//item-->
@@ -108,6 +97,30 @@ get_header();
                                     </ul>
                                 </div>
                             </div><!--//item-->
+                            <div class="item mb-3">
+                                <div class="item-heading row align-items-center mb-2">
+                                    <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Application Developer</h4>
+                                    <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">Organizational Strategies Inc. – Jacksonville, FL | May 2015 – April 2017</div>
+                                </div>
+                                <div class="item-content">
+                                    <ul class="resume-list">
+                                        <li>Contributed to the development of DesignAsBuilt.com, a building industry application, using C#/ASP.NET programming.</li>
+                                        <li>Designed and developed user interfaces for Enfusion, a real-time video analytics application, utilizing React.js and Material-UI.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item mb-3">
+                                <div class="item-heading row align-items-center mb-2">
+                                    <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Multimedia Designer & Developer</h4>
+                                    <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">L3 Technologies – Jacksonville, FL |  January 2004 – October 2014</div>
+                                </div>
+                                <div class="item-content">
+                                    <ul class="resume-list">
+                                        <li>Headed the development team of the "Smart Graphic" application, designed to emulate aircraft multi-functional displays for training purposes.</li>
+                                        <li>Collaborated directly with pilot subject matter experts, referencing Air Force documentation to ensure precise and accurate representation of aircraft display functionality.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </section><!--//work-section-->
                         <section class="education-section py-3">
                             <h3 class="text-uppercase resume-section-heading mb-4">Education</h3>
@@ -121,9 +134,11 @@ get_header();
                         <section class="skills-section py-3">
                             <h3 class="text-uppercase resume-section-heading mb-4">Technology Proficiencies</h3>
                             <ul class="list-unstyled resume-skills-list">
-                                <li class="mb-2">Programming & Web Development: HTML5, PHP, CSS, JavaScript, React.js, SASS, T-SQL, ASP.NET Web Forms, C#, Bootstrap, WordPress, Angular, Python</li>
-                                <li class="mb-2">Design & Multimedia: Autodesk 3ds Max, Adobe Photoshop, Adobe Illustrator, Adobe Premiere, Adobe Acrobat, Adobe XD, Flash, ActionScript, Figma</li>
-                                <li>Version Control: Git, Git Bash</li>
+                                <li class="mb-2"><h4 class="item-title">Microsoft Technologies</h4> ASP.NET, C#, Transact-SQL (T-SQL), SQL Server Management Studio, Azure DevOps, Visual Studio, Visual Studio Code</li>
+                                <li class="mb-2"><h4 class="item-title">Web Development</h4> HTML5, CSS, JavaScript, Bootstrap, jQuery, SASS, React.js, Angular
+Open Source & Other Technologies: PHP, WordPress, Python, MySQL</li>
+                                <li class="mb-2"><h4 class="item-title">Design & UX Tools</h4> Adobe Creative Cloud, Adobe XD, Figma</li>
+                                <li class="mb-2"><h4 class="item-title">Version Control</h4> Git</li>
                             </ul>
                         </section><!--//skills-section-->
                     </div><!--//resume-main-->

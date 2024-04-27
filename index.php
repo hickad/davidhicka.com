@@ -21,11 +21,6 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
 					<div class="col-md-12">
 						<h2 class="name font-weight-bold mb-1">David Hicka</h2>
 						<div class="tagline mb-3">Software Engineer | Front-end Developer | UI/UX Designer</div>
-						<div class="bio mb-4">Seasoned Software Engineer and accomplished UI/UX Designer with a rich background in advancing and innovating 
-							technology across various sectors. With extensive experience in software development and design, I am committed to driving 
-							significant enhancements in tech systems. Skilled in optimizing processes and leveraging my expertise to deliver highly efficient 
-							and impactful services, I aim to contribute meaningful advancements in any technological environment.
-						</div><!--//bio-->
 						<div class="mb-1">
 							<a class="btn btn-primary me-2 mb-3" href="<?php echo home_url('/projects/'); ?>">
 								<i class="fas fa-arrow-alt-circle-right me-2"></i>
@@ -45,7 +40,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
     <div class="container">
         <h2 class="section-title font-weight-bold mb-3">What I Do</h2>
         <div class="section-intro mb-5">
-            I am David Hicka, a Software Engineer and UI/UX Designer with extensive experience in software development and design. My career is marked by my role in driving significant enhancements in tech systems across various sectors. My work focuses on optimizing processes and leveraging cutting-edge technologies to deliver highly efficient and impactful services. Explore my <a class="text-link" href="resume.html">online resume</a> and <a class="text-link" href="projects.html">project projects</a> to learn more about my contributions to technological advancements.
+            I am David Hicka, a Software Engineer and UI/UX Designer with extensive experience in software development and design. My career is marked by my role in driving significant enhancements in tech systems across various sectors. My work focuses on optimizing processes and leveraging cutting-edge technologies to deliver highly efficient and impactful services. Explore my <a class="text-link" href="./resume/">online resume</a> and <a class="text-link" href="./project/">project projects</a> to learn more about my contributions to technological advancements.
         </div>
         <div class="row">
             <div class="item col-12 col-md-4">
@@ -53,7 +48,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
                     <div class="item-icon"><i class="fab fa-js-square"></i></div>
                     <h3 class="item-title">JavaScript, jQuery</h3>
                     <div class="item-desc">
-                        Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery, emphasizing robust front-end development.
+                        Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.
                     </div>
                 </div>
             </div>
@@ -83,7 +78,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
 					</div>
                     <h3 class="item-title">Bootstrap & Material-UI</h3>
                     <div class="item-desc">
-                        Proficient in using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.
+                        Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.
                     </div>
                 </div>
             </div>
@@ -101,7 +96,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
                     <div class="item-icon"><i class="fas fa-code"></i></div>
                     <h3 class="item-title">ASP.NET & C#</h3>
                     <div class="item-desc">
-                        Developed robust web applications and services using ASP.NET and C#, focusing on backend functionalities and business logic implementation.
+                        Developed robust web applications and services using ASP.NET and C#.
                     </div>
                 </div>
             </div>
@@ -128,7 +123,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
                     <div class="item-icon"><i class="fas fa-paint-brush"></i></div>
                     <h3 class="item-title">Adobe Creative Cloud</h3>
                     <div class="item-desc">
-                        Proficient with the Adobe Creative Cloud suite, including Photoshop, Illustrator, and Premiere, for professional-grade graphics and multimedia content.
+                        Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.
                     </div>
                 </div>
             </div>
@@ -213,7 +208,7 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
 		
 		<div class="container"><hr></div>
 		
-		<section class="latest-blog-section p-3 p-lg-5">
+		<section class="d-none latest-blog-section p-3 p-lg-5">
     <div class="container">
         <h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
         <div class="row">

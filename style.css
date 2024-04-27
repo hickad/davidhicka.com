@@ -21168,32 +21168,23 @@ a.resume-link:hover {
   display: none;
 }
 
+.blog-nav .post-navigation {
+  text-align: center;
+}
+.blog-nav .nav-previous,
+.blog-nav .nav-next {
+  color: #fafafa;
+  margin: 5px;
+  display: inline-block;
+  background-color: #54B689;
+}
+.blog-nav .nav-previous a,
+.blog-nav .nav-next a {
+  color: #fafafa;
+  text-decoration: none;
+}
 .blog-nav .nav-link {
-  display: inline-block; /* Set display to inline-block */
-  background: #54B689;
-  color: #fff;
-  font-size: 1rem;
-  padding: 1rem;
-  font-weight: bold;
-  position: relative;
-}
-.blog-nav .nav-link:hover {
-  background: #40976f;
-}
-.blog-nav .nav-link-prev {
-  border-right: 1px solid #317355;
-}
-.blog-nav .arrow-prev {
-  position: absolute;
-  left: 1rem;
-  top: 1.25rem;
-  color: #fff;
-}
-.blog-nav .arrow-next {
-  position: absolute;
-  right: 1rem;
-  top: 1.25rem;
-  color: #fff;
+  color: white;
 }
 
 .blog-post .title {
