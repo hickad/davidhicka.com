@@ -179,12 +179,12 @@ function digitalresume_scripts_and_styles() {
     }
 
 	// Register the scripts
-	wp_register_script('imagesloaded', get_template_directory_uri() . '/assets/plugins/imagesloaded.pkgd.min.js', array('jquery'), '1.0.0', true);
+	// wp_register_script('imagesloaded', get_template_directory_uri() . '/assets/plugins/imagesloaded.pkgd.min.js', array('jquery'), '1.0.0', true);
 	wp_register_script('isotope', get_template_directory_uri() . '/assets/plugins/isotope.pkgd.min.js', array('jquery'), '1.0.0', true);
 	wp_register_script('isotope-custom', get_template_directory_uri() . '/assets/js/isotope-custom.js', array('jquery', 'isotope'), '1.0.0', true);
 
 	// Enqueue the scripts
-	wp_enqueue_script('imagesloaded');
+	// wp_enqueue_script('imagesloaded');
 	wp_enqueue_script('isotope');
 	wp_enqueue_script('isotope-custom');
 }
@@ -239,7 +239,6 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
         $output .= '</a>';
     }
 
-    // ... existing code ...
 }
 
 
@@ -247,17 +246,54 @@ add_filter('the_password_form', 'custom_password_form');
 
 function custom_password_form() {
     global $post;
-    $label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
-    $form = '<form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" class="container post-password-form form-inline" method="post">
-		<div class="form-group">
-			<label for="' . $label . '" class="label-control">This content is password protected. To view it please enter your password below:</label>
-			<div class="d-grid mt-3 gap-2 mx-auto" style="max-width: 250px;">
-				<input name="post_password" id="' . $label . '" type="password" class="form-control mr-2" placeholder="Password">
-				<button type="submit" class="btn btn-primary" name="Submit">Submit</button>
-			</div>
-		</div>
+
+    // Debug: Start logging
+    error_log('Starting custom_password_form function.');
+
+    // Check if there's a custom error flag in the URL
+    $error = (isset($_GET['password_failed']) && $_GET['password_failed'] == '1');
+    if ($error) {
+        error_log('Password failed error detected.');
+    }
+
+    // Capture the redirect URL if provided
+    $redirect_to = isset($_GET['redirect_to']) ? $_GET['redirect_to'] : '';
+    error_log('Redirect to: ' . $redirect_to);
+
+    $label = 'pwbox-' . (empty($post->ID) ? rand() : $post->ID);
+    $errorMessage = $error ? '<div class="alert alert-danger" role="alert">Incorrect password, please try again.</div>' : '';
+    $form = '<form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" class="container post-password-form form-inline" method="POST">
+        ' . $errorMessage . '
+        <input type="hidden" name="redirect_to" value="' . esc_attr($redirect_to) . '">
+        <div class="form-group">
+            <label for="' . $label . '" class="label-control">This content is password protected. To view it please enter your password below:</label>
+            <div class="d-grid mt-3 gap-2 mx-auto" style="max-width: 250px;">
+                <input name="post_password" id="' . $label . '" type="password" class="form-control mr-2" placeholder="Password">
+                <button type="submit" class="btn btn-primary" name="Submit">Submit</button>
+            </div>
+        </div>
     </form>';
+
+    // Debug: Log the entire form output
+    error_log('Form HTML: ' . $form);
+
     return $form;
+}
+
+
+// Handling redirection and password check
+add_action('wp', 'check_post_password');
+
+function check_post_password() {
+    global $post;
+    if (isset($_POST['post_password']) && !empty($post)) {
+        // Check if password matches
+        if (!wp_check_password($_POST['post_password'], $post->post_password, $post->ID)) {
+            // Redirect back to the post with a custom error flag
+            wp_redirect(esc_url(add_query_arg('password_failed', '1', get_permalink($post->ID))));
+            exit;
+        }
+    }
 }
 
 

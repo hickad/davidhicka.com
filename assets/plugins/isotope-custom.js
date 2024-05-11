@@ -8,36 +8,36 @@
 const isotopeContainer = document.querySelector('.isotope');
 const filterItems = document.querySelectorAll('#filters .type');
 
-imagesLoaded(isotopeContainer, function () {
+// imagesLoaded(isotopeContainer, function () {
 	
-	var iso = new Isotope( isotopeContainer, {
-	  // options
-	  itemSelector: '.isotope-item',
-	  layoutMode: 'fitRows'
+// 	var iso = new Isotope( isotopeContainer, {
+// 	  // options
+// 	  itemSelector: '.isotope-item',
+// 	  layoutMode: 'fitRows'
 	  
-	});
+// 	});
 	
-	// filter items on click
-	filterItems.forEach((filterItem) => {
+// 	// filter items on click
+// 	filterItems.forEach((filterItem) => {
 	
-		filterItem.addEventListener('click', (e) => {
+// 		filterItem.addEventListener('click', (e) => {
 			
-			let filterValue = filterItem.getAttribute('data-filter');
+// 			let filterValue = filterItem.getAttribute('data-filter');
 			
-			// arrange - https://isotope.metafizzy.co/methods.html
-			iso.arrange({ filter: filterValue });
+// 			// arrange - https://isotope.metafizzy.co/methods.html
+// 			iso.arrange({ filter: filterValue });
 			
 			
-			//toggle active class
-			for (let siblingFilterItem of filterItem.parentNode.children) {
-		        siblingFilterItem.classList.remove('active');
-		    }
-			filterItem.classList.add('active');
+// 			//toggle active class
+// 			for (let siblingFilterItem of filterItem.parentNode.children) {
+// 		        siblingFilterItem.classList.remove('active');
+// 		    }
+// 			filterItem.classList.add('active');
 
-		});
+// 		});
 
-	});
-})
+// 	});
+// })
 
 
 
