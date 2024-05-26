@@ -17,7 +17,7 @@
 	$upload_dir = wp_get_upload_dir();
 
 	// Construct the full URL of the image
-	$image_url = $upload_dir['baseurl'] . '/2024/03/resume-profile.png';
+	$image_url = $upload_dir['baseurl'] . '/2024/05/profilePic.jpg';
 
 ?>
 <head>

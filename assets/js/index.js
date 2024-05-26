@@ -1,3 +1,4 @@
+import '../scss/main.scss';
 import '../plugins/js-cookie.min.js';
 import '../plugins/popper.min.js';
 import '../plugins/bootstrap/js/bootstrap.js';
