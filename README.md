@@ -68,3 +68,31 @@ $ npm install
 Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
 
 Good luck!
+
+
+
+# Access site from command line through docker
+
+
+1. Open your terminal.
+2. List your running Docker containers to find the one for your WordPress site. Use the command:
+
+`docker ps`
+
+3. Identify the container ID for your WordPress site from the list. To access your WordPress site, you likely need to connect to the devkinsta_fpm container. This container typically handles PHP processes for WordPress.
+
+`docker exec -it 5a039695c562 /bin/bash`
+
+
+root@5a039695c562:/www/kinsta/public/davidhicka/wp-content/themes/davidhicka.com#
+
+
+
+o install npm, you'll need to install Node.js first. Here are the steps to do that within the container:
+
+apt-get update
+
+Install Node.js and npm:
+
+apt-get install -y nodejs npm
+
