@@ -1,31 +1,53 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    // Mode: development or production (production will minify the code)
+    // Mode: 'development' or 'production'
     mode: 'production',
 
-    // Entry point of the application
-    entry: './assets/js/index.js', // Adjust this if your entry file has a different name
-
+    // Entry points of the application
+    entry: './assets/js/index.js', // JavaScript entry point
     // Output configuration
     output: {
-        filename: 'bundle.js', // Output file name
+        filename: 'bundle.js', // Output JavaScript file name
         path: path.resolve(__dirname, 'dist'), // Output directory
     },
 
-    // Module rules (you can add loaders here if needed)
+    // Plugins
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'style.css', // Output CSS file name
+        }),
+    ],
+
+    // Module rules for processing files
     module: {
         rules: [
             {
-                test: /\.js$/, // Regular expression to match all .js files
+                test: /\.js$/, // Match all .js files
                 exclude: /node_modules/, // Exclude the node_modules directory
                 use: {
-                    loader: 'babel-loader', // Loader to transpile ES6+ to ES5
+                    loader: 'babel-loader', // Use babel-loader for transpiling JS
                     options: {
-                        presets: ['@babel/preset-env'] // Preset used for transpiling
-                    }
-                }
-            }
-        ]
-    }
+                        presets: ['@babel/preset-env'], // Preset for transpiling ES6+
+                    },
+                },
+            },
+            {
+                test: /\.scss$/, // Match all .scss files
+                use: [
+                    MiniCssExtractPlugin.loader, // Extract CSS into files
+                    'css-loader', // Resolves CSS imports into JS
+                    {
+                        loader: 'sass-loader', // Loads and compiles SASS to CSS
+                        options: {
+                            sassOptions: {
+                                outputStyle: 'compressed', // Minifies the CSS
+                            },
+                        },
+                    },
+                ],
+            },
+        ],
+    },
 };

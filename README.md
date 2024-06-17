@@ -83,6 +83,7 @@ Good luck!
 
 `docker exec -it 5a039695c562 /bin/bash`
 
+!!! Navigate HERE !!!
 
 root@5a039695c562:/www/kinsta/public/davidhicka/wp-content/themes/davidhicka.com#
 
