@@ -35,8 +35,6 @@ pricingTabs.forEach((pricingTab) => {
 		    dataTargetCell.style.display = "table-cell";
 	    }
 	    
-	    
-		
 	});
 });
 

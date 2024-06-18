@@ -83,10 +83,13 @@ Good luck!
 
 `docker exec -it 5a039695c562 /bin/bash`
 
-!!! Navigate HERE !!!
+1. Execute this
 
-root@5a039695c562:/www/kinsta/public/davidhicka/wp-content/themes/davidhicka.com#
+docker exec -it devkinsta_fpm /bin/bash
 
+2. !!! Navigate HERE !!!
+
+/www/kinsta/public/davidhicka/wp-content/themes/davidhicka.com
 
 
 o install npm, you'll need to install Node.js first. Here are the steps to do that within the container:
