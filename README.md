@@ -81,7 +81,7 @@ Good luck!
 
 3. Identify the container ID for your WordPress site from the list. To access your WordPress site, you likely need to connect to the devkinsta_fpm container. This container typically handles PHP processes for WordPress.
 
-`docker exec -it 5a039695c562 /bin/bash`
+`docker exec -it 1dc53e383440 /bin/bash`
 
 1. Execute this
 

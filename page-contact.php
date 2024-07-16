@@ -21,7 +21,7 @@ get_header();
 	    <section class="contact-section px-3 py-5 p-md-5">
 		    <div class="container">
 				<div class="col-md-9 mx-auto">
-					<?php echo do_shortcode('[contact-form-7 id="01d4522" title="Contact"]'); ?>
+					<?php echo do_shortcode('[contact-form-7 id="734188d" title="Contact Page Form"]'); ?>
 				</div>
 		    </div><!--//container-->
 	    </section>

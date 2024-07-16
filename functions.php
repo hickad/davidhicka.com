@@ -215,10 +215,29 @@ require get_template_directory() . '/inc/customizer.php';
 
 
 class Custom_Nav_Walker extends Walker_Nav_Menu {
-    // ... existing code ...
-
     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-        $icon_class = implode(' ', $item->classes); // Get the CSS classes
+        // Determine the icon class based on the menu item title
+        $icon_class = '';
+        switch ($item->title) {
+            case 'Home':
+                $icon_class = 'fa-user';
+                break;
+            case 'Blog':
+                $icon_class = 'fa-blog';
+                break;
+            case 'Contact':
+                $icon_class = 'fa-envelope-open-text';
+                break;
+            case 'Resume':
+                $icon_class = 'fa-file-alt';
+                break;
+            case 'Projects':
+                $icon_class = 'fa-laptop-code';
+                break;
+            default:
+                $icon_class = 'fa-fw'; // Default icon class if needed
+                break;
+        }
 
         // Add main <li> tag with class 'nav-item'
         $output .= "<li class='nav-item'>";
@@ -239,7 +258,6 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
 
         $output .= '</a>';
     }
-
 }
 
 
