@@ -1,0 +1,15 @@
+.form-floating .form-control:not(.has-value):placeholder-shown ~ label {
+    opacity: 0;
+    transform: translateY(1.5rem);
+}
+
+.form-floating .form-control.has-value ~ label,
+.form-floating .form-control:focus ~ label {
+    opacity: 1;
+    transform: translateY(-1.5rem) scale(0.85);
+}
+
+.form-floating .form-control {
+    height: calc(3.5rem + 2px);
+    padding: 1rem .75rem;
+}
