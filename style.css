@@ -20683,6 +20683,10 @@ header .navbar-toggler {
   top: 0;
 }
 
+.linkedin-icon i {
+  color: white;
+}
+
 .profile-teaser .name {
   font-size: 3rem;
 }
