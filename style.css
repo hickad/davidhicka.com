@@ -1,4 +1,16 @@
 @charset "UTF-8";
+/*!
+Theme Name: digitalresume
+Theme URI: http://davidhicka.com/digitalresume
+Author: Your Name
+Author URI: http://davidhicka.com
+Description: A brief description of your theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, right-sidebar, custom-menu, etc.
+Text Domain: digitalresume
+*/
 /*************************** Theme Colours****************************/
 /*************************** Variables Section. *****************************/
 /* Override BS5 sass color */

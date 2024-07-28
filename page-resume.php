@@ -35,14 +35,12 @@ get_header();
                                     <li>Software Engineering</li>
                                     <li>Frontend Development</li>
                                     <li>Web Development</li>
-                                    <li>SQL and Stored Procedures</li>
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
+                                    <li>SQL and Stored Procedures</li>
                                     <li>Version Control Systems</li>
-                                    <li>Testing & Quality Assurance</li>
-                                    <li>Agile Software Development</li>
                                     <li>Multimedia Design & Development</li>
                                 </ul>
                             </div>

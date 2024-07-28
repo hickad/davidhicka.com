@@ -10,8 +10,6 @@ get_header();
 
 $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SESSION['correct_password_entered'];
 
-echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false');
-
 ?>
 
 <div class="main-wrapper">		
@@ -39,9 +37,9 @@ echo "Correct Password Entered: " . ($correct_password_entered ? 'true' : 'false
 		<section class="overview-section px-3 p-lg-5">
     <div class="container">
         <h2 class="section-title font-weight-bold mb-3">What I Do</h2>
-        <div class="section-intro mb-5">
+        <!-- <div class="section-intro mb-5">
             I am David Hicka, a Software Engineer and UI/UX Designer with extensive experience in software development and design. My career is marked by my role in driving significant enhancements in tech systems across various sectors. My work focuses on optimizing processes and leveraging cutting-edge technologies to deliver highly efficient and impactful services. Explore my <a class="text-link" href="./resume/">online resume</a> to learn more about my contributions to technological advancements.
-        </div>
+        </div> -->
         <div class="row">
             <div class="item col-12 col-md-4">
                 <div class="item-inner">
