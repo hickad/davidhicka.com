@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: resume
+Template Name: Resume
 */
 
 get_header();
@@ -15,9 +15,9 @@ get_header();
                             <div class="resume-tagline mb-3 mb-md-0">Software Engineer | Front-end Developer | UI/UX Designer</div>
                         </div><!--//resume-title-->
                         <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+                            <!-- Contact information can be added here -->
                         </div><!--//resume-contact-->
                     </div><!--//row-->
-                    
                 </div><!--//resume-header-->
                 <hr>
                 <div class="resume-intro py-3">
@@ -43,7 +43,6 @@ get_header();
                                     </ul>
                                 </div>
                             </div>
-                        
                         </div><!--//col-->
                     </div>
                 </div><!--//resume-intro-->
@@ -58,7 +57,6 @@ get_header();
                                     <div class="item-heading row align-items-center mb-2">
                                         <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Software Engineer</h4>
                                         <div class="item-meta col-12 col-md-6 col-lg-6 text-muted text-start text-md-end">Advanced Business Computers of America – Jacksonville, FL | October 2019 – Present</div>
-                                        
                                     </div>
                                     <div class="item-content">
                                         <ul class="resume-list">
@@ -108,7 +106,7 @@ get_header();
                                 <div class="item mb-3">
                                     <div class="item-heading row align-items-center mb-2">
                                         <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0">Multimedia Designer & Developer</h4>
-                                        <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">L3 Technologies – Jacksonville, FL |  January 2004 – October 2014</div>
+                                        <div class="item-meta col-12 col-md-6 col-lg-4 text-muted text-start text-md-end">L3 Technologies – Jacksonville, FL | January 2004 – October 2014</div>
                                     </div>
                                     <div class="item-content">
                                         <ul class="resume-list">

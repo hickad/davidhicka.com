@@ -1,32 +1,36 @@
 <?php
 /*
-Template Name: contact
+Template Name: Contact
 */
 
 get_header();
 ?>
 
-    <div class="main-wrapper">
-	    <section class="cta-section theme-bg-light py-4">
-		    <div class="container text-center single-col-max-width">
-			    <h2 class="heading">Contact</h2>
-			    <div class="intro">
-			    <p>Want to get connected? Follow me on LinkedIn.</p>
-			    <ul class="list-inline mb-0">		            
-				<li class="list-inline-item mb-3"><a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank"><i class="fab fa-linkedin-in fa-fw fa-lg"></i></a></li>
-	            </ul><!--//social-list-->
-			    
-			</div><!--//container-->
-	    </section>
-	    <section class="contact-section px-3 py-3 p-md-5">
-		    <div class="container">
-				<div class="col-md-9 mx-auto">
-					<?php echo do_shortcode('[contact-form-7 id="8fe62b4" title="Contact Page Form"]'); ?>
-				</div>
-		    </div><!--//container-->
-	    </section>
-	
-    </div><!--//main-wrapper-->
+<div class="main-wrapper">
+    <section class="cta-section theme-bg-light py-4">
+        <div class="container text-center single-col-max-width">
+            <h2 class="heading">Contact</h2>
+            <div class="intro">
+                <p>Want to get connected? Follow me on LinkedIn.</p>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item mb-3">
+                        <a class="linkedin" href="https://www.linkedin.com/in/davidhicka/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in fa-fw fa-lg"></i>
+                            <span class="visually-hidden">LinkedIn</span>
+                        </a>
+                    </li>
+                </ul><!--//social-list-->
+            </div><!--//intro-->
+        </div><!--//container-->
+    </section>
+    <section class="contact-section px-3 py-3 p-md-5">
+        <div class="container">
+            <div class="col-md-9 mx-auto">
+                <?php echo do_shortcode('[contact-form-7 id="8fe62b4" title="Contact Page Form"]'); ?>
+            </div>
+        </div><!--//container-->
+    </section>
+</div><!--//main-wrapper-->
 
-    <?php
+<?php
 get_footer();
