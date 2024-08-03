@@ -7,7 +7,7 @@ get_header();
 ?>
 
     <div class="main-wrapper">
-	    <section class="cta-section theme-bg-light py-5">
+	    <section class="cta-section theme-bg-light py-4">
 		    <div class="container text-center single-col-max-width">
 			    <h2 class="heading">Contact</h2>
 			    <div class="intro">
@@ -18,7 +18,7 @@ get_header();
 			    
 			</div><!--//container-->
 	    </section>
-	    <section class="contact-section px-3 py-5 p-md-5">
+	    <section class="contact-section px-3 py-3 p-md-5">
 		    <div class="container">
 				<div class="col-md-9 mx-auto">
 					<?php echo do_shortcode('[contact-form-7 id="8fe62b4" title="Contact Page Form"]'); ?>

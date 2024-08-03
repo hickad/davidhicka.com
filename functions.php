@@ -163,15 +163,16 @@ add_action('widgets_init', 'digitalresume_widgets_init');
  * Enqueue scripts and styles.
  */
 function digitalresume_scripts_and_styles() {
+    
     // Enqueue main stylesheet
-    wp_enqueue_style('digitalresume-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/dist/style.css'));
+    wp_enqueue_style('digitalresume-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css'));
 
     // Enqueue FontAwesome
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/assets/plugins/fontawesome/css/all.css', array(), '5.15.1');
 
     // Enqueue navigation script
-    $bundle_path = get_template_directory_uri() . '/dist/bundle.js';
-    wp_enqueue_script('digitalresume-js', add_query_arg('ver', filemtime(get_template_directory() . '/dist/bundle.js'), $bundle_path), array(), null, true);
+    $bundle_path = get_template_directory_uri() . '/bundle.js';
+    wp_enqueue_script('digitalresume-js', add_query_arg('ver', filemtime(get_template_directory() . '/bundle.js'), $bundle_path), array(), null, true);
 
     // Enqueue comment-reply script on single posts/pages when comments are open
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -187,6 +188,7 @@ function digitalresume_scripts_and_styles() {
     // wp_enqueue_script('imagesloaded');
     wp_enqueue_script('isotope');
     wp_enqueue_script('isotope-custom');
+
 }
 add_action('wp_enqueue_scripts', 'digitalresume_scripts_and_styles');
 

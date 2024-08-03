@@ -7,10 +7,11 @@ module.exports = {
 
     // Entry points of the application
     entry: './assets/js/index.js', // JavaScript entry point
+
     // Output configuration
     output: {
         filename: 'bundle.js', // Output JavaScript file name
-        path: path.resolve(__dirname, 'dist'), // Output directory
+        path: path.resolve(__dirname), // Output directory set to root
     },
 
     // Plugins

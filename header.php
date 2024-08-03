@@ -37,11 +37,7 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary">
-			<?php esc_html_e('Skip to content', 'digitalresume'); ?>
-		</a>
-	
+	<div id="page" class="site">	
 		<header class="header text-center">	    
 		<div class="force-overflow">
 			<h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="index.html">David Hicka</a></h1>
@@ -61,9 +57,9 @@
 					<div class="profile-section pt-3 pt-lg-0">	
 						<img class="profile-image mb-3 rounded-circle mx-auto" src="<?php echo esc_url( $image_url ); ?>" alt="Profile Image">					
 						<div class="bio mb-3">Hi, my name is David Hicka and I'm a software engineer. Welcome to my personal website!</div><!--//bio-->
-							<a href="https://www.linkedin.com/in/davidhicka/" target="_blank" class="linkedin-icon">
-								<i class="fab fa-linkedin-in fa-fw fa-lg"></i>
-							</a>
+						<a href="https://www.linkedin.com/in/davidhicka/" target="_blank" class="linkedin-icon" aria-label="Visit David Hicka's LinkedIn profile" rel="noopener noreferrer">
+							<i class="fab fa-linkedin-in fa-fw fa-lg" aria-hidden="true"></i>
+						</a>
 						<hr> 
 					</div><!--//profile-section-->
 															
@@ -84,7 +80,9 @@
 					    <h4 class="toggle-name mb-3 "><i class="fas fa-adjust me-1"></i>Light Mode</h4>
 					    
 					    <input class="toggle" id="darkmode" type="checkbox">
-					    <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
+					    <label class="toggle-btn mx-auto mb-0" for="darkmode">
+							<span class="visually-hidden">Toggle Dark Mode</span>
+						</label>
 					    
 					</div><!--//dark-mode-toggle-->
 					
