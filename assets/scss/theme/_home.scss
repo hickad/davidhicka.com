@@ -169,6 +169,11 @@
 		}
 	}
 	
+	.progress-bar {
+		width: 0; /* Start at 0 width */
+		transition: width 3s ease-in-out; /* Increase the duration to 3 seconds */
+	}
+	
 	
 	
 	
