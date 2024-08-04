@@ -2,10 +2,10 @@ import 'aos/dist/aos.css';
 import AOS from 'aos';
 
 AOS.init({
-    offset: 200,
-    duration: 600,
-    easing: 'ease-in-sine',
-    delay: 100,
+    offset: 20,
+    duration: 300,
+    easing: 'ease-out',
+    delay: 0,
   });
 
 
@@ -27,7 +27,6 @@ AOS.init({
             if (isElementInViewport(bar)) {
                 const percentage = bar.getAttribute('data-percentage');
                 if (percentage !== null) {
-                    console.log(`Animating progress bar to ${percentage}%`);
                     bar.style.width = percentage + '%';
                 } else {
                     console.error('No data-percentage attribute found on element:', bar);

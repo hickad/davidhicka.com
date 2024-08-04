@@ -2,8 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    // Mode: 'development' or 'production'
-    mode: 'production',
+    mode: 'development', // Use 'development' for debugging with source maps
 
     // Entry points of the application
     entry: './assets/js/index.js', // JavaScript entry point
@@ -13,6 +12,9 @@ module.exports = {
         filename: 'bundle.js', // Output JavaScript file name
         path: path.resolve(__dirname), // Output directory set to root
     },
+
+    // Enable source maps
+    devtool: 'inline-source-map', // Good for debugging, includes source maps in the bundled files
 
     // Plugins
     plugins: [
@@ -42,6 +44,7 @@ module.exports = {
                     {
                         loader: 'sass-loader', // Loads and compiles SASS to CSS
                         options: {
+                            sourceMap: true, // Enable source maps for Sass
                             sassOptions: {
                                 outputStyle: 'compressed', // Minifies the CSS
                             },

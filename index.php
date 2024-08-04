@@ -14,7 +14,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 <div class="main-wrapper">
 	<section class="about-me-section px-3 px-lg-5 pt-lg-5 pb-lg-3 theme-bg-light">
 		<div class="container">
-			<div class="profile-teaser row">
+			<div class="profile-teaser row" data-aos="fade-in">
 				<div class="col-md-12">
 					<h2 class="name font-weight-bold mb-1">David Hicka</h2>
 					<div class="tagline mb-3">Software Engineer | Front-end Developer | UI/UX Designer</div>
@@ -31,10 +31,10 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 
 	<section class="overview-section px-3 p-lg-5 pt-lg-4">
 		<div class="container">
-			<h2 class="section-title font-weight-bold mb-3">What I Do</h2>
+			<h2 class="section-title font-weight-bold mb-3" data-aos="fade-up">What I Do</h2>
 			<div class="row">
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fab fa-js-square"></i>
 						</div>
@@ -46,19 +46,19 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fab fa-react"></i> <i class="fab fa-angular"></i>
 						</div>
 						<h3 class="item-title">React.js & Angular</h3>
 						<div class="progress">
-							<div class="progress-bar" data-percentage="60"><strong>60%</strong></div>
+							<div class="progress-bar" data-percentage="60"><strong>70%</strong></div>
 						</div>
 						<p>Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.</p>
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-sass"></i>
 						</div>
@@ -70,7 +70,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fab fa-bootstrap"></i> <i class="fab fa-uikit"></i>
 						</div>
@@ -82,7 +82,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fas fa-database"></i>
 						</div>
@@ -94,7 +94,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fas fa-code"></i>
 						</div>
@@ -106,7 +106,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fab fa-php"></i>
 						</div>
@@ -118,7 +118,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fas fa-vector-square"></i>
 						</div>
@@ -130,7 +130,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 					</div>
 				</div>
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4">
+					<div class="item-inner mb-4" data-aos="fade-up">
 						<div class="item-icon mb-1">
 							<i class="fas fa-paint-brush"></i>
 						</div>
