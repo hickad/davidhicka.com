@@ -49,6 +49,13 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.css$/, // Match all .css files
+                use: [
+                    MiniCssExtractPlugin.loader, // Extract CSS into files
+                    'css-loader', // Resolves CSS imports into JS
+                ],
+            },
         ],
     },
 };

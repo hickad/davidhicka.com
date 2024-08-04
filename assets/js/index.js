@@ -7,6 +7,7 @@ import '../js/dark-mode.js';
 import './blog.js';
 import './header.js';
 import './masks.js';
+import './animation.js'
 
 
 

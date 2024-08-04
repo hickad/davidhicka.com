@@ -1,14 +1,3 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package DigitalResume
- */
-?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -25,9 +14,9 @@
 	<div id="page" class="site">
 		<header class="header text-center">
 			<div class="force-overflow">
-			<h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
-				<nav class="navbar navbar-expand-lg navbar-dark">
+				<nav class="navbar navbar-expand-lg navbar-dark sticky-sm-top">
 					<button class="navbar-toggler hamburger hamburger--squeeze" type="button" 
 							data-bs-toggle="collapse" data-bs-target="#navigation" 
 							aria-controls="navigation" aria-expanded="false" 

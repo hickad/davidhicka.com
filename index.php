@@ -12,7 +12,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 ?>
 
 <div class="main-wrapper">
-	<section class="about-me-section px-3 p-lg-5 theme-bg-light">
+	<section class="about-me-section px-3 px-lg-5 pt-lg-5 pb-lg-3 theme-bg-light">
 		<div class="container">
 			<div class="profile-teaser row">
 				<div class="col-md-12">
@@ -29,92 +29,116 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 		</div>
 	</section>
 
-	<section class="overview-section px-3 p-lg-5">
+	<section class="overview-section px-3 p-lg-5 pt-lg-4">
 		<div class="container">
 			<h2 class="section-title font-weight-bold mb-3">What I Do</h2>
 			<div class="row">
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fab fa-js-square"></i></div>
-						<h3 class="item-title">JavaScript, jQuery</h3>
-						<div class="item-desc">
-							Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fab fa-js-square"></i>
 						</div>
+						<h3 class="item-title">JavaScript & jQuery</h3>
+						<div class="progress">
+							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
+						</div>
+						<p>Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fab fa-react pr-2"></i><i class="fab fa-angular"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fab fa-react"></i> <i class="fab fa-angular"></i>
+						</div>
 						<h3 class="item-title">React.js & Angular</h3>
-						<div class="item-desc">
-							Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="60"><strong>60%</strong></div>
 						</div>
+						<p>Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fab fa-html5 me-2"></i><i class="fab fa-css3-alt me-2"></i><i class="fab fa-sass"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-sass"></i>
+						</div>
 						<h3 class="item-title">HTML5, CSS3 & Sass</h3>
-						<div class="item-desc">
-							Advanced knowledge in developing responsive and accessible websites using HTML5, CSS3, and Sass for enhanced styling and design flexibility.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
+						<p>Advanced knowledge in developing responsive and accessible websites using HTML5, CSS3, and Sass for enhanced styling and design flexibility.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon">
-							<i class="fab fa-bootstrap mr-2"></i>
-							<i class="fab fa-uikit"></i>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fab fa-bootstrap"></i> <i class="fab fa-uikit"></i>
 						</div>
 						<h3 class="item-title">Bootstrap & Material-UI</h3>
-						<div class="item-desc">
-							Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
+						<p>Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fas fa-database"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fas fa-database"></i>
+						</div>
 						<h3 class="item-title">T-SQL & SSRS</h3>
-						<div class="item-desc">
-							Spearheaded the creation of insightful reports using T-SQL and SSRS, significantly improving data accessibility and decision-making processes.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="70"><strong>70%</strong></div>
 						</div>
+						<p>Leverage expertise in T-SQL and SSRS to develop detailed, insightful reports, enhancing data accessibility and supporting strategic decision-making.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fas fa-code"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fas fa-code"></i>
+						</div>
 						<h3 class="item-title">ASP.NET & C#</h3>
-						<div class="item-desc">
-							Developed robust web applications and services using ASP.NET and C#.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="75"><strong>75%</strong></div>
 						</div>
+						<p>Developed robust web applications and services using ASP.NET and C#.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fab fa-php"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fab fa-php"></i>
+						</div>
 						<h3 class="item-title">PHP & WordPress</h3>
-						<div class="item-desc">
-							Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="85"><strong>85%</strong></div>
 						</div>
+						<p>Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fas fa-vector-square"></i></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fas fa-vector-square"></i>
+						</div>
 						<h3 class="item-title">Adobe XD & Figma</h3>
-						<div class="item-desc">
-							Utilized Adobe XD and Figma for high-fidelity prototyping and UI/UX design, ensuring intuitive and user-centered designs.
+						<div class="progress">
+							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
+						<p>Utilized Adobe XD and Figma for high-fidelity prototyping and UI/UX design, ensuring intuitive and user-centered designs.</p>
 					</div>
 				</div>
-				<div class="item col-12 col-md-4">
-					<div class="item-inner">
-						<div class="item-icon"><i class="fas fa-paint-brush"></i></div>
-						<h3 class="item-title">Adobe Creative Cloud</h3>
-						<div class="item-desc">
-							Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="item-inner mb-4">
+						<div class="item-icon mb-1">
+							<i class="fas fa-paint-brush"></i>
 						</div>
+						<h3 class="item-title">Adobe Creative Cloud</h3>
+						<div class="progress">
+							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
+						</div>
+						<p>Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.</p>
 					</div>
 				</div>
 			</div>
