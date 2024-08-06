@@ -167,17 +167,28 @@
 		.meta {
 			padding-top: .5rem;
 		}
-	}
-	
-	.progress-bar {
-		width: 0; /* Start at 0 width */
-		transition: width 3s ease-in-out; /* Increase the duration to 3 seconds */
-	}
-	
-	
-	
-	
+	}	
 }
+
+
+.progress-bar {
+	width: 0; /* Start at 0 width */
+	transition: width 3s ease-in-out; /* Increase the duration to 3 seconds */
+}
+
+.progress {
+    padding: 0rem !important;
+}
+
+.input-group-text {
+	border: none;
+	height: 1.5rem;
+}
+
+.input-group-sm>.form-control {
+	height: 1.5rem;
+}
+
 
 .testiomonial-carousel-container {
 	.tns-nav {

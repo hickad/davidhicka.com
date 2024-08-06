@@ -39,8 +39,11 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fab fa-js-square"></i>
 						</div>
 						<h3 class="item-title">JavaScript & jQuery</h3>
-						<div class="progress">
-							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
+						<div class="input-group input-group-sm">
+							<span class="input-group-text small">Skill</span>
+							<div class="progress flex-fill form-control">
+								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
+							</div>
 						</div>
 						<p>Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.</p>
 					</div>
@@ -51,7 +54,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fab fa-react"></i> <i class="fab fa-angular"></i>
 						</div>
 						<h3 class="item-title">React.js & Angular</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="60"><strong>70%</strong></div>
 						</div>
 						<p>Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.</p>
@@ -63,7 +66,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-sass"></i>
 						</div>
 						<h3 class="item-title">HTML5, CSS3 & Sass</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
 						<p>Advanced knowledge in developing responsive and accessible websites using HTML5, CSS3, and Sass for enhanced styling and design flexibility.</p>
@@ -75,7 +78,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fab fa-bootstrap"></i> <i class="fab fa-uikit"></i>
 						</div>
 						<h3 class="item-title">Bootstrap & Material-UI</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
 						<p>Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.</p>
@@ -87,7 +90,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fas fa-database"></i>
 						</div>
 						<h3 class="item-title">T-SQL & SSRS</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="70"><strong>70%</strong></div>
 						</div>
 						<p>Leverage expertise in T-SQL and SSRS to develop detailed, insightful reports, enhancing data accessibility and supporting strategic decision-making.</p>
@@ -99,7 +102,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fas fa-code"></i>
 						</div>
 						<h3 class="item-title">ASP.NET & C#</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="75"><strong>75%</strong></div>
 						</div>
 						<p>Developed robust web applications and services using ASP.NET and C#.</p>
@@ -111,7 +114,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fab fa-php"></i>
 						</div>
 						<h3 class="item-title">PHP & WordPress</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="85"><strong>85%</strong></div>
 						</div>
 						<p>Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.</p>
@@ -123,7 +126,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fas fa-vector-square"></i>
 						</div>
 						<h3 class="item-title">Adobe XD & Figma</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
 						<p>Utilized Adobe XD and Figma for high-fidelity prototyping and UI/UX design, ensuring intuitive and user-centered designs.</p>
@@ -135,7 +138,7 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 							<i class="fas fa-paint-brush"></i>
 						</div>
 						<h3 class="item-title">Adobe Creative Cloud</h3>
-						<div class="progress">
+						<div class="progress mb-2 mt-3">
 							<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
 						</div>
 						<p>Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.</p>
