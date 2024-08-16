@@ -31,149 +31,98 @@ $correct_password_entered = isset($_SESSION['correct_password_entered']) && $_SE
 
 
 
-	
+	<?php
+	function generateSkillItem($iconHtml, $title, $percentage, $description) {
+		return <<<HTML
+		<div class="col-12 col-md-6 col-lg-4">
+			<div class="item-inner mb-4" data-aos="fade-up">
+				<div class="item-icon mb-1">
+					$iconHtml
+				</div>
+				<h3 class="item-title">$title</h3>
+				<div class="input-group input-group-sm mb-2 mt-3">
+					<span class="input-group-text small">Proficiency</span>
+					<div class="progress flex-fill form-control">
+						<div class="progress-bar" data-percentage="$percentage"><strong>$percentage%</strong></div>
+					</div>
+				</div>
+				<p>$description</p>
+			</div>
+		</div>
+	HTML;
+	}
+
+	$skills = [
+		[
+			'iconHtml' => '<i class="fab fa-js-square"></i>',
+			'title' => 'JavaScript & jQuery',
+			'percentage' => 100,
+			'description' => 'Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.'
+		],
+		[
+			'iconHtml' => '<i class="fab fa-react"></i> <i class="fab fa-angular"></i>',
+			'title' => 'React.js & Angular',
+			'percentage' => 75,
+			'description' => 'Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.'
+		],
+		[
+			'iconHtml' => '<i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-sass"></i>',
+			'title' => 'HTML5, CSS3 & Sass',
+			'percentage' => 100,
+			'description' => 'Advanced knowledge in developing responsive and accessible websites using HTML5, CSS3, and Sass for enhanced styling and design flexibility.'
+		],
+		[
+			'iconHtml' => '<i class="fab fa-bootstrap"></i> <i class="fab fa-uikit"></i>',
+			'title' => 'Bootstrap & Material-UI',
+			'percentage' => 100,
+			'description' => 'Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.'
+		],
+		[
+			'iconHtml' => '<i class="fas fa-database"></i>',
+			'title' => 'T-SQL & SSRS',
+			'percentage' => 70,
+			'description' => 'Leverage expertise in T-SQL and SSRS to develop detailed, insightful reports, enhancing data accessibility and supporting strategic decision-making.'
+		],
+		[
+			'iconHtml' => '<i class="fas fa-code"></i>',
+			'title' => 'ASP.NET & C#',
+			'percentage' => 75,
+			'description' => 'Developed robust web applications and services using ASP.NET and C#.'
+		],
+		[
+			'iconHtml' => '<i class="fab fa-php"></i>',
+			'title' => 'PHP & WordPress',
+			'percentage' => 85,
+			'description' => 'Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.'
+		],
+		[
+			'iconHtml' => '<i class="fas fa-vector-square"></i>',
+			'title' => 'Adobe XD & Figma',
+			'percentage' => 100,
+			'description' => 'Utilized Adobe XD and Figma for high-fidelity prototyping and UI/UX design, ensuring intuitive and user-centered designs.'
+		],
+		[
+			'iconHtml' => '<i class="fas fa-paint-brush"></i>',
+			'title' => 'Adobe Creative Cloud',
+			'percentage' => 100,
+			'description' => 'Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.'
+		]
+	];
+	?>
+
 	<section class="overview-section px-3 p-lg-5 pt-lg-4">
 		<div class="container">
 			<h2 class="section-title font-weight-bold mb-3" data-aos="fade-up">What I Do</h2>
 			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fab fa-js-square"></i>
-						</div>
-						<h3 class="item-title">JavaScript & jQuery</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
-							</div>
-						</div>
-						<p>Engineered advanced functionalities with dynamic interaction using JavaScript and jQuery.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fab fa-react"></i> <i class="fab fa-angular"></i>
-						</div>
-						<h3 class="item-title">React.js & Angular</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="70"><strong>70%</strong></div>
-							</div>
-						</div>
-						<p>Expertise in creating highly responsive single-page applications using React.js and Angular, focusing on modular and scalable code architecture.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-sass"></i>
-						</div>
-						<h3 class="item-title">HTML5, CSS3 & Sass</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
-							</div>
-						</div>
-						<p>Advanced knowledge in developing responsive and accessible websites using HTML5, CSS3, and Sass for enhanced styling and design flexibility.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fab fa-bootstrap"></i> <i class="fab fa-uikit"></i>
-						</div>
-						<h3 class="item-title">Bootstrap & Material-UI</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
-							</div>
-						</div>
-						<p>Expert at using Bootstrap and Material-UI frameworks to design and implement responsive and aesthetically pleasing user interfaces.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fas fa-database"></i>
-						</div>
-						<h3 class="item-title">T-SQL & SSRS</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>70%</strong></div>
-							</div>
-						</div>
-						<p>Leverage expertise in T-SQL and SSRS to develop detailed, insightful reports, enhancing data accessibility and supporting strategic decision-making.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fas fa-code"></i>
-						</div>
-						<h3 class="item-title">ASP.NET & C#</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>75%</strong></div>
-							</div>
-						</div>
-						<p>Developed robust web applications and services using ASP.NET and C#.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fab fa-php"></i>
-						</div>
-						<h3 class="item-title">PHP & WordPress</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>85%</strong></div>
-							</div>
-						</div>
-						<p>Crafted WordPress themes using PHP, elevating the visual and functional aspects of company marketing websites.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fas fa-vector-square"></i>
-						</div>
-						<h3 class="item-title">Adobe XD & Figma</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
-							</div>
-						</div>
-						<p>Utilized Adobe XD and Figma for high-fidelity prototyping and UI/UX design, ensuring intuitive and user-centered designs.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="item-inner mb-4" data-aos="fade-up">
-						<div class="item-icon mb-1">
-							<i class="fas fa-paint-brush"></i>
-						</div>
-						<h3 class="item-title">Adobe Creative Cloud</h3>
-						<div class="input-group input-group-sm mb-2 mt-3">
-							<span class="input-group-text small">Skill</span>
-							<div class="progress flex-fill form-control">
-								<div class="progress-bar" data-percentage="100"><strong>100%</strong></div>
-							</div>
-						</div>
-						<p>Expert knowledge of Adobe Creative Cloud suite, including Photoshop, and Illustrator for professional-grade graphics and multimedia content.</p>
-					</div>
-				</div>
+				<?php
+				foreach ($skills as $skill) {
+					echo generateSkillItem($skill['iconHtml'], $skill['title'], $skill['percentage'], $skill['description']);
+				}
+				?>
 			</div>
 		</div>
 	</section>
+
 
 	<div class="container"><hr></div>
 

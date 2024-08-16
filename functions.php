@@ -221,7 +221,7 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
         // Determine the icon class based on the menu item title
         $icon_class = '';
         switch ($item->title) {
-            case 'Home':
+            case 'About':
                 $icon_class = 'fa-user';
                 break;
             case 'Blog':

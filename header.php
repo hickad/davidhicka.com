@@ -3,7 +3,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?></title>
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 	<?php wp_head(); ?>
