@@ -11,11 +11,15 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<header class="header text-center">
+		<header class="header text-center" role="banner">
 			<div class="force-overflow">
-				<h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="blog-name pt-lg-4 mb-0">
+					<a class="no-text-decoration" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e( 'Go to homepage', 'DigitalResume' ); ?>">
+						<?php bloginfo( 'name' ); ?>
+					</a>
+				</h1>
 
-				<nav class="navbar navbar-expand-lg navbar-dark sticky-sm-top">
+				<nav class="navbar navbar-expand-lg navbar-dark sticky-sm-top" role="navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'DigitalResume' ); ?>">
 					<button class="navbar-toggler hamburger hamburger--squeeze" type="button" 
 							data-bs-toggle="collapse" data-bs-target="#navigation" 
 							aria-controls="navigation" aria-expanded="false" 
@@ -31,8 +35,10 @@
 							$upload_dir = wp_get_upload_dir();
 							$image_url = $upload_dir['baseurl'] . '/2024/07/profilePic.jpg';
 							?>
-							<img class="profile-image mb-3 rounded-circle mx-auto" src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'Profile Image', 'DigitalResume' ); ?>">
-							<div class="bio mb-3"><?php _e( "Hi, my name is David Hicka and I'm a software engineer. Welcome to my personal website!", 'DigitalResume' ); ?></div>
+							<img class="profile-image mb-3 rounded-circle mx-auto" src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'Profile Image of David Hicka', 'DigitalResume' ); ?>">
+							<div class="bio mb-3" aria-label="<?php esc_attr_e( 'About David Hicka', 'DigitalResume' ); ?>">
+								<?php _e( "Hi, my name is David Hicka and I'm a software engineer. Welcome to my personal website!", 'DigitalResume' ); ?>
+							</div>
 							<a href="https://www.linkedin.com/in/davidhicka/" target="_blank" class="linkedin-icon" aria-label="<?php esc_attr_e( "Visit David Hicka's LinkedIn profile", 'DigitalResume' ); ?>" rel="noopener noreferrer">
 								<i class="fab fa-linkedin-in fa-fw fa-lg" aria-hidden="true"></i>
 							</a>
@@ -45,17 +51,19 @@
 								'theme_location' => 'menu-1',
 								'menu_id'        => 'primary-menu',
 								'container'      => false,
-								'items_wrap'     => '<ul class="navbar-nav flex-column text-center">%3$s</ul>',
+								'items_wrap'     => '<ul class="navbar-nav flex-column text-center" role="menubar">%3$s</ul>',
 								'walker'         => new Custom_Nav_Walker(),
 							)
 						);
 						?>
 
-						<div class="dark-mode-toggle text-center w-100">
+						<div class="dark-mode-toggle text-center w-100" role="region" aria-labelledby="darkmode-label">
 							<hr class="mb-4">
-							<h4 class="toggle-name mb-3 "><i class="fas fa-adjust me-1"></i><?php _e( 'Light Mode', 'DigitalResume' ); ?></h4>
+							<h3 id="darkmode-label" class="toggle-name mb-3 h4">
+								<i class="fas fa-adjust me-1"></i><?php _e( 'Light Mode', 'DigitalResume' ); ?>
+							</h3>
 
-							<input class="toggle" id="darkmode" type="checkbox">
+							<input class="toggle" id="darkmode" type="checkbox" aria-labelledby="darkmode-label">
 							<label class="toggle-btn mx-auto mb-0" for="darkmode">
 								<span class="visually-hidden"><?php _e( 'Toggle Dark Mode', 'DigitalResume' ); ?></span>
 							</label>
@@ -67,3 +75,7 @@
 		</header><!--//header-->
 
 		<!-- Additional content goes here -->
+	</div><!--//site-->
+	<?php wp_footer(); ?>
+</body>
+</html>
