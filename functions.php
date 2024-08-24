@@ -189,6 +189,7 @@ function digitalresume_scripts_and_styles() {
     wp_enqueue_script('isotope');
     wp_enqueue_script('isotope-custom');
 
+    wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'digitalresume_scripts_and_styles');
 

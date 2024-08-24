@@ -20,14 +20,14 @@
 				</h1>
 
 				<nav class="navbar navbar-expand-lg navbar-dark sticky-sm-top" role="navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'DigitalResume' ); ?>">
-					<button class="navbar-toggler hamburger hamburger--squeeze" type="button" 
-							data-bs-toggle="collapse" data-bs-target="#navigation" 
-							aria-controls="navigation" aria-expanded="false" 
-							aria-label="<?php esc_attr_e( 'Toggle navigation', 'DigitalResume' ); ?>">
-						<span class="hamburger-box">
-							<span class="hamburger-inner"></span>
-						</span>
-					</button>
+				<button class="navbar-toggler hamburger hamburger--squeeze" type="button" 
+						data-bs-toggle="collapse" data-bs-target="#navigation" 
+						aria-controls="navigation" aria-expanded="false" 
+						aria-label="<?php esc_attr_e( 'Toggle navigation', 'DigitalResume' ); ?>">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</button>
 
 					<div id="navigation" class="collapse navbar-collapse flex-column">
 						<div class="profile-section pt-3 pt-lg-0">
