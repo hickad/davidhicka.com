@@ -11,13 +11,12 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
-<?php wp_head(); 
+<?php wp_head();
 
-	// Get the upload directory information
-	$upload_dir = wp_get_upload_dir();
-
-	// Construct the full URL of the image
-	$image_url = $upload_dir['baseurl'] . '/2024/05/profilePic.jpg';
+	// Profile headshot pulled from the Media Library by attachment ID, so WordPress
+	// resolves the correct URL and scheme even if the file is regenerated or moved.
+	// Attachment 119 = current headshot (uploaded 2026-06). Falls back gracefully.
+	$image_url = wp_get_attachment_image_url( 119, 'full' );
 
 ?>
 <head>
