@@ -386,6 +386,22 @@ a:hover { color: var(--accent-500); }
   .dh-hero-photo { max-width: 160px; border-radius: 16px; }
 }
 
+/* Personalized greeting pill (shown when a credentialed visitor signs in) */
+.dh-welcome {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-700);
+  background: var(--accent-100);
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin: 0 0 1.5rem;
+}
+.dh-welcome strong { font-weight: 700; }
+
 /* Single-page anchor scrolling (offset so the sticky header doesn't cover) */
 html { scroll-behavior: smooth; }
 #work, #experience, #skills, #contact { scroll-margin-top: 6rem; }

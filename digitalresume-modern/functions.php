@@ -146,11 +146,10 @@ function dhm_portfolio_creds() {
 }
 
 /**
- * Check credentials. On success returns the audience to theme the site with
- * ('' = no override, master login); on failure returns false. (Note: '' is a
- * valid success value, so callers must compare with `false !==`.)
+ * Check credentials. On success returns array( 'audience' => ?, 'label' => ? );
+ * on failure returns false. The master (wp-config) login returns empty values.
  */
-function dhm_portfolio_authorize( $user, $pass ) {
+function dhm_portfolio_match( $user, $pass ) {
 	$user = (string) $user;
 	$pass = (string) $pass;
 	if ( '' === $user || '' === $pass ) {
@@ -159,16 +158,27 @@ function dhm_portfolio_authorize( $user, $pass ) {
 	if ( defined( 'PORTFOLIO_AUTH_USER' ) && defined( 'PORTFOLIO_AUTH_PASS' )
 		&& hash_equals( (string) PORTFOLIO_AUTH_USER, $user )
 		&& hash_equals( (string) PORTFOLIO_AUTH_PASS, $pass ) ) {
-		return '';
+		return array(
+			'audience' => '',
+			'label'    => '',
+		);
 	}
 	foreach ( dhm_portfolio_creds() as $c ) {
 		if ( ! empty( $c['user'] ) && isset( $c['pass'] )
 			&& hash_equals( (string) $c['user'], $user )
 			&& hash_equals( (string) $c['pass'], $pass ) ) {
-			return isset( $c['audience'] ) ? (string) $c['audience'] : '';
+			return array(
+				'audience' => isset( $c['audience'] ) ? (string) $c['audience'] : '',
+				'label'    => isset( $c['label'] ) ? (string) $c['label'] : '',
+			);
 		}
 	}
 	return false;
+}
+
+/** The label of the credential the current visitor signed in with (display only). */
+function dhm_viewer_label() {
+	return isset( $_COOKIE['dh_label'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['dh_label'] ) ) : '';
 }
 
 /** Signed session token so the access cookie cannot be forged. */
@@ -288,10 +298,10 @@ function dhm_site_gate() {
 		if ( ! wp_verify_nonce( $nonce, 'dh_portfolio_login' ) ) {
 			$error = 'Your session expired. Please try again.';
 		} else {
-			$u   = isset( $_POST['dh_user'] ) ? wp_unslash( $_POST['dh_user'] ) : '';
-			$p   = isset( $_POST['dh_pass'] ) ? wp_unslash( $_POST['dh_pass'] ) : '';
-			$aud = dhm_portfolio_authorize( $u, $p );
-			if ( false !== $aud ) {
+			$u     = isset( $_POST['dh_user'] ) ? wp_unslash( $_POST['dh_user'] ) : '';
+			$p     = isset( $_POST['dh_pass'] ) ? wp_unslash( $_POST['dh_pass'] ) : '';
+			$match = dhm_portfolio_match( $u, $p );
+			if ( false !== $match ) {
 				$exp = time() + 8 * HOUR_IN_SECONDS;
 				setcookie(
 					'dh_portfolio_auth',
@@ -305,12 +315,25 @@ function dhm_site_gate() {
 					)
 				);
 				// Theme the whole site for this credential's audience.
-				if ( '' !== $aud && in_array( $aud, array( 'finance', 'defense', 'healthcare', 'general' ), true ) ) {
+				if ( '' !== $match['audience'] && in_array( $match['audience'], array( 'finance', 'defense', 'healthcare', 'general' ), true ) ) {
 					setcookie(
 						'dh_audience',
-						$aud,
+						$match['audience'],
 						array(
 							'expires'  => time() + WEEK_IN_SECONDS,
+							'path'     => '/',
+							'secure'   => is_ssl(),
+							'samesite' => 'Lax',
+						)
+					);
+				}
+				// Remember the credential's label for a personalized greeting.
+				if ( '' !== $match['label'] ) {
+					setcookie(
+						'dh_label',
+						$match['label'],
+						array(
+							'expires'  => $exp,
 							'path'     => '/',
 							'secure'   => is_ssl(),
 							'samesite' => 'Lax',

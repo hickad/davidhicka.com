@@ -13,6 +13,10 @@ get_header();
 	<section class="dh-hero dh-shell">
 		<div class="dh-hero-grid">
 			<div class="dh-hero-text">
+				<?php $dh_viewer = function_exists( 'dhm_viewer_label' ) ? dhm_viewer_label() : ''; ?>
+				<?php if ( $dh_viewer ) : ?>
+					<p class="dh-welcome">Prepared for <strong><?php echo esc_html( $dh_viewer ); ?></strong></p>
+				<?php endif; ?>
 				<span class="dh-kicker">Senior Software Engineer</span>
 				<h1 class="dh-hero-name"><?php bloginfo( 'name' ); ?></h1>
 				<p class="dh-hero-lead"><?php echo esc_html( digitalresume_audience_content( 'lead' ) ); ?></p>
