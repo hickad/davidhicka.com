@@ -341,7 +341,7 @@ add_action( 'template_redirect', 'dhm_site_gate' );
 
 /* Admin: Settings -> Portfolio Access (manage per-employer credentials). */
 function dhm_portfolio_admin_menu() {
-	add_options_page( 'Portfolio Access', 'Portfolio Access', 'manage_options', 'dhm-portfolio-access', 'dhm_portfolio_admin_page' );
+	add_options_page( 'Site Access', 'Site Access', 'manage_options', 'dhm-portfolio-access', 'dhm_portfolio_admin_page' );
 }
 add_action( 'admin_menu', 'dhm_portfolio_admin_menu' );
 
