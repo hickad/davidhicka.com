@@ -73,6 +73,14 @@
   --accent-band: #f1f8f8;
   --accent-rgb: 27, 138, 143;
 }
+[data-audience="general"] {
+  --accent-500: #5a6b7b;
+  --accent-600: #4c5b69;
+  --accent-700: #3d4955;
+  --accent-100: #eceff2;
+  --accent-band: #f5f6f8;
+  --accent-rgb: 90, 107, 123;
+}
 
 /* ---- 2. BOOTSTRAP BRIDGE ----------------------------------------------- *
  * Remap the theme's Bootstrap variables to the design system so existing
@@ -377,6 +385,11 @@ a:hover { color: var(--accent-500); }
   .dh-hero-media { justify-content: flex-start; }
   .dh-hero-photo { max-width: 160px; border-radius: 16px; }
 }
+
+/* Single-page anchor scrolling (offset so the sticky header doesn't cover) */
+html { scroll-behavior: smooth; }
+#work, #experience, #skills, #contact { scroll-margin-top: 6rem; }
+.dh-contact-form { max-width: 600px; margin-top: 1.5rem; }
 
 /* Value grid (What I bring) */
 .dh-grid {

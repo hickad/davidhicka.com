@@ -54,7 +54,7 @@ add_action( 'wp_enqueue_scripts', 'dhm_dequeue_parent_scripts', 100 );
  * ---------------------------------------------------------------------- */
 if ( ! function_exists( 'digitalresume_audience' ) ) {
 	function digitalresume_audience() {
-		$valid = array( 'finance', 'defense', 'healthcare' );
+		$valid = array( 'finance', 'defense', 'healthcare', 'general' );
 
 		if ( isset( $_GET['for'] ) && in_array( $_GET['for'], $valid, true ) ) {
 			$aud = sanitize_key( $_GET['for'] );
@@ -76,6 +76,7 @@ if ( ! function_exists( 'digitalresume_audience_label' ) ) {
 			'finance'    => 'Financial Software',
 			'defense'    => 'Defense & Government',
 			'healthcare' => 'Healthcare & Compliance',
+			'general'    => 'Software Engineering',
 		);
 		$aud = digitalresume_audience();
 		return isset( $labels[ $aud ] ) ? $labels[ $aud ] : $labels['finance'];
@@ -112,6 +113,11 @@ if ( ! function_exists( 'digitalresume_audience_content' ) ) {
 				'resume'   => '/wp-content/uploads/david-hicka-resume-healthcare.pdf',
 				'featured' => 'A production AI SaaS I built and launched solo — handling PII, secure auth and payments with the care a regulated environment demands.',
 			),
+			'general'    => array(
+				'lead'     => 'I build secure, reliable software and ship AI-powered products end to end — across finance, defense and healthcare.',
+				'resume'   => '/wp-content/uploads/david-hicka-resume.pdf',
+				'featured' => 'A production AI SaaS I built and launched solo — payments, subscriptions and fulfilment via Stripe, with real revenue and 2,000+ customers.',
+			),
 		);
 		$aud  = digitalresume_audience();
 		$data = isset( $content[ $aud ] ) ? $content[ $aud ] : $content['finance'];
@@ -139,7 +145,11 @@ function dhm_portfolio_creds() {
 	return is_array( $creds ) ? $creds : array();
 }
 
-/** True if user/pass matches the master credential or any custom one. */
+/**
+ * Check credentials. On success returns the audience to theme the site with
+ * ('' = no override, master login); on failure returns false. (Note: '' is a
+ * valid success value, so callers must compare with `false !==`.)
+ */
 function dhm_portfolio_authorize( $user, $pass ) {
 	$user = (string) $user;
 	$pass = (string) $pass;
@@ -149,13 +159,13 @@ function dhm_portfolio_authorize( $user, $pass ) {
 	if ( defined( 'PORTFOLIO_AUTH_USER' ) && defined( 'PORTFOLIO_AUTH_PASS' )
 		&& hash_equals( (string) PORTFOLIO_AUTH_USER, $user )
 		&& hash_equals( (string) PORTFOLIO_AUTH_PASS, $pass ) ) {
-		return true;
+		return '';
 	}
 	foreach ( dhm_portfolio_creds() as $c ) {
 		if ( ! empty( $c['user'] ) && isset( $c['pass'] )
 			&& hash_equals( (string) $c['user'], $user )
 			&& hash_equals( (string) $c['pass'], $pass ) ) {
-			return true;
+			return isset( $c['audience'] ) ? (string) $c['audience'] : '';
 		}
 	}
 	return false;
@@ -271,9 +281,10 @@ function dhm_portfolio_serve() {
 		if ( ! wp_verify_nonce( $nonce, 'dh_portfolio_login' ) ) {
 			$error = 'Your session expired. Please try again.';
 		} else {
-			$u = isset( $_POST['dh_user'] ) ? wp_unslash( $_POST['dh_user'] ) : '';
-			$p = isset( $_POST['dh_pass'] ) ? wp_unslash( $_POST['dh_pass'] ) : '';
-			if ( dhm_portfolio_authorize( $u, $p ) ) {
+			$u   = isset( $_POST['dh_user'] ) ? wp_unslash( $_POST['dh_user'] ) : '';
+			$p   = isset( $_POST['dh_pass'] ) ? wp_unslash( $_POST['dh_pass'] ) : '';
+			$aud = dhm_portfolio_authorize( $u, $p );
+			if ( false !== $aud ) {
 				$exp = time() + 8 * HOUR_IN_SECONDS;
 				setcookie(
 					'dh_portfolio_auth',
@@ -286,6 +297,19 @@ function dhm_portfolio_serve() {
 						'samesite' => 'Lax',
 					)
 				);
+				// Theme the whole site for this credential's audience.
+				if ( '' !== $aud && in_array( $aud, array( 'finance', 'defense', 'healthcare', 'general' ), true ) ) {
+					setcookie(
+						'dh_audience',
+						$aud,
+						array(
+							'expires'  => time() + WEEK_IN_SECONDS,
+							'path'     => '/',
+							'secure'   => is_ssl(),
+							'samesite' => 'Lax',
+						)
+					);
+				}
 				dhm_portfolio_output();
 			}
 			$error = 'Incorrect username or password.';
@@ -314,12 +338,17 @@ function dhm_portfolio_admin_page() {
 			$label = sanitize_text_field( wp_unslash( isset( $_POST['label'] ) ? $_POST['label'] : '' ) );
 			$user  = sanitize_text_field( wp_unslash( isset( $_POST['user'] ) ? $_POST['user'] : '' ) );
 			$pass  = (string) wp_unslash( isset( $_POST['pass'] ) ? $_POST['pass'] : '' );
+			$aud   = sanitize_key( wp_unslash( isset( $_POST['audience'] ) ? $_POST['audience'] : 'general' ) );
+			if ( ! in_array( $aud, array( 'finance', 'defense', 'healthcare', 'general' ), true ) ) {
+				$aud = 'general';
+			}
 			if ( '' !== $user && '' !== $pass ) {
 				$creds[] = array(
-					'label'   => $label,
-					'user'    => $user,
-					'pass'    => $pass,
-					'created' => current_time( 'mysql' ),
+					'label'    => $label,
+					'user'     => $user,
+					'pass'     => $pass,
+					'audience' => $aud,
+					'created'  => current_time( 'mysql' ),
 				);
 				update_option( 'dhm_portfolio_creds', $creds );
 				$notice = 'Credential added.';
@@ -353,6 +382,15 @@ function dhm_portfolio_admin_page() {
 				<tr><th scope="row"><label for="dhm_label">Label</label></th><td><input name="label" id="dhm_label" type="text" class="regular-text" placeholder="e.g. Acme Corp - Senior SWE"></td></tr>
 				<tr><th scope="row"><label for="dhm_user">Username</label></th><td><input name="user" id="dhm_user" type="text" class="regular-text" required></td></tr>
 				<tr><th scope="row"><label for="dhm_pass">Password</label></th><td><input name="pass" id="dhm_pass" type="text" class="regular-text" required></td></tr>
+				<tr><th scope="row"><label for="dhm_aud">Site type</label></th><td>
+					<select name="audience" id="dhm_aud">
+						<option value="general">General</option>
+						<option value="finance">Finance</option>
+						<option value="defense">Defense</option>
+						<option value="healthcare">Healthcare</option>
+					</select>
+					<p class="description">Which version of the site this person sees after signing in.</p>
+				</td></tr>
 			</table>
 			<?php submit_button( 'Add credential' ); ?>
 		</form>
@@ -362,13 +400,14 @@ function dhm_portfolio_admin_page() {
 			<p>No custom credentials yet.</p>
 		<?php else : ?>
 			<table class="widefat striped">
-				<thead><tr><th>Label</th><th>Username</th><th>Password</th><th>Added</th><th></th></tr></thead>
+				<thead><tr><th>Label</th><th>Username</th><th>Password</th><th>Site type</th><th>Added</th><th></th></tr></thead>
 				<tbody>
 				<?php foreach ( $creds as $i => $c ) : ?>
 					<tr>
 						<td><?php echo esc_html( isset( $c['label'] ) ? $c['label'] : '' ); ?></td>
 						<td><code><?php echo esc_html( isset( $c['user'] ) ? $c['user'] : '' ); ?></code></td>
 						<td><code><?php echo esc_html( isset( $c['pass'] ) ? $c['pass'] : '' ); ?></code></td>
+						<td><?php echo esc_html( ucfirst( isset( $c['audience'] ) && $c['audience'] ? $c['audience'] : 'general' ) ); ?></td>
 						<td><?php echo esc_html( isset( $c['created'] ) ? $c['created'] : '' ); ?></td>
 						<td>
 							<form method="post" onsubmit="return confirm('Remove this credential?');" style="margin:0;">

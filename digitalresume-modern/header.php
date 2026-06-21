@@ -35,14 +35,9 @@
 	</a>
 
 	<nav class="dh-nav">
-		<?php
-		wp_nav_menu( array(
-			'theme_location' => 'menu-1',
-			'container'      => false,
-			'items_wrap'     => '%3$s',
-			'fallback_cb'    => false,
-			'depth'          => 1,
-		) );
-		?>
+		<a href="/#work">Work</a>
+		<a href="/#experience">Experience</a>
+		<a href="/#skills">Skills</a>
+		<a href="/#contact">Contact</a>
 	</nav>
 </header>
