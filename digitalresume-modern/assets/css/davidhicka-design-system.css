@@ -1,0 +1,503 @@
+/* ============================================================================
+ * David Hicka Design System — WordPress application stylesheet
+ * ----------------------------------------------------------------------------
+ * Drop into the DigitalResume theme and enqueue AFTER the theme's compiled
+ * Bootstrap (dist/style.css). It restyles the whole site to the modern
+ * editorial look and adds audience theming.
+ *
+ * HOW IT WORKS
+ *   1. Tokens — fonts, editorial neutrals, type scale, and 3 audience accents.
+ *   2. Bootstrap bridge — remaps --bs-* variables so existing theme markup
+ *      (buttons, forms, links, headings, the_content) adopts the system with
+ *      no template changes.
+ *   3. Foundation — base type, links, buttons, forms restyled.
+ *   4. Modern layout — .dh-* classes used by the new page templates
+ *      (editorial header, hero, sections, cards, featured, timeline, footer).
+ *
+ * AUDIENCE THEMING
+ *   Set data-audience="finance|defense|healthcare" on <html> (the functions
+ *   snippet does this from ?for=). Finance is the default. Everything that
+ *   reads --accent-* re-skins automatically.
+ * ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* ---- 1. TOKENS ---------------------------------------------------------- */
+:root {
+  /* Fonts */
+  --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display: 'Space Grotesk', 'Roboto', sans-serif;
+  --font-mono: 'Roboto Mono', 'Courier New', monospace;
+
+  /* Editorial neutrals */
+  --ink: #16181d;
+  --ink-2: #4a5057;
+  --ink-3: #969ca4;
+  --line: #e8e8e4;
+  --paper: #ffffff;
+  --error: #d9603c;
+
+  /* Type tracking */
+  --ls-display: -0.035em;
+  --ls-display-sm: -0.02em;
+  --ls-mono: 0.14em;
+
+  /* Layout */
+  --dh-shell-max: 1080px;
+  --dh-shell-pad: 6rem;
+}
+
+/* ---- Audience accents (finance = default) ------------------------------- */
+:root,
+[data-audience="finance"] {
+  --accent-500: #54b689;
+  --accent-600: #4aa87c;
+  --accent-700: #3d8a66;
+  --accent-100: #e6f3ed;
+  --accent-band: #f4faf7;
+  --accent-rgb: 84, 182, 137;
+}
+[data-audience="defense"] {
+  --accent-500: #2c4a6e;
+  --accent-600: #243e5c;
+  --accent-700: #1c3149;
+  --accent-100: #e7ecf3;
+  --accent-band: #f3f5f9;
+  --accent-rgb: 44, 74, 110;
+}
+[data-audience="healthcare"] {
+  --accent-500: #1b8a8f;
+  --accent-600: #157278;
+  --accent-700: #105b61;
+  --accent-100: #e1f0f1;
+  --accent-band: #f1f8f8;
+  --accent-rgb: 27, 138, 143;
+}
+
+/* ---- 2. BOOTSTRAP BRIDGE ----------------------------------------------- *
+ * Remap the theme's Bootstrap variables to the design system so existing
+ * markup (the_content, blog, comments, widgets) inherits the new brand. */
+:root {
+  --bs-primary: var(--accent-500);
+  --bs-primary-rgb: var(--accent-rgb);
+  --bs-link-color: var(--accent-700);
+  --bs-link-color-rgb: var(--accent-rgb);
+  --bs-link-hover-color: var(--accent-500);
+  --bs-link-hover-color-rgb: var(--accent-rgb);
+  --bs-body-font-family: var(--font-sans);
+  --bs-body-color: var(--ink-2);
+  --bs-body-color-rgb: 74, 80, 87;
+  --bs-emphasis-color: var(--ink);
+  --bs-heading-color: var(--ink);
+  --bs-border-color: var(--line);
+  --bs-secondary-color: var(--ink-3);
+  --bs-focus-ring-color: rgba(var(--accent-rgb), 0.25);
+  --bs-link-decoration: none;
+}
+
+/* ---- 3. FOUNDATION ------------------------------------------------------ */
+body {
+  font-family: var(--font-sans);
+  color: var(--ink-2);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: var(--ls-display-sm);
+  line-height: 1.12;
+}
+
+a {
+  color: var(--accent-700);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--accent-500); }
+
+/* Buttons --------------------------------------------------------------- *
+ * Rules paint directly (background/color/border) AND set the matching --bs-*
+ * vars, so they work both standalone and inside the theme's Bootstrap. */
+.btn {
+  --bs-btn-font-family: var(--font-display);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  --bs-btn-bg: var(--accent-500);
+  --bs-btn-border-color: var(--accent-500);
+  --bs-btn-hover-bg: var(--accent-600);
+  --bs-btn-hover-border-color: var(--accent-600);
+  --bs-btn-active-bg: var(--accent-700);
+  --bs-btn-active-border-color: var(--accent-700);
+  --bs-btn-disabled-bg: var(--accent-500);
+  --bs-btn-disabled-border-color: var(--accent-500);
+  background: var(--accent-500);
+  border-color: var(--accent-500);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-600); border-color: var(--accent-600); color: #fff; }
+
+.btn-secondary {
+  --bs-btn-bg: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: #000;
+  --bs-btn-hover-border-color: #000;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.btn-secondary:hover { background: #000; border-color: #000; color: #fff; }
+
+.btn-outline-primary {
+  --bs-btn-color: var(--accent-700);
+  --bs-btn-border-color: var(--accent-500);
+  --bs-btn-hover-bg: var(--accent-500);
+  --bs-btn-hover-border-color: var(--accent-500);
+  --bs-btn-hover-color: #fff;
+  background: transparent;
+  border-color: var(--accent-500);
+  color: var(--accent-700);
+}
+.btn-outline-primary:hover { background: var(--accent-500); border-color: var(--accent-500); color: #fff; }
+
+/* Ghost button (new) */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover { color: var(--accent-700); }
+
+/* Forms ---------------------------------------------------------------- */
+.form-control,
+.form-select {
+  font-family: var(--font-sans);
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--ink);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px var(--accent-100);
+}
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Hide the legacy fixed green sidebar if any old markup remains */
+.site-header.theme-sidebar,
+.main-sidebar,
+#sidebar.theme-sidebar { display: none !important; }
+
+/* ---- 4. MODERN LAYOUT (.dh-*) ------------------------------------------ */
+.dh-shell {
+  max-width: var(--dh-shell-max);
+  margin-inline: auto;
+  padding-inline: var(--dh-shell-pad);
+}
+
+/* Sticky editorial header */
+.dh-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.75rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.dh-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: none;
+}
+.dh-brand-mark {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  background: var(--accent-100);
+  color: var(--accent-700);
+  align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+}
+.dh-brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+.dh-brand-name {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 1rem; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.dh-brand-aud {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-700);
+}
+.dh-nav { display: flex; align-items: center; gap: 1.4rem; }
+.dh-nav a {
+  font-family: var(--font-sans);
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--ink-2);
+  display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.dh-nav a:hover { color: var(--ink); }
+.dh-nav a.active { color: var(--accent-700); }
+
+/* Mono kicker with hairline lead-in */
+.dh-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--accent-700);
+}
+.dh-kicker::before {
+  content: "";
+  width: 18px; height: 1px;
+  background: var(--accent-500);
+}
+
+/* Section scaffold */
+.dh-section { padding-block: 4.5rem; border-top: 1px solid var(--line); }
+.dh-section.band { background: var(--accent-band); }
+.dh-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.dh-section-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem; font-weight: 500;
+  color: var(--accent-500);
+}
+.dh-section-title {
+  font-family: var(--font-display);
+  font-size: 2.25rem; font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: var(--ls-display-sm);
+}
+
+/* Hero */
+.dh-hero { padding-block: 5.5rem 4rem; }
+.dh-hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.98;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.5rem 0 0;
+  letter-spacing: var(--ls-display);
+}
+.dh-hero-lead {
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 36ch;
+  margin: 2rem 0 0;
+  letter-spacing: -0.01em;
+}
+.dh-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2.25rem; }
+
+/* Hero stat strip */
+.dh-stats {
+  display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem;
+  margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.dh-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 600; color: var(--ink);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.dh-stat-num span { color: var(--accent-500); }
+.dh-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; letter-spacing: 0.04em;
+  color: var(--ink-3); margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Value grid (What I bring) */
+.dh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem 3rem;
+}
+.dh-value { padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.dh-value i { font-size: 1.15rem; color: var(--accent-500); }
+.dh-value h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600; color: var(--ink);
+  margin: 0.9rem 0 0.5rem; letter-spacing: -0.01em;
+}
+.dh-value p { font-size: 0.95rem; line-height: 1.6; color: var(--ink-2); margin: 0; }
+
+/* Project cards */
+.dh-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.dh-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.dh-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.08); }
+.dh-card-img { height: 180px; overflow: hidden; background: var(--accent-band); position: relative; }
+.dh-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dh-card-badge {
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; background: var(--accent-500);
+  padding: 0.25rem 0.55rem; border-radius: 50rem;
+}
+.dh-card-body { padding: 1.25rem 1.4rem 1.5rem; }
+.dh-card-title {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+  color: var(--ink); margin: 0; letter-spacing: -0.01em;
+}
+.dh-card-kind { font-size: 0.78rem; color: var(--accent-700); font-weight: 500; margin: 0.3rem 0 0.75rem; }
+.dh-card-body p { font-size: 0.9rem; line-height: 1.55; color: var(--ink-2); margin: 0 0 1rem; }
+.dh-card-stack { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; }
+.dh-card-stack span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-3); }
+
+/* Featured (dark) */
+.dh-featured { background: var(--ink); color: #fff; padding-block: 5rem; }
+.dh-featured .dh-kicker { color: rgba(255,255,255,0.75); }
+.dh-featured .dh-kicker::before { background: rgba(255,255,255,0.5); }
+.dh-featured-title {
+  font-family: var(--font-display); font-size: 2.75rem; font-weight: 600;
+  margin: 1.5rem 0 0; letter-spacing: -0.03em; white-space: nowrap;
+}
+.dh-featured-lead {
+  font-size: 1.3rem; line-height: 1.55; color: rgba(255,255,255,0.85);
+  max-width: 60ch; margin: 1.25rem 0 0; text-wrap: pretty;
+}
+.dh-gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem; margin: 2.5rem 0 2rem;
+}
+.dh-gallery figure { margin: 0; }
+.dh-gallery .frame {
+  aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+}
+.dh-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dh-gallery figcaption {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  color: rgba(255,255,255,0.5); margin-top: 0.5rem; letter-spacing: 0.03em;
+}
+.dh-featured-stack { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.dh-featured-stack span { font-family: var(--font-mono); font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+/* Experience timeline */
+.dh-timeline { max-width: 860px; }
+.dh-tl-item { padding-bottom: 2rem; border-left: 2px solid var(--line); padding-left: 1.75rem; position: relative; }
+.dh-tl-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.dh-tl-item::before {
+  content: ""; position: absolute; left: -7px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent-500); border: 3px solid var(--paper);
+}
+.dh-tl-item.muted::before { background: var(--ink-3); }
+.dh-tl-role { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); margin: 0; }
+.dh-tl-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-3); margin: 0.3rem 0 0.75rem; letter-spacing: 0.02em; }
+.dh-tl-item ul { margin: 0; padding-left: 1.1rem; }
+.dh-tl-item li { font-size: 0.92rem; line-height: 1.55; color: var(--ink-2); margin-bottom: 0.4rem; }
+.dh-tl-badge {
+  display: inline-block; margin-bottom: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-700); background: var(--accent-100);
+  padding: 0.2rem 0.5rem; border-radius: 50rem;
+}
+
+/* Skills */
+.dh-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.dh-skill {
+  font-family: var(--font-mono); font-size: 0.78rem;
+  color: var(--ink-2); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 50rem;
+  padding: 0.35rem 0.8rem;
+}
+
+/* Footer */
+.dh-footer {
+  padding: 2.5rem var(--dh-shell-pad);
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--ink-3); border-top: 1px solid var(--line);
+  letter-spacing: 0.03em; text-transform: uppercase;
+}
+
+/* Résumé sheet (page-resume) */
+.dh-resume {
+  max-width: 880px; margin-inline: auto;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 14px; padding: 3.5rem;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.05);
+}
+
+/* Preview-only audience switcher (REMOVE for production) */
+.dh-aud-switch {
+  position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+  z-index: 50; display: flex; gap: 0.25rem;
+  background: var(--ink); padding: 0.35rem; border-radius: 50rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.dh-aud-switch button {
+  border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.7);
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 50rem;
+}
+.dh-aud-switch button.active { background: var(--accent-500); color: #fff; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  :root { --dh-shell-pad: 1.5rem; }
+  .dh-nav { gap: 0.9rem; }
+  .dh-nav a span.label { display: none; }
+  .dh-featured-title { white-space: normal; }
+}

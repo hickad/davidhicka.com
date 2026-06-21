@@ -1,0 +1,8 @@
+/* Intentionally minimal.
+ *
+ * The parent DigitalResume theme computes filemtime() on
+ * get_stylesheet_directory() . '/dist/style.css'. With a child theme active
+ * that path resolves to THIS folder, so this placeholder exists only to keep
+ * that call from emitting a warning when WP_DEBUG is on. Real styles live in
+ * assets/css/davidhicka-design-system.css.
+ */

@@ -1,0 +1,15 @@
+/*
+Theme Name: DigitalResume Modern
+Theme URI: https://davidhicka.com
+Description: Modern editorial child theme for DigitalResume. Applies the David Hicka Design System (Space Grotesk + Roboto, editorial neutrals) and adds audience theming — finance / defense / healthcare — switchable with a ?for= link. Replaces the green sidebar with a sticky editorial header and section-based pages.
+Author: David Hicka
+Template: digitalresume
+Version: 1.0.0
+Requires at least: 6.0
+*/
+
+/*
+ * Actual styles live in assets/css/davidhicka-design-system.css, enqueued from
+ * functions.php after the parent theme's Bootstrap. This file only carries the
+ * child-theme header above (required by WordPress).
+ */
