@@ -38,6 +38,16 @@ function dhm_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'dhm_enqueue_styles', 20 );
 
+/* The parent theme's bundle.js forces a default "dark-mode" body class (which
+ * overrides the light design system) and errors on the dark-mode toggle that
+ * this header no longer has. The modern child theme is light-only, so drop it
+ * and the isotope helper none of the child templates use. */
+function dhm_dequeue_parent_scripts() {
+	wp_dequeue_script( 'digitalresume-js' );
+	wp_dequeue_script( 'isotope-custom' );
+}
+add_action( 'wp_enqueue_scripts', 'dhm_dequeue_parent_scripts', 100 );
+
 /* -------------------------------------------------------------------------
  * 2. Audience resolution.
  * Precedence: ?for= URL param (persisted to a cookie) → cookie → 'finance'.
@@ -151,40 +161,23 @@ function dhm_portfolio_authorize( $user, $pass ) {
 	return false;
 }
 
-/** Read submitted Basic Auth credentials (with a PHP-FPM header fallback). */
-function dhm_portfolio_submitted() {
-	$u = isset( $_SERVER['PHP_AUTH_USER'] ) ? $_SERVER['PHP_AUTH_USER'] : '';
-	$p = isset( $_SERVER['PHP_AUTH_PW'] ) ? $_SERVER['PHP_AUTH_PW'] : '';
-	if ( '' === $u ) {
-		$h = '';
-		if ( ! empty( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
-			$h = $_SERVER['HTTP_AUTHORIZATION'];
-		} elseif ( ! empty( $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ) ) {
-			$h = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-		}
-		if ( 0 === stripos( $h, 'basic ' ) ) {
-			$decoded = base64_decode( substr( $h, 6 ), true );
-			if ( false !== $decoded && false !== strpos( $decoded, ':' ) ) {
-				list( $u, $p ) = explode( ':', $decoded, 2 );
-			}
-		}
+/** Signed session token so the access cookie cannot be forged. */
+function dhm_portfolio_make_token( $exp ) {
+	return $exp . '.' . hash_hmac( 'sha256', 'dh-portfolio|' . $exp, wp_salt( 'auth' ) );
+}
+function dhm_portfolio_token_valid( $token ) {
+	if ( ! is_string( $token ) || false === strpos( $token, '.' ) ) {
+		return false;
 	}
-	return array( $u, $p );
+	list( $exp, $sig ) = explode( '.', $token, 2 );
+	if ( ! ctype_digit( $exp ) || (int) $exp < time() ) {
+		return false;
+	}
+	return hash_equals( hash_hmac( 'sha256', 'dh-portfolio|' . $exp, wp_salt( 'auth' ) ), $sig );
 }
 
-/** Serve the gated portfolio at the portfolio archive URL (/portfolio/). */
-function dhm_portfolio_serve() {
-	if ( ! is_post_type_archive( 'portfolio' ) ) {
-		return;
-	}
-	list( $u, $p ) = dhm_portfolio_submitted();
-	if ( ! dhm_portfolio_authorize( $u, $p ) ) {
-		nocache_headers();
-		header( 'WWW-Authenticate: Basic realm="David Hicka - Portfolio"' );
-		status_header( 401 );
-		echo 'Authorization required.';
-		exit;
-	}
+/** Output the standalone portfolio document and stop. */
+function dhm_portfolio_output() {
 	if ( ! is_readable( PORTFOLIO_FILE ) ) {
 		status_header( 500 );
 		echo 'Portfolio document is unavailable.';
@@ -196,6 +189,110 @@ function dhm_portfolio_serve() {
 	header( 'X-Robots-Tag: noindex, nofollow', true );
 	readfile( PORTFOLIO_FILE );
 	exit;
+}
+
+/** Render the light, branded login form and stop. */
+function dhm_portfolio_login_form( $error = '' ) {
+	nocache_headers();
+	status_header( 200 );
+	header( 'Content-Type: text/html; charset=utf-8' );
+	header( 'X-Robots-Tag: noindex, nofollow', true );
+	$action = esc_url( get_post_type_archive_link( 'portfolio' ) );
+	$nonce  = wp_create_nonce( 'dh_portfolio_login' );
+	?>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Portfolio Access — David Hicka</title>
+<style>
+  :root { --accent:#54b689; --accent-600:#4aa87c; --bg:#f6f7f5; --card:#ffffff; --ink:#16181d; --muted:#6b7178; --line:#e4e6e3; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--bg); color:var(--ink); padding:24px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .card { width:100%; max-width:380px; background:var(--card); border:1px solid var(--line);
+    border-radius:16px; padding:32px; box-shadow:0 12px 44px rgba(22,24,29,.08); }
+  .brand { display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+  .brand .mark { width:32px; height:32px; border-radius:8px; background:var(--accent); color:#fff;
+    font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; }
+  .brand strong { font-size:.95rem; }
+  h1 { font-size:1.15rem; margin:0 0 4px; }
+  p.sub { margin:0 0 22px; color:var(--muted); font-size:.9rem; }
+  label { display:block; font-size:.8rem; color:var(--muted); margin:0 0 6px; }
+  input[type=text], input[type=password] { width:100%; padding:11px 13px; margin-bottom:16px;
+    background:#fff; border:1px solid var(--line); border-radius:9px; color:var(--ink); font-size:.95rem; }
+  input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(84,182,137,.18); }
+  button { width:100%; padding:12px; background:var(--accent); color:#fff; border:0; border-radius:9px;
+    font-size:.95rem; font-weight:600; cursor:pointer; }
+  button:hover { background:var(--accent-600); }
+  .error { background:#fdecec; border:1px solid #f5c2c2; color:#a23b3b;
+    padding:10px 12px; border-radius:9px; font-size:.85rem; margin-bottom:18px; }
+</style>
+</head>
+<body>
+<form class="card" method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
+  <div class="brand"><span class="mark">DH</span><strong>David Hicka</strong></div>
+  <h1>Portfolio Access</h1>
+  <p class="sub">Enter your credentials to view the portfolio.</p>
+  <?php if ( $error ) : ?><div class="error"><?php echo esc_html( $error ); ?></div><?php endif; ?>
+  <label for="dh_user">Username</label>
+  <input id="dh_user" name="dh_user" type="text" autocomplete="username" autofocus required>
+  <label for="dh_pass">Password</label>
+  <input id="dh_pass" name="dh_pass" type="password" autocomplete="current-password" required>
+  <input type="hidden" name="dh_portfolio_login" value="1">
+  <input type="hidden" name="dh_pf_nonce" value="<?php echo esc_attr( $nonce ); ?>">
+  <button type="submit">Sign in</button>
+</form>
+</body>
+</html>
+	<?php
+	exit;
+}
+
+/** Gate the portfolio archive (/portfolio/) behind the login form + cookie. */
+function dhm_portfolio_serve() {
+	if ( ! is_post_type_archive( 'portfolio' ) ) {
+		return;
+	}
+
+	// Already signed in via a valid cookie?
+	if ( isset( $_COOKIE['dh_portfolio_auth'] ) && dhm_portfolio_token_valid( wp_unslash( $_COOKIE['dh_portfolio_auth'] ) ) ) {
+		dhm_portfolio_output();
+	}
+
+	$error = '';
+
+	// Handle a login submission.
+	if ( isset( $_POST['dh_portfolio_login'] ) ) {
+		$nonce = isset( $_POST['dh_pf_nonce'] ) ? wp_unslash( $_POST['dh_pf_nonce'] ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'dh_portfolio_login' ) ) {
+			$error = 'Your session expired. Please try again.';
+		} else {
+			$u = isset( $_POST['dh_user'] ) ? wp_unslash( $_POST['dh_user'] ) : '';
+			$p = isset( $_POST['dh_pass'] ) ? wp_unslash( $_POST['dh_pass'] ) : '';
+			if ( dhm_portfolio_authorize( $u, $p ) ) {
+				$exp = time() + 8 * HOUR_IN_SECONDS;
+				setcookie(
+					'dh_portfolio_auth',
+					dhm_portfolio_make_token( $exp ),
+					array(
+						'expires'  => $exp,
+						'path'     => '/portfolio',
+						'secure'   => is_ssl(),
+						'httponly' => true,
+						'samesite' => 'Lax',
+					)
+				);
+				dhm_portfolio_output();
+			}
+			$error = 'Incorrect username or password.';
+		}
+	}
+
+	dhm_portfolio_login_form( $error );
 }
 add_action( 'template_redirect', 'dhm_portfolio_serve' );
 
