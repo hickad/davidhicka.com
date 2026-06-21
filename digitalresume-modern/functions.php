@@ -207,8 +207,7 @@ function dhm_portfolio_login_form( $error = '' ) {
 	status_header( 200 );
 	header( 'Content-Type: text/html; charset=utf-8' );
 	header( 'X-Robots-Tag: noindex, nofollow', true );
-	$action = esc_url( get_post_type_archive_link( 'portfolio' ) );
-	$nonce  = wp_create_nonce( 'dh_portfolio_login' );
+	$nonce = wp_create_nonce( 'dh_portfolio_login' );
 	?>
 <!doctype html>
 <html lang="en">
@@ -243,7 +242,7 @@ function dhm_portfolio_login_form( $error = '' ) {
 </style>
 </head>
 <body>
-<form class="card" method="post" action="<?php echo $action; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
+<form class="card" method="post" action="">
   <div class="brand"><span class="mark">DH</span><strong>David Hicka</strong></div>
   <h1>Portfolio Access</h1>
   <p class="sub">Enter your credentials to view the portfolio.</p>
@@ -262,21 +261,29 @@ function dhm_portfolio_login_form( $error = '' ) {
 	exit;
 }
 
-/** Gate the portfolio archive (/portfolio/) behind the login form + cookie. */
-function dhm_portfolio_serve() {
-	if ( ! is_post_type_archive( 'portfolio' ) ) {
+/** Gate the entire front-end behind the credential login + cookie. */
+function dhm_site_gate() {
+	// Never gate the admin, AJAX, the REST API (CF7 submits via REST), or cron.
+	if ( is_admin() || wp_doing_ajax()
+		|| ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+		|| ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 		return;
 	}
 
-	// Already signed in via a valid cookie?
-	if ( isset( $_COOKIE['dh_portfolio_auth'] ) && dhm_portfolio_token_valid( wp_unslash( $_COOKIE['dh_portfolio_auth'] ) ) ) {
-		dhm_portfolio_output();
+	// The site owner (any logged-in WP user) bypasses the gate; the portfolio
+	// archive still serves its standalone document.
+	if ( is_user_logged_in() ) {
+		if ( is_post_type_archive( 'portfolio' ) ) {
+			dhm_portfolio_output();
+		}
+		return;
 	}
 
-	$error = '';
+	$authed = isset( $_COOKIE['dh_portfolio_auth'] ) && dhm_portfolio_token_valid( wp_unslash( $_COOKIE['dh_portfolio_auth'] ) );
+	$error  = '';
 
-	// Handle a login submission.
-	if ( isset( $_POST['dh_portfolio_login'] ) ) {
+	// Handle a login submission (the form posts back to the current URL).
+	if ( ! $authed && isset( $_POST['dh_portfolio_login'] ) ) {
 		$nonce = isset( $_POST['dh_pf_nonce'] ) ? wp_unslash( $_POST['dh_pf_nonce'] ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'dh_portfolio_login' ) ) {
 			$error = 'Your session expired. Please try again.';
@@ -291,7 +298,7 @@ function dhm_portfolio_serve() {
 					dhm_portfolio_make_token( $exp ),
 					array(
 						'expires'  => $exp,
-						'path'     => '/portfolio',
+						'path'     => '/',
 						'secure'   => is_ssl(),
 						'httponly' => true,
 						'samesite' => 'Lax',
@@ -310,15 +317,27 @@ function dhm_portfolio_serve() {
 						)
 					);
 				}
-				dhm_portfolio_output();
+				// Post/Redirect/Get back to the requested page.
+				$path = isset( $_SERVER['REQUEST_URI'] ) ? wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : '/';
+				wp_safe_redirect( '/' . ltrim( (string) $path, '/' ) );
+				exit;
 			}
 			$error = 'Incorrect username or password.';
 		}
 	}
 
-	dhm_portfolio_login_form( $error );
+	// Not signed in: show the login form in place of the requested page.
+	if ( ! $authed ) {
+		dhm_portfolio_login_form( $error );
+	}
+
+	// Signed in: the portfolio archive serves the standalone document; every
+	// other page renders normally.
+	if ( is_post_type_archive( 'portfolio' ) ) {
+		dhm_portfolio_output();
+	}
 }
-add_action( 'template_redirect', 'dhm_portfolio_serve' );
+add_action( 'template_redirect', 'dhm_site_gate' );
 
 /* Admin: Settings -> Portfolio Access (manage per-employer credentials). */
 function dhm_portfolio_admin_menu() {
@@ -365,11 +384,11 @@ function dhm_portfolio_admin_page() {
 		}
 	}
 	$creds = dhm_portfolio_creds();
-	$url   = home_url( '/portfolio/' );
+	$url   = home_url( '/' );
 	?>
 	<div class="wrap">
-		<h1>Portfolio Access</h1>
-		<p>Credentials below grant access to <a href="<?php echo esc_url( $url ); ?>" target="_blank"><?php echo esc_html( $url ); ?></a>. Add one per employer/submission and share that login. A master login is also defined in <code>wp-config.php</code>.</p>
+		<h1>Site Access</h1>
+		<p>Credentials below are required to view the <a href="<?php echo esc_url( $url ); ?>" target="_blank">whole site</a> (Work, Experience, Skills, Contact and the portfolio). Add one per employer/submission, choose the site version they see, and share that login. A master login is also defined in <code>wp-config.php</code>, and you (logged into WordPress) always bypass the gate.</p>
 		<?php if ( $notice ) : ?>
 			<div class="notice notice-success is-dismissible"><p><?php echo esc_html( $notice ); ?></p></div>
 		<?php endif; ?>
