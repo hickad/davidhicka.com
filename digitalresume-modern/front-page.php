@@ -11,33 +11,52 @@ get_header();
 <main>
 	<!-- HERO -->
 	<section class="dh-hero dh-shell">
-		<span class="dh-kicker">Senior Software Engineer</span>
-		<h1 class="dh-hero-name"><?php bloginfo( 'name' ); ?></h1>
-		<p class="dh-hero-lead"><?php echo esc_html( digitalresume_audience_content( 'lead' ) ); ?></p>
+		<div class="dh-hero-grid">
+			<div class="dh-hero-text">
+				<span class="dh-kicker">Senior Software Engineer</span>
+				<h1 class="dh-hero-name"><?php bloginfo( 'name' ); ?></h1>
+				<p class="dh-hero-lead"><?php echo esc_html( digitalresume_audience_content( 'lead' ) ); ?></p>
 
-		<div class="dh-actions">
-			<a class="btn btn-primary" href="<?php echo esc_url( digitalresume_audience_content( 'resume' ) ); ?>">
-				<i class="fas fa-arrow-down me-2"></i>Download Résumé
-			</a>
-			<a class="btn btn-ghost" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">
-				Get in touch <i class="fas fa-arrow-right ms-2"></i>
-			</a>
-		</div>
+				<div class="dh-actions">
+					<a class="btn btn-primary" href="<?php echo esc_url( digitalresume_audience_content( 'resume' ) ); ?>">
+						<i class="fas fa-arrow-down me-2"></i>Download Résumé
+					</a>
+					<a class="btn btn-ghost" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">
+						Get in touch <i class="fas fa-arrow-right ms-2"></i>
+					</a>
+				</div>
 
-		<div class="dh-stats">
-			<div>
-				<div class="dh-stat-num">20<span>+</span></div>
-				<div class="dh-stat-label">Years shipping software</div>
+				<div class="dh-stats">
+					<div>
+						<div class="dh-stat-num">20<span>+</span></div>
+						<div class="dh-stat-label">Years shipping software</div>
+					</div>
+					<div>
+						<div class="dh-stat-num">2,000<span>+</span></div>
+						<div class="dh-stat-label">Customers on a product I built solo</div>
+					</div>
+					<div>
+						<div class="dh-stat-num">SOC&nbsp;2<span>·</span>PCI</div>
+						<div class="dh-stat-label">Audited environments</div>
+					</div>
+				</div>
+			</div><!-- /.dh-hero-text -->
+
+			<div class="dh-hero-media">
+				<?php
+				$hero_photo = wp_get_attachment_image(
+					119,
+					'full',
+					false,
+					array(
+						'class' => 'dh-hero-photo',
+						'alt'   => get_bloginfo( 'name' ),
+					)
+				);
+				echo $hero_photo ? $hero_photo : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?>
 			</div>
-			<div>
-				<div class="dh-stat-num">2,000<span>+</span></div>
-				<div class="dh-stat-label">Customers on a product I built solo</div>
-			</div>
-			<div>
-				<div class="dh-stat-num">SOC&nbsp;2<span>·</span>PCI</div>
-				<div class="dh-stat-label">Audited environments</div>
-			</div>
-		</div>
+		</div><!-- /.dh-hero-grid -->
 	</section>
 
 	<!-- WHAT I BRING -->
