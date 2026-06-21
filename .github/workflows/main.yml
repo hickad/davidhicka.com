@@ -12,7 +12,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Copy files to Lightsail
+    # The theme dirs are owned by daemon:daemon and the deploy user can't write
+    # to them directly (and scp can't sudo), so stage in a writable dir first.
+    - name: Stage files on Lightsail
       uses: appleboy/scp-action@v0.1.6
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
@@ -20,31 +22,31 @@ jobs:
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
         port: 22
         source: "."
-        target: "/opt/bitnami/wordpress/wp-content/themes/digitalresume"
+        target: "/tmp/deploy-staging"
+        rm: true
 
-    - name: Promote child theme + fix permissions
+    # rsync is not installed on the Bitnami host, so use tar/cp under sudo.
+    - name: Deploy parent + promote child theme + fix permissions
       uses: appleboy/ssh-action@v1.0.1
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USERNAME }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
         script: |
-          sudo rsync -av --delete \
-            /opt/bitnami/wordpress/wp-content/themes/digitalresume/digitalresume-modern/ \
-            /opt/bitnami/wordpress/wp-content/themes/digitalresume-modern/
-          sudo chown -R daemon:daemon \
-            /opt/bitnami/wordpress/wp-content/themes/digitalresume-modern/
-          sudo find /opt/bitnami/wordpress/wp-content/themes/digitalresume-modern/ \
-            -type f -exec chmod 644 {} \;
-          sudo find /opt/bitnami/wordpress/wp-content/themes/digitalresume-modern/ \
-            -type d -exec chmod 755 {} \;
-
-    - name: SSH commands
-      uses: appleboy/ssh-action@v1.0.1
-      with:
-        host: ${{ secrets.LIGHTSAIL_HOST }}
-        username: ${{ secrets.LIGHTSAIL_USERNAME }}
-        key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-        script: |
-          cd /opt/bitnami/wordpress
-          # any additional commands like changing permissions
+          set -e
+          SRC=/tmp/deploy-staging
+          THEMES=/opt/bitnami/wordpress/wp-content/themes
+          # Deploy parent theme files (overlay), excluding repo meta + the child subfolder.
+          cd "$SRC"
+          sudo tar cf - --exclude=.git --exclude=.github --exclude=node_modules --exclude=digitalresume-modern . \
+            | sudo tar xf - -C "$THEMES/digitalresume"
+          # Promote child theme into its own theme dir (build aside, then swap to minimize downtime).
+          sudo rm -rf "$THEMES/digitalresume-modern.new"
+          sudo cp -R "$SRC/digitalresume-modern" "$THEMES/digitalresume-modern.new"
+          sudo rm -rf "$THEMES/digitalresume-modern"
+          sudo mv "$THEMES/digitalresume-modern.new" "$THEMES/digitalresume-modern"
+          # Fix ownership + permissions on both themes.
+          sudo chown -R daemon:daemon "$THEMES/digitalresume" "$THEMES/digitalresume-modern"
+          sudo find "$THEMES/digitalresume-modern" -type f -exec chmod 644 {} \;
+          sudo find "$THEMES/digitalresume-modern" -type d -exec chmod 755 {} \;
+          rm -rf "$SRC"
