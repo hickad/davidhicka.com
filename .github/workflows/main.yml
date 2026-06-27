@@ -43,8 +43,16 @@ jobs:
           # Promote child theme into its own theme dir (build aside, then swap to minimize downtime).
           sudo rm -rf "$THEMES/digitalresume-modern.new"
           sudo cp -R "$SRC/digitalresume-modern" "$THEMES/digitalresume-modern.new"
+          # Carry over previously-installed Composer deps so the install below is fast/offline.
+          if [ -d "$THEMES/digitalresume-modern/vendor" ]; then
+            sudo cp -R "$THEMES/digitalresume-modern/vendor" "$THEMES/digitalresume-modern.new/vendor"
+          fi
           sudo rm -rf "$THEMES/digitalresume-modern"
           sudo mv "$THEMES/digitalresume-modern.new" "$THEMES/digitalresume-modern"
+          # Install/refresh résumé PDF + Word dependencies (mPDF, PHPWord). vendor/ is
+          # gitignored and lives only on the server; composer.lock pins the versions.
+          cd "$THEMES/digitalresume-modern"
+          sudo COMPOSER_ALLOW_SUPERUSER=1 /opt/bitnami/php/bin/composer install --no-dev --optimize-autoloader --no-interaction
           # Fix ownership + permissions on both themes.
           sudo chown -R daemon:daemon "$THEMES/digitalresume" "$THEMES/digitalresume-modern"
           sudo find "$THEMES/digitalresume-modern" -type f -exec chmod 644 {} \;

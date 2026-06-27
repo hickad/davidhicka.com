@@ -12,6 +12,29 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* -------------------------------------------------------------------------
+ * 0. Résumé subsystem — single source of truth (Dashboard → Résumé) that
+ * drives the website sections plus the generated PDF/Word downloads.
+ * ---------------------------------------------------------------------- */
+require get_stylesheet_directory() . '/inc/resume-data.php';
+require get_stylesheet_directory() . '/inc/resume-render.php';
+require get_stylesheet_directory() . '/inc/resume-export.php';
+if ( is_admin() ) {
+	require get_stylesheet_directory() . '/inc/resume-admin.php';
+}
+
+/** Push curated seed updates (e.g. the ATS content pass) to the live option. */
+add_action( 'init', 'dhm_resume_maybe_reseed', 1 );
+
+/** Flush rewrites once so /resume/{audience}.{pdf,docx} resolves after deploy. */
+function dhm_resume_flush_rewrites() {
+	if ( function_exists( 'dhm_resume_rewrite_rules' ) ) {
+		dhm_resume_rewrite_rules();
+	}
+	flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'dhm_resume_flush_rewrites' );
+
+/* -------------------------------------------------------------------------
  * 1. Styles — parent Bootstrap first, then the design system.
  *
  * When a child theme is active the PARENT's own enqueue points
@@ -99,24 +122,28 @@ if ( ! function_exists( 'digitalresume_audience_content' ) ) {
 	function digitalresume_audience_content( $key = null ) {
 		$content = array(
 			'finance' => array(
-				'lead'     => 'I build secure, compliance-driven financial software and ship AI-powered products end to end.',
-				'resume'   => '/wp-content/uploads/david-hicka-resume-finance.pdf',
-				'featured' => 'A production AI SaaS I built and launched solo — payments, subscriptions and fulfilment wired through Stripe, with real revenue and 2,000+ customers.',
+				'lead'       => 'I build secure, compliance-driven financial software and ship AI-powered products end to end.',
+				'resume'     => '/wp-content/uploads/2026/06/david_hicka_resume_finance.pdf',
+				'resume_doc' => '/wp-content/uploads/2026/06/david_hicka_resume_finance.docx',
+				'featured'   => 'A production AI SaaS I built and launched solo — payments, subscriptions and fulfilment wired through Stripe, with real revenue and 2,000+ customers.',
 			),
 			'defense' => array(
-				'lead'     => 'I build mission-critical software with the discipline of a decade in defense training systems — and ship AI products end to end.',
-				'resume'   => '/wp-content/uploads/david-hicka-resume-defense.pdf',
-				'featured' => 'A production AI SaaS I built and launched solo — proof I can take a complex system from concept to deployed, reliable product on my own.',
+				'lead'       => 'I build mission-critical software with the discipline of a decade in defense training systems — and ship AI products end to end.',
+				'resume'     => '/wp-content/uploads/2026/06/david_hicka_resume_defense.pdf',
+				'resume_doc' => '/wp-content/uploads/2026/06/david_hicka_resume_defense.docx',
+				'featured'   => 'A production AI SaaS I built and launched solo — proof I can take a complex system from concept to deployed, reliable product on my own.',
 			),
 			'healthcare' => array(
-				'lead'     => 'I build accessible, compliance-minded healthcare software and ship AI-powered products end to end.',
-				'resume'   => '/wp-content/uploads/david-hicka-resume-healthcare.pdf',
-				'featured' => 'A production AI SaaS I built and launched solo — handling PII, secure auth and payments with the care a regulated environment demands.',
+				'lead'       => 'I build accessible, compliance-minded healthcare software and ship AI-powered products end to end.',
+				'resume'     => '/wp-content/uploads/2026/06/david_hicka_resume_healthcare.pdf',
+				'resume_doc' => '/wp-content/uploads/2026/06/david_hicka_resume_healthcare.docx',
+				'featured'   => 'A production AI SaaS I built and launched solo — handling PII, secure auth and payments with the care a regulated environment demands.',
 			),
 			'general'    => array(
-				'lead'     => 'I build secure, reliable software and ship AI-powered products end to end — across finance, defense and healthcare.',
-				'resume'   => '/wp-content/uploads/david-hicka-resume.pdf',
-				'featured' => 'A production AI SaaS I built and launched solo — payments, subscriptions and fulfilment via Stripe, with real revenue and 2,000+ customers.',
+				'lead'       => 'I build secure, reliable software and ship AI-powered products end to end — across finance, defense and healthcare.',
+				'resume'     => '',
+				'resume_doc' => '',
+				'featured'   => 'A production AI SaaS I built and launched solo — payments, subscriptions and fulfilment via Stripe, with real revenue and 2,000+ customers.',
 			),
 		);
 		$aud  = digitalresume_audience();

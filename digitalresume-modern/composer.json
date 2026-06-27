@@ -1,0 +1,14 @@
+{
+	"name": "davidhicka/digitalresume-modern",
+	"description": "Résumé PDF/Word generation dependencies for the DigitalResume Modern child theme.",
+	"type": "wordpress-theme",
+	"require": {
+		"php": ">=8.0",
+		"mpdf/mpdf": "^8.2",
+		"phpoffice/phpword": "^1.3"
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"platform-check": false
+	}
+}

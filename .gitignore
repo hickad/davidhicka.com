@@ -1,2 +1,5 @@
 node_modules/
 .playwright-mcp/
+
+# Résumé PDF/Word dependencies — rebuilt on the server during deploy.
+digitalresume-modern/vendor/

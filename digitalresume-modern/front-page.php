@@ -6,6 +6,12 @@
  * @package DigitalResume
  */
 get_header();
+
+// Résumé content (single source of truth, edited under Dashboard → Résumé).
+// Drives the hero download buttons plus the Experience and Skills sections.
+$dh_aud        = function_exists( 'digitalresume_audience' ) ? digitalresume_audience() : 'finance';
+$dh_resume     = function_exists( 'dhm_resume_get' ) ? dhm_resume_get( $dh_aud ) : null;
+$dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dhm_resume_has_content( $dh_resume );
 ?>
 
 <main>
@@ -22,9 +28,14 @@ get_header();
 				<p class="dh-hero-lead"><?php echo esc_html( digitalresume_audience_content( 'lead' ) ); ?></p>
 
 				<div class="dh-actions">
-					<a class="btn btn-primary" href="<?php echo esc_url( digitalresume_audience_content( 'resume' ) ); ?>">
-						<i class="fas fa-arrow-down me-2"></i>Download Résumé
-					</a>
+					<?php if ( $dh_has_resume ) : ?>
+						<a class="btn btn-primary" href="<?php echo esc_url( home_url( '/resume/' . $dh_aud . '.pdf' ) ); ?>">
+							<i class="fas fa-file-pdf me-2"></i>Download PDF
+						</a>
+						<a class="btn btn-ghost" href="<?php echo esc_url( home_url( '/resume/' . $dh_aud . '.docx' ) ); ?>">
+							<i class="fas fa-file-word me-2"></i>Download Word
+						</a>
+					<?php endif; ?>
 					<a class="btn btn-ghost" href="#contact">
 						Get in touch <i class="fas fa-arrow-right ms-2"></i>
 					</a>
@@ -124,38 +135,10 @@ get_header();
 			<span class="dh-section-num">02</span>
 			<h2 class="dh-section-title">Experience</h2>
 		</div>
-		<div class="dh-timeline">
-			<div class="dh-tl-item">
-				<span class="dh-tl-badge">Most relevant</span>
-				<h3 class="dh-tl-role">Lead Software Engineer — Advanced Business Computers of America</h3>
-				<p class="dh-tl-meta">Oct 2019 – Present · Jacksonville, FL</p>
-				<ul>
-					<li>Lead engineer on "Deal Pack Web," a SOC 2 Type II &amp; PCI DSS financial management and loan-servicing platform for automotive dealerships and subprime finance companies.</li>
-					<li>Built dashboard analytics (JavaScript + Highcharts) on a robust C# Web API; authored 100+ custom T-SQL / SSRS reports.</li>
-				</ul>
-			</div>
-			<div class="dh-tl-item">
-				<h3 class="dh-tl-role">Frontend Developer &amp; Designer — ABCoA</h3>
-				<p class="dh-tl-meta">Dec 2017 – Nov 2019 · Jacksonville, FL</p>
-				<ul>
-					<li>Designed and built interfaces for Deal Pack Web, Dealer Sales Tools and cyclCRM; crafted WordPress themes in PHP.</li>
-				</ul>
-			</div>
-			<div class="dh-tl-item muted">
-				<h3 class="dh-tl-role">UI Developer — Florida Blue (contract) · OSI</h3>
-				<p class="dh-tl-meta">2015 – 2017 · Jacksonville, FL</p>
-				<ul>
-					<li>WCAG 2.0 AA accessibility upgrades and a HealthCare.gov enrollment integration; real-time analytics UIs in React + Material-UI.</li>
-				</ul>
-			</div>
-			<div class="dh-tl-item muted">
-				<h3 class="dh-tl-role">Multimedia / Software Engineer — L3 Technologies</h3>
-				<p class="dh-tl-meta">2004 – 2014</p>
-				<ul>
-					<li>Level-3 interactive training courseware and XML-driven cockpit-instrument simulators for AFSOC, USMC and USN aircrew programs.</li>
-				</ul>
-			</div>
-		</div>
+		<?php
+		// Driven by the résumé data (Dashboard → Résumé).
+		echo $dh_has_resume ? dhm_resume_experience_html( $dh_resume ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
 	</section>
 
 	<!-- SKILLS -->
@@ -164,17 +147,11 @@ get_header();
 			<span class="dh-section-num">03</span>
 			<h2 class="dh-section-title">Skills</h2>
 		</div>
-		<div class="dh-skills">
-			<?php
-			$skills = array( 'C#', 'ASP.NET', 'T-SQL', 'JavaScript', 'TypeScript', 'React 19', 'Next.js 15', 'Angular', 'Node.js', 'Python', 'HTML5 / CSS', 'WCAG', 'Stripe', 'Firebase', 'OpenAI', 'Figma' );
-			foreach ( $skills as $s ) {
-				echo '<span class="dh-skill">' . esc_html( $s ) . '</span>';
-			}
-			?>
-		</div>
-		<p style="font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-3);margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--line);letter-spacing:0.02em;">
-			EDUCATION — B.A.Sc., Information Technology Management · Florida State College at Jacksonville
-		</p>
+		<?php
+		// Skills chips and the education line, driven by the résumé data.
+		echo $dh_has_resume ? dhm_resume_skills_html( $dh_resume ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $dh_has_resume ? dhm_resume_education_html( $dh_resume ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
 	</section>
 
 	<!-- CONTACT -->
