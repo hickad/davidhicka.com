@@ -20,6 +20,7 @@ require get_stylesheet_directory() . '/inc/resume-render.php';
 require get_stylesheet_directory() . '/inc/resume-export.php';
 if ( is_admin() ) {
 	require get_stylesheet_directory() . '/inc/resume-admin.php';
+	require get_stylesheet_directory() . '/inc/resume-linkedin.php';
 }
 
 /** Push curated seed updates (e.g. the ATS content pass) to the live option. */

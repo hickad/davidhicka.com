@@ -27,9 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  * Bump when the seed content changes and you want it pushed to the live option.
  * dhm_resume_maybe_reseed() refreshes dhm_resume_data when the stored version is
  * older. v2 = ATS pass (keywords, expanded roles, polished verbs). v3 = phone.
+ * v4 = populate the general variant (cross-industry, mirrors LinkedIn).
  */
 if ( ! defined( 'DHM_RESUME_SEED_VERSION' ) ) {
-	define( 'DHM_RESUME_SEED_VERSION', 3 );
+	define( 'DHM_RESUME_SEED_VERSION', 4 );
 }
 
 /** Audiences this site supports (kept in sync with digitalresume_audience()). */
@@ -498,8 +499,12 @@ function dhm_resume_seed() {
 		'education'  => $education,
 	);
 
-	/* ---- GENERAL ---- (blank until filled in) */
-	$seed['general'] = dhm_resume_blank();
+	/* ---- GENERAL ---- (cross-industry; mirrors the single public LinkedIn
+	 * profile). Reuses the finance work history/skills with broadened framing. */
+	$seed['general']               = $seed['finance'];
+	$seed['general']['title_line'] = 'Senior Software Engineer · Full-Stack / Frontend · AI-Assisted Development';
+	$seed['general']['summary']    = 'Senior software engineer with 20+ years building secure, reliable software across finance, defense, and healthcare. I ship full-stack products end to end — from SOC 2 Type II and PCI DSS compliant enterprise platforms to AI-powered consumer SaaS — with deep experience in C#/.NET, modern JavaScript/TypeScript (React, Next.js), and data. Active practitioner of AI-assisted development using Claude, GitHub Copilot, Cursor, and local LLMs.';
+	$seed['general']['keywords']   = 'Software Engineering, Full-Stack Development, Frontend Development, React, Next.js, TypeScript, JavaScript, C#, ASP.NET, Node.js, T-SQL, SOC 2 Type II, PCI DSS, WCAG Accessibility, Secure Software Development, AI-Assisted Development, Stripe, Firebase, Cloud';
 
 	return $seed;
 }
