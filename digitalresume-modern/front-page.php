@@ -98,7 +98,7 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 						? get_the_post_thumbnail_url( get_the_ID(), 'large' )
 						: get_post_meta( get_the_ID(), '_dhm_proj_image', true );
 					?>
-					<article class="dh-card">
+					<a class="dh-card" href="<?php the_permalink(); ?>" style="text-decoration:none;color:inherit;display:block;">
 						<?php if ( $dh_card_img ) : ?>
 							<div class="dh-card-img"><img src="<?php echo esc_url( $dh_card_img ); ?>" alt="<?php the_title_attribute(); ?>"></div>
 						<?php endif; ?>
@@ -107,7 +107,7 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 							<div class="dh-card-kind"><?php echo esc_html( get_the_date() ); ?></div>
 							<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 28 ) ); ?></p>
 						</div>
-					</article>
+					</a>
 					<?php
 				endwhile;
 				wp_reset_postdata();

@@ -123,6 +123,48 @@ add_action( 'save_post_portfolio', 'dhm_projects_save_meta' );
 /* ---- Query + resolve ------------------------------------------------------ */
 
 /** Resolve all portfolio posts into render-ready arrays, ordered by menu order. */
+/** Resolve a single portfolio post into a render-ready array (list + detail). */
+function dhm_project_resolve( $p ) {
+	$default_img = get_stylesheet_directory_uri() . '/assets/img/projects/project-1.jpg';
+
+	$img = has_post_thumbnail( $p->ID )
+		? get_the_post_thumbnail_url( $p->ID, 'large' )
+		: ( get_post_meta( $p->ID, '_dhm_proj_image', true ) ? get_post_meta( $p->ID, '_dhm_proj_image', true ) : $default_img );
+
+	$desc = has_excerpt( $p->ID ) ? get_the_excerpt( $p ) : wp_trim_words( wp_strip_all_tags( $p->post_content ), 40 );
+
+	$tags = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->ID, '_dhm_proj_tags', true ) ) ) );
+
+	$gallery = array();
+	foreach ( preg_split( '/\r\n|\r|\n/', (string) get_post_meta( $p->ID, '_dhm_proj_gallery', true ) ) as $line ) {
+		$line = trim( $line );
+		if ( '' === $line ) {
+			continue;
+		}
+		$parts     = array_map( 'trim', explode( '|', $line, 2 ) );
+		$gallery[] = array(
+			'url'     => $parts[0],
+			'caption' => isset( $parts[1] ) ? $parts[1] : '',
+		);
+	}
+
+	$layout = get_post_meta( $p->ID, '_dhm_proj_layout', true );
+	return array(
+		'id'        => $p->ID,
+		'title'     => get_the_title( $p ),
+		'permalink' => get_permalink( $p->ID ),
+		'layout'    => array_key_exists( $layout, dhm_projects_layouts() ) ? $layout : 'card',
+		'eyebrow'   => (string) get_post_meta( $p->ID, '_dhm_proj_eyebrow', true ),
+		'date'      => (string) get_post_meta( $p->ID, '_dhm_proj_date', true ),
+		'flag'      => (string) get_post_meta( $p->ID, '_dhm_proj_flag', true ),
+		'url'       => (string) get_post_meta( $p->ID, '_dhm_proj_url', true ),
+		'desc'      => $desc,
+		'tags'      => $tags,
+		'image'     => $img,
+		'gallery'   => $gallery,
+	);
+}
+
 function dhm_projects_get() {
 	$q = new WP_Query(
 		array(
@@ -132,44 +174,9 @@ function dhm_projects_get() {
 			'no_found_rows'  => true,
 		)
 	);
-	$out          = array();
-	$default_img  = get_stylesheet_directory_uri() . '/assets/img/projects/project-1.jpg';
+	$out = array();
 	foreach ( $q->posts as $p ) {
-		$img = has_post_thumbnail( $p->ID )
-			? get_the_post_thumbnail_url( $p->ID, 'large' )
-			: ( get_post_meta( $p->ID, '_dhm_proj_image', true ) ? get_post_meta( $p->ID, '_dhm_proj_image', true ) : $default_img );
-
-		$desc = has_excerpt( $p->ID ) ? get_the_excerpt( $p ) : wp_trim_words( wp_strip_all_tags( $p->post_content ), 40 );
-
-		$tags = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->ID, '_dhm_proj_tags', true ) ) ) );
-
-		$gallery = array();
-		foreach ( preg_split( '/\r\n|\r|\n/', (string) get_post_meta( $p->ID, '_dhm_proj_gallery', true ) ) as $line ) {
-			$line = trim( $line );
-			if ( '' === $line ) {
-				continue;
-			}
-			$parts     = array_map( 'trim', explode( '|', $line, 2 ) );
-			$gallery[] = array(
-				'url'     => $parts[0],
-				'caption' => isset( $parts[1] ) ? $parts[1] : '',
-			);
-		}
-
-		$layout = get_post_meta( $p->ID, '_dhm_proj_layout', true );
-		$out[]  = array(
-			'id'      => $p->ID,
-			'title'   => get_the_title( $p ),
-			'layout'  => array_key_exists( $layout, dhm_projects_layouts() ) ? $layout : 'card',
-			'eyebrow' => (string) get_post_meta( $p->ID, '_dhm_proj_eyebrow', true ),
-			'date'    => (string) get_post_meta( $p->ID, '_dhm_proj_date', true ),
-			'flag'    => (string) get_post_meta( $p->ID, '_dhm_proj_flag', true ),
-			'url'     => (string) get_post_meta( $p->ID, '_dhm_proj_url', true ),
-			'desc'    => $desc,
-			'tags'    => $tags,
-			'image'   => $img,
-			'gallery' => $gallery,
-		);
+		$out[] = dhm_project_resolve( $p );
 	}
 	wp_reset_postdata();
 	return $out;
@@ -201,16 +208,16 @@ function dhm_projects_render() {
 		?>
 		<section class="pj-shell pj-section">
 			<div class="pj-feature">
-				<div class="pj-feature-media">
+				<a class="pj-feature-media" href="<?php echo esc_url( $p['permalink'] ); ?>" aria-label="<?php echo esc_attr( $p['title'] ); ?>">
 					<img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['title'] ); ?>">
 					<?php if ( $p['flag'] ) : ?><span class="pj-flag"><?php echo esc_html( $p['flag'] ); ?></span><?php endif; ?>
-				</div>
+				</a>
 				<div>
 					<?php if ( $p['eyebrow'] ) : ?><div class="pj-eyebrow"><?php echo esc_html( $p['eyebrow'] ); ?></div><?php endif; ?>
-					<h2 class="pj-h2"><?php echo esc_html( $p['title'] ); ?></h2>
+					<h2 class="pj-h2"><a class="pj-h2-link" href="<?php echo esc_url( $p['permalink'] ); ?>"><?php echo esc_html( $p['title'] ); ?></a></h2>
 					<?php if ( $p['desc'] ) : ?><p class="pj-desc"><?php echo esc_html( $p['desc'] ); ?></p><?php endif; ?>
 					<?php if ( $p['tags'] ) : ?><div class="pj-tags"><?php echo dhm_projects_tag_html( $p['tags'], 'pj-tag' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div><?php endif; ?>
-					<?php if ( $p['url'] ) : ?><p style="margin-top:1.2rem;"><a class="pj-dark-link" style="color:#3d8a66;" href="<?php echo esc_url( $p['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( preg_replace( '#^https?://#', '', $p['url'] ) ); ?> ↗</a></p><?php endif; ?>
+					<p style="margin-top:1.4rem;"><a class="pj-dark-link" style="color:#3d8a66;" href="<?php echo esc_url( $p['permalink'] ); ?>">View project →</a></p>
 				</div>
 			</div>
 		</section>
@@ -223,7 +230,7 @@ function dhm_projects_render() {
 		<section class="pj-shell pj-section">
 			<div class="pj-grid">
 				<?php foreach ( $cards as $p ) : ?>
-					<article class="pj-card">
+					<a class="pj-card pj-card-link" href="<?php echo esc_url( $p['permalink'] ); ?>">
 						<div class="pj-card-media"><img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['title'] ); ?>"></div>
 						<div class="pj-card-body">
 							<div class="pj-card-head">
@@ -234,7 +241,7 @@ function dhm_projects_render() {
 							<?php if ( $p['desc'] ) : ?><p class="pj-card-desc"><?php echo esc_html( $p['desc'] ); ?></p><?php endif; ?>
 							<?php if ( $p['tags'] ) : ?><div class="pj-card-tags"><?php echo dhm_projects_tag_html( $p['tags'], 'pj-card-tag' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div><?php endif; ?>
 						</div>
-					</article>
+					</a>
 				<?php endforeach; ?>
 			</div>
 		</section>

@@ -50,6 +50,13 @@ if ( post_password_required() ) {
 	.dh-projects .pj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.75rem; }
 	.dh-projects .pj-card { border:1px solid #e8e8e4; border-radius:12px; overflow:hidden; background:#fff; transition:transform .25s ease, box-shadow .25s ease; }
 	.dh-projects .pj-card:hover { transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.09); }
+	.dh-projects .pj-card-link { display:block; text-decoration:none; color:inherit; }
+	.dh-projects .pj-feature-media { display:block; text-decoration:none; }
+	.dh-projects .pj-h2-link { color:inherit; text-decoration:none; }
+	.dh-projects .pj-h2-link:hover { color:#3d8a66; }
+	.dh-projects .pj-backbar { padding-top:1.75rem; }
+	.dh-projects .pj-back { display:inline-flex; align-items:center; gap:.4rem; font-family:'Roboto Mono',monospace; font-size:.78rem; color:#54b689; text-decoration:none; }
+	.dh-projects .pj-back:hover { color:#3d8a66; }
 	.dh-projects .pj-card-media { height:200px; overflow:hidden; background:#f3f5f9; }
 	.dh-projects .pj-card-media img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
 	.dh-projects .pj-card:hover .pj-card-media img { transform:scale(1.04); }
@@ -98,6 +105,7 @@ if ( post_password_required() ) {
 
 	<!-- HEADER -->
 	<header class="pj-shell pj-header">
+		<div class="pj-backbar"><a class="pj-back" href="<?php echo esc_url( home_url( '/' ) ); ?>">← Back to home</a></div>
 		<div class="pj-kicker"><span class="rule"></span>Selected Work</div>
 		<div class="pj-titlewrap">
 			<span class="pj-num">02</span>
