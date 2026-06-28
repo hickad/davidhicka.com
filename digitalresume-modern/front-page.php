@@ -93,9 +93,14 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 				while ( $portfolio->have_posts() ) :
 					$portfolio->the_post();
 					?>
+					<?php
+					$dh_card_img = has_post_thumbnail()
+						? get_the_post_thumbnail_url( get_the_ID(), 'large' )
+						: get_post_meta( get_the_ID(), '_dhm_proj_image', true );
+					?>
 					<article class="dh-card">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="dh-card-img"><?php the_post_thumbnail( 'large' ); ?></div>
+						<?php if ( $dh_card_img ) : ?>
+							<div class="dh-card-img"><img src="<?php echo esc_url( $dh_card_img ); ?>" alt="<?php the_title_attribute(); ?>"></div>
 						<?php endif; ?>
 						<div class="dh-card-body">
 							<h3 class="dh-card-title"><?php the_title(); ?></h3>
@@ -126,6 +131,11 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 				endforeach;
 			endif;
 			?>
+		</div>
+		<div style="margin-top:2.5rem;">
+			<a class="btn btn-primary" href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">
+				View all projects <i class="fas fa-arrow-right ms-2"></i>
+			</a>
 		</div>
 	</section>
 
