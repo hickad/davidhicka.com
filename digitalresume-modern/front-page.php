@@ -21,7 +21,7 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 			<div class="dh-hero-text">
 				<?php $dh_viewer = function_exists( 'dhm_viewer_label' ) ? dhm_viewer_label() : ''; ?>
 				<?php if ( $dh_viewer ) : ?>
-					<p class="dh-welcome">Prepared for <strong><?php echo esc_html( $dh_viewer ); ?></strong></p>
+					<p class="dh-welcome">Welcome, <strong><?php echo esc_html( $dh_viewer ); ?></strong></p>
 				<?php endif; ?>
 				<span class="dh-kicker">Senior Software Engineer</span>
 				<h1 class="dh-hero-name"><?php bloginfo( 'name' ); ?></h1>
@@ -161,7 +161,7 @@ $dh_has_resume = $dh_resume && function_exists( 'dhm_resume_has_content' ) && dh
 			<h2 class="dh-section-title">Contact</h2>
 		</div>
 		<p class="dh-hero-lead" style="max-width:48ch;font-size:1.15rem;">
-			Available for senior engineering roles. Send a message below, or reach me on
+			<?php if ( $dh_viewer ) : ?>Thanks for taking a look, <strong><?php echo esc_html( $dh_viewer ); ?></strong>. <?php endif; ?>Available for senior engineering roles. Send a message below, or reach me on
 			<a href="https://www.linkedin.com/in/davidhicka/">LinkedIn</a>.
 		</p>
 		<div class="dh-contact-form">
