@@ -2,9 +2,10 @@
 /**
  * page-projects.php — "Selected Work" projects showcase.
  *
- * Implemented from the Claude Design "Selected Work.dc.html". Self-contained,
- * scoped styles (won't affect the rest of the site), responsive, and served
- * behind the site's existing login gate via get_header().
+ * Layout/design implemented from the Claude Design "Selected Work.dc.html".
+ * Content is managed in wp-admin via the Portfolio post type and rendered by
+ * dhm_projects_render() (see inc/projects.php). Self-contained, scoped styles,
+ * responsive; served behind the site's existing login gate via get_header().
  *
  * @package DigitalResumeModern
  */
@@ -16,8 +17,6 @@ if ( post_password_required() ) {
 	get_footer();
 	return;
 }
-
-$pj_img = get_stylesheet_directory_uri() . '/assets/img/projects';
 ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,148 +107,12 @@ $pj_img = get_stylesheet_directory_uri() . '/assets/img/projects';
 		<div class="pj-divider"></div>
 	</header>
 
-	<!-- FEATURED — DEAL PACK WEB -->
-	<section class="pj-shell pj-section">
-		<div class="pj-feature">
-			<div class="pj-feature-media">
-				<img src="<?php echo esc_url( $pj_img ); ?>/project-1.jpg" alt="Deal Pack Web">
-				<span class="pj-flag">★ Flagship</span>
-			</div>
-			<div>
-				<div class="pj-eyebrow">Lead Engineer · ABCoA · 2017 – Present</div>
-				<h2 class="pj-h2">Deal Pack Web</h2>
-				<p class="pj-desc">A financial-management &amp; loan-servicing platform for automotive dealerships and subprime finance companies — origination, payments, collections, accounting and CRM. Shipped inside a <strong>SOC&nbsp;2 Type&nbsp;II</strong> and <strong>PCI&nbsp;DSS</strong> compliant environment serving a national customer base.</p>
-				<div class="pj-tags">
-					<span class="pj-tag">C#</span>
-					<span class="pj-tag">ASP.NET</span>
-					<span class="pj-tag">T-SQL</span>
-					<span class="pj-tag">Highcharts</span>
-					<span class="pj-tag">SSRS</span>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- PROJECT GRID -->
-	<section class="pj-shell pj-section">
-		<div class="pj-grid">
-
-			<article class="pj-card">
-				<div class="pj-card-media"><img src="<?php echo esc_url( $pj_img ); ?>/project-2.jpg" alt="Defense training systems"></div>
-				<div class="pj-card-body">
-					<div class="pj-card-head">
-						<h3 class="pj-card-title">Aircrew Training Systems</h3>
-						<span class="pj-card-date">2004 – 2014</span>
-					</div>
-					<div class="pj-card-role">Multimedia Engineer · L3 Communications</div>
-					<p class="pj-card-desc">Interactive Level-3 courseware and XML-driven MFD cockpit simulators for CV-22 Osprey, MV-22 and MH-60R programs — built against official military documentation with pilot SMEs.</p>
-					<div class="pj-card-tags">
-						<span class="pj-card-tag">XML</span>
-						<span class="pj-card-tag">JavaScript</span>
-						<span class="pj-card-tag">Simulation</span>
-					</div>
-				</div>
-			</article>
-
-			<article class="pj-card">
-				<div class="pj-card-media"><img src="<?php echo esc_url( $pj_img ); ?>/project-3.jpg" alt="Florida Blue member tools"></div>
-				<div class="pj-card-body">
-					<div class="pj-card-head">
-						<h3 class="pj-card-title">Florida Blue · Member Tools</h3>
-						<span class="pj-card-date">2017</span>
-					</div>
-					<div class="pj-card-role">UI Developer · Health Insurance</div>
-					<p class="pj-card-desc">WCAG 2.0 AA accessibility upgrades across benefit-management tools, plus a proxy integration bridging FloridaBlue.com with HealthCare.gov for individual-market exchange enrollment.</p>
-					<div class="pj-card-tags">
-						<span class="pj-card-tag">JavaScript</span>
-						<span class="pj-card-tag">WCAG 2.0 AA</span>
-						<span class="pj-card-tag">Integration</span>
-					</div>
-				</div>
-			</article>
-
-			<article class="pj-card">
-				<div class="pj-card-media"><img src="<?php echo esc_url( $pj_img ); ?>/project-4.jpg" alt="Enfusion real-time analytics"></div>
-				<div class="pj-card-body">
-					<div class="pj-card-head">
-						<h3 class="pj-card-title">Enfusion · Real-time Analytics</h3>
-						<span class="pj-card-date">2015 – 2017</span>
-					</div>
-					<div class="pj-card-role">UI Developer · OSI</div>
-					<p class="pj-card-desc">A real-time video-analytics application interface built with React.js and Material-UI — fast, data-dense dashboards designed for at-a-glance decision making.</p>
-					<div class="pj-card-tags">
-						<span class="pj-card-tag">React.js</span>
-						<span class="pj-card-tag">Material-UI</span>
-					</div>
-				</div>
-			</article>
-
-			<article class="pj-card">
-				<div class="pj-card-media"><img src="<?php echo esc_url( $pj_img ); ?>/cyclcrm.jpg" alt="cyclCRM"></div>
-				<div class="pj-card-body">
-					<div class="pj-card-head">
-						<h3 class="pj-card-title">cyclCRM</h3>
-						<span class="pj-card-date">2017 – 2019</span>
-					</div>
-					<div class="pj-card-role">Frontend &amp; UI/UX · ABCoA</div>
-					<p class="pj-card-desc">End-to-end interface design and frontend build for a customer-relationship platform — engineered for clarity and speed in the hands of daily operators.</p>
-					<div class="pj-card-tags">
-						<span class="pj-card-tag">JavaScript</span>
-						<span class="pj-card-tag">UI/UX</span>
-					</div>
-				</div>
-			</article>
-
-		</div>
-	</section>
-
-	<!-- FEATURED — TOON & TAILS (dark band) -->
-	<section class="pj-dark">
-		<div class="pj-dark-inner">
-			<div class="pj-dark-kicker"><span class="rule"></span>Featured · Founder &amp; Engineer · Public Product</div>
-			<div class="pj-dark-titlewrap">
-				<h2 class="pj-dark-h2">Toon &amp; Tails</h2>
-				<a href="https://toonandtails.com" target="_blank" rel="noopener" class="pj-dark-link">toonandtails.com ↗</a>
-			</div>
-			<p class="pj-dark-lead">A production AI SaaS I built and launched solo — it turns a pet photo into a custom cartoon portrait in about a minute, then prints it on mugs, canvas, ornaments and more. Loved by <strong>2,000+ pet owners</strong>.</p>
-
-			<div class="pj-gallery">
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/dog-golden-retreiver-preview.webp" alt="Golden Retriever" loading="lazy"></div>
-					<figcaption>Golden Retriever · 3D</figcaption>
-				</figure>
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/french-bulldog-preview.webp" alt="French Bulldog" loading="lazy"></div>
-					<figcaption>French Bulldog</figcaption>
-				</figure>
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/cat-short-haired-preview.webp" alt="Black Cat" loading="lazy"></div>
-					<figcaption>Black Cat · Cute</figcaption>
-				</figure>
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/scarlet-macaw-preview.webp" alt="Scarlet Macaw" loading="lazy"></div>
-					<figcaption>Scarlet Macaw · 3D</figcaption>
-				</figure>
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/axolotl-preview.webp" alt="Axolotl" loading="lazy"></div>
-					<figcaption>Axolotl · Watercolor</figcaption>
-				</figure>
-				<figure>
-					<div class="frame"><img src="https://toonandtails.com/images/landing-page/1-dogs-cats-and-every-pet-in-between/previews/lop-rabbit-preview.webp" alt="Lop Rabbit" loading="lazy"></div>
-					<figcaption>Lop Rabbit · 2D</figcaption>
-				</figure>
-			</div>
-
-			<div class="pj-dark-tags">
-				<span class="pj-dark-tag">Next.js 15</span>
-				<span class="pj-dark-tag">React 19</span>
-				<span class="pj-dark-tag">OpenAI gpt-image-2</span>
-				<span class="pj-dark-tag">Firebase</span>
-				<span class="pj-dark-tag">Stripe</span>
-				<span class="pj-dark-tag">Printful</span>
-			</div>
-		</div>
-	</section>
+	<?php
+	// Content is managed in wp-admin → Portfolio (see inc/projects.php).
+	if ( function_exists( 'dhm_projects_render' ) ) {
+		dhm_projects_render();
+	}
+	?>
 
 </main>
 

@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 require get_stylesheet_directory() . '/inc/resume-data.php';
 require get_stylesheet_directory() . '/inc/resume-render.php';
 require get_stylesheet_directory() . '/inc/resume-export.php';
+require get_stylesheet_directory() . '/inc/projects.php';
 if ( is_admin() ) {
 	require get_stylesheet_directory() . '/inc/resume-admin.php';
 	require get_stylesheet_directory() . '/inc/resume-linkedin.php';
