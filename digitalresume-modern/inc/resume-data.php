@@ -26,10 +26,10 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Bump when the seed content changes and you want it pushed to the live option.
  * dhm_resume_maybe_reseed() refreshes dhm_resume_data when the stored version is
- * older. v2 = ATS pass (keywords, expanded roles, polished verbs).
+ * older. v2 = ATS pass (keywords, expanded roles, polished verbs). v3 = phone.
  */
 if ( ! defined( 'DHM_RESUME_SEED_VERSION' ) ) {
-	define( 'DHM_RESUME_SEED_VERSION', 2 );
+	define( 'DHM_RESUME_SEED_VERSION', 3 );
 }
 
 /** Audiences this site supports (kept in sync with digitalresume_audience()). */
@@ -193,6 +193,7 @@ function dhm_resume_maybe_reseed() {
  * ---------------------------------------------------------------------- */
 function dhm_resume_seed() {
 	$contact = array(
+		'904-703-4413',
 		'hickad@gmail.com',
 		'linkedin.com/in/davidhicka',
 		'davidhicka.com',
